@@ -26,9 +26,9 @@ class HomeViewController: UIViewController {
             if let err = err {
                 print("deu erro nessa merda")
             }else{
-                var d = snapshot?.documents.first
-                let a = d?.data()
-                print(a?.index(forKey: "lastname"))
+                var doc = snapshot?.documents.first
+                let dic = doc?.data()
+                print(dic?["lastname"])
             }
         })
     }
