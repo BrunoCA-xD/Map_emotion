@@ -17,6 +17,7 @@
 		56322DB7230D7DA400C728A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB5230D7DA400C728A8 /* Main.storyboard */; };
 		56322DB9230D7DA600C728A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB8230D7DA600C728A8 /* Assets.xcassets */; };
 		56322DBC230D7DA600C728A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */; };
+		56B18717230EBE6D00765C5A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B18716230EBE6D00765C5A /* User.swift */; };
 		80A8E99EA9C4F9319279F6D1 /* Pods_Sens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63DB076306E37F76FD95B0 /* Pods_Sens.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		56322DB8230D7DA600C728A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56322DBB230D7DA600C728A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56322DBD230D7DA600C728A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56B18716230EBE6D00765C5A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AA63DB076306E37F76FD95B0 /* Pods_Sens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC64600B94152A1E73496FD4 /* Pods-Sens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sens.release.xcconfig"; path = "Target Support Files/Pods-Sens/Pods-Sens.release.xcconfig"; sourceTree = "<group>"; };
 		F65D6ED57D980DA6E17EC052 /* Pods-Sens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sens.debug.xcconfig"; path = "Target Support Files/Pods-Sens/Pods-Sens.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +72,6 @@
 		56322DA5230D7DA400C728A8 = {
 			isa = PBXGroup;
 			children = (
-				E2E3140F230EBC7E007591FA /* Controller */,
 				56322DB0230D7DA400C728A8 /* Sens */,
 				56322DAF230D7DA400C728A8 /* Products */,
 				4EEF84FEB7E14AC7440B2D40 /* Pods */,
@@ -89,9 +90,11 @@
 		56322DB0230D7DA400C728A8 /* Sens */ = {
 			isa = PBXGroup;
 			children = (
+				E2E3140F230EBC7E007591FA /* Controller */,
 				56322DB8230D7DA600C728A8 /* Assets.xcassets */,
 				56322DB1230D7DA400C728A8 /* AppDelegate.swift */,
 				54B47E31230E623900BE9050 /* Utilities.swift */,
+				56B18716230EBE6D00765C5A /* User.swift */,
 				54ACFBFD230D9387009108BD /* GoogleService-Info.plist */,
 				56322DB5230D7DA400C728A8 /* Main.storyboard */,
 				56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */,
@@ -108,7 +111,8 @@
 				54B47E2F230E605100BE9050 /* HomeViewController.swift */,
 				56322DB3230D7DA400C728A8 /* ViewController.swift */,
 			);
-			path = Controller;
+			name = Controller;
+			path = ../Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +237,7 @@
 				56322DB4230D7DA400C728A8 /* ViewController.swift in Sources */,
 				54B47E2E230E603300BE9050 /* SignUpViewController.swift in Sources */,
 				56322DB2230D7DA400C728A8 /* AppDelegate.swift in Sources */,
+				56B18717230EBE6D00765C5A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
