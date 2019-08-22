@@ -70,6 +70,7 @@
 		56322DA5230D7DA400C728A8 = {
 			isa = PBXGroup;
 			children = (
+				E2E3140F230EBC7E007591FA /* Controller */,
 				56322DB0230D7DA400C728A8 /* Sens */,
 				56322DAF230D7DA400C728A8 /* Products */,
 				4EEF84FEB7E14AC7440B2D40 /* Pods */,
@@ -88,19 +89,26 @@
 		56322DB0230D7DA400C728A8 /* Sens */ = {
 			isa = PBXGroup;
 			children = (
-				54ACFBFD230D9387009108BD /* GoogleService-Info.plist */,
-				56322DB1230D7DA400C728A8 /* AppDelegate.swift */,
-				56322DB3230D7DA400C728A8 /* ViewController.swift */,
-				56322DB5230D7DA400C728A8 /* Main.storyboard */,
 				56322DB8230D7DA600C728A8 /* Assets.xcassets */,
+				56322DB1230D7DA400C728A8 /* AppDelegate.swift */,
+				54B47E31230E623900BE9050 /* Utilities.swift */,
+				54ACFBFD230D9387009108BD /* GoogleService-Info.plist */,
+				56322DB5230D7DA400C728A8 /* Main.storyboard */,
 				56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */,
 				56322DBD230D7DA600C728A8 /* Info.plist */,
-				54B47E2B230E601600BE9050 /* LoginViewController.swift */,
-				54B47E2D230E603300BE9050 /* SignUpViewController.swift */,
-				54B47E2F230E605100BE9050 /* HomeViewController.swift */,
-				54B47E31230E623900BE9050 /* Utilities.swift */,
 			);
 			path = Sens;
+			sourceTree = "<group>";
+		};
+		E2E3140F230EBC7E007591FA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				54B47E2D230E603300BE9050 /* SignUpViewController.swift */,
+				54B47E2B230E601600BE9050 /* LoginViewController.swift */,
+				54B47E2F230E605100BE9050 /* HomeViewController.swift */,
+				56322DB3230D7DA400C728A8 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,7 +380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22U723CBKY;
+				DEVELOPMENT_TEAM = 76DX35F6T7;
 				INFOPLIST_FILE = Sens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,7 +399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22U723CBKY;
+				DEVELOPMENT_TEAM = 76DX35F6T7;
 				INFOPLIST_FILE = Sens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
