@@ -51,36 +51,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTn-yi-GBM">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTn-yi-GBM">
                                 <rect key="frame" x="20" y="134" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvw-CK-qDb">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sobrenome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvw-CK-qDb">
                                 <rect key="frame" x="20" y="172" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O16-Xr-Sw8">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O16-Xr-Sw8">
                                 <rect key="frame" x="20" y="216" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRy-d3-3Nj">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRy-d3-3Nj">
                                 <rect key="frame" x="20" y="259" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-mM-g53">
+                                <rect key="frame" x="20" y="299" width="374" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="J8v-xV-JpH"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="588433104.99615395">
+                                    <!--2019-08-25 1:38:24 PM +0000-->
+                                </date>
+                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kom-sf-Mz3">
-                                <rect key="frame" x="173" y="336" width="68" height="30"/>
+                                <rect key="frame" x="175" y="569" width="68" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cadastrar"/>
                                 <connections>
@@ -89,9 +94,27 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="leading" secondItem="gTn-yi-GBM" secondAttribute="leading" id="1HF-Vc-WVn"/>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="leading" secondItem="whF-tx-7SI" secondAttribute="leadingMargin" id="6tH-sh-NCI"/>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="leading" secondItem="Mvw-CK-qDb" secondAttribute="leading" id="9gV-gT-v00"/>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="top" secondItem="whF-tx-7SI" secondAttribute="top" constant="259" id="FOV-H7-nIn"/>
+                            <constraint firstItem="yJq-mM-g53" firstAttribute="top" secondItem="sRy-d3-3Nj" secondAttribute="bottom" constant="10" id="Nvl-00-Zlg"/>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="trailing" secondItem="whF-tx-7SI" secondAttribute="trailingMargin" id="ZCR-oo-uMp"/>
+                            <constraint firstItem="yJq-mM-g53" firstAttribute="centerX" secondItem="sRy-d3-3Nj" secondAttribute="centerX" id="doY-dJ-SZR"/>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="trailing" secondItem="Mvw-CK-qDb" secondAttribute="trailing" id="hg1-Bu-MvW"/>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="leading" secondItem="O16-Xr-Sw8" secondAttribute="leading" id="jHC-1j-Xor"/>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="top" secondItem="O16-Xr-Sw8" secondAttribute="bottom" constant="13" id="lyT-ld-WBI"/>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="trailing" secondItem="O16-Xr-Sw8" secondAttribute="trailing" id="sfa-gR-VBY"/>
+                            <constraint firstItem="Mvw-CK-qDb" firstAttribute="top" secondItem="gTn-yi-GBM" secondAttribute="bottom" constant="8" symbolic="YES" id="yLt-Xu-sGS"/>
+                            <constraint firstItem="yJq-mM-g53" firstAttribute="width" secondItem="sRy-d3-3Nj" secondAttribute="width" id="yYG-B8-OWa"/>
+                            <constraint firstItem="O16-Xr-Sw8" firstAttribute="top" secondItem="Mvw-CK-qDb" secondAttribute="bottom" constant="14" id="ykt-uq-c5T"/>
+                            <constraint firstItem="sRy-d3-3Nj" firstAttribute="trailing" secondItem="gTn-yi-GBM" secondAttribute="trailing" id="ynu-Xv-kEF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hIm-96-HTR"/>
                     </view>
                     <connections>
+                        <outlet property="birthDateDatePicker" destination="yJq-mM-g53" id="uxX-id-yE1"/>
                         <outlet property="emailTextField" destination="O16-Xr-Sw8" id="GXQ-7O-7v7"/>
                         <outlet property="firstName" destination="gTn-yi-GBM" id="N3E-7P-Bo5"/>
                         <outlet property="lastName" destination="Mvw-CK-qDb" id="vsR-vK-F4M"/>

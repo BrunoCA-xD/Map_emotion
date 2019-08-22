@@ -16,6 +16,7 @@ class SingUpViewController: UIViewController {
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var birthDateDatePicker: UIDatePicker!
     
     
     override func viewDidLoad() {
@@ -55,35 +56,29 @@ class SingUpViewController: UIViewController {
             print(error!)
         }
         else {
-            
             // Create cleaned versions of the data
-            let firstName = self.firstName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let lastName = self.lastName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
+            var user = User()
+            user.name = self.firstName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            user.lastName = self.lastName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            user.email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            user.password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            user.birthDate = birthDateDatePicker.date
             // Create the user
-            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-                
+            Auth.auth().createUser(withEmail: user.email, password: user.password) { (result, err) in
                 // Check for errors
                 if err != nil {
-                    
                     // There was an error creating the user
                     print("Error creating user")
                 }
                 else {
-                    
+                    user.id = result!.user.uid
                     // User was created successfully, now store the first name and last name
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
-                        
-                        if error != nil {
-                            // Show error message
-                            print("Error saving user data")
-                        }
-                    }
+                    db.collection("users").document(user.id).setData(
+                        ["firstname":user.name, "lastname":user.lastName, "uid": user.id , "birthDate":user.birthDate])
                     
+                   
                     // Transition to the home screen
                     self.transitionToHome()
                 }

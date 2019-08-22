@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
 
@@ -14,6 +15,22 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        var ref = Database.database().reference()
+        let userId = Auth.auth().currentUser?.uid
+        print(userId!)
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").whereField("uid", isEqualTo: userId!).getDocuments(completion: {(snapshot,err) in
+            if let err = err {
+                print("deu erro nessa merda")
+            }else{
+                var d = snapshot?.documents.first
+                let a = d?.data()
+                print(a?.index(forKey: "lastname"))
+            }
+        })
     }
     
 

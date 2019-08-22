@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -24,6 +25,7 @@ class LoginViewController: UIViewController {
         let password = senhaTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         // Signing in the user
+        
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             
             if error != nil {
@@ -31,6 +33,7 @@ class LoginViewController: UIViewController {
                 print("Senha incorreta")
             }
             else {
+               
                 
                 let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
                 

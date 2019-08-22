@@ -10,26 +10,65 @@ import Foundation
 
 class User{
     
-    public private(set) var id: Int
     
-   
+    private var _id: String?
+    private var _name: String?
+    private var _lastName: String?
+    private var _email: String?
+    private var _birthDate: Date?
+    private var _password: String?
     
-    var ID: Int{
+    var id: String{
         get{
-            return self._id
+            return  _id!
         }
         set(newId){
-            if newId > 0{
-                self._id = newId
-            }
+            self._id = newId
         }
     }
-
-    private var _id: Int
-
-    init(id:Int) {
-        self._id = id
+    
+    var name: String{
+        get{
+            return  _name!
+        }
+        set(newName){
+            self._name = newName
+        }
     }
-
+    var lastName: String{
+        get{
+            return  _lastName!
+        }
+        set(newLastName){
+            self._lastName = newLastName
+        }
+    }
+    
+    var email:String{
+        get{
+            return  _email!
+        }
+        set(newEmail){
+            self._email = newEmail
+        }
+    }
+    
+    var birthDate:Date{
+        get{
+            return  _birthDate!
+        }
+        set(newBirthDate){
+            self._birthDate = newBirthDate
+        }
+    }
+    
+    var password:String{
+        get{
+            return _password!
+        }
+        set(newPassword){
+            self._password = newPassword
+        }
+    }
     
 }
