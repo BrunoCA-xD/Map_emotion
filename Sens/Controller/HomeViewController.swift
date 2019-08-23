@@ -11,11 +11,26 @@ import Firebase
 import MapKit
 import CoreLocation
 
-class HomeViewController: UIViewController, CLLocationManagerDelegate {
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark)
+}
+
+class HomeViewController: UIViewController, CLLocationManagerDelegate, HandleMapSearch {
     
+    
+    func dropPinZoomIn(placemark: MKPlacemark) {
+        //
+    }
+    
+
+    var resultSearchController:UISearchController? = nil
+    var selectedPin:MKPlacemark? = nil
+
+    let locationManager = CLLocationManager()
     let user = User()
+    
     @IBOutlet weak var mapView: MKMapView!
-     let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +54,22 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                 
             }
         })
+        
+        //SearchBar + search result's tableView
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable as UISearchResultsUpdating
+        
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -53,7 +84,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){
             setupLocationManager()
-            print("asd")
             checkLocationAuthorization()
         }
     }
