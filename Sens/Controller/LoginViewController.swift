@@ -33,12 +33,12 @@ class LoginViewController: UIViewController {
                 print("Senha incorreta")
             }
             else {
-               
+               self.performSegue(withIdentifier: "getInAppSegue", sender: self)
                 
-                let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-                
-                self.view.window?.rootViewController = homeViewController
-                self.view.window?.makeKeyAndVisible()
+//                let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+//
+//                self.view.window?.rootViewController = homeViewController
+//                self.view.window?.makeKeyAndVisible()
             }
         }
     }
