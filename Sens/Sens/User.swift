@@ -71,4 +71,17 @@ class User{
         }
     }
     
+    init(){
+        
+    }
+    
+    init?(user: User){
+        self.id = user.id
+        self.name = user.name
+        self.lastName = user.lastName
+        self.birthDate = user.birthDate
+        self.email = user.email
+        self.password = user.password
+        
+    }
 }
