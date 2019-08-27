@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseAuth
-import Firebase
+import FirebaseFirestore
 
 class SingUpViewController: UIViewController {
     
@@ -21,7 +21,7 @@ class SingUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hideKeyboardWhenTappedAround()
     }
     
     func validateFields() -> String? {
