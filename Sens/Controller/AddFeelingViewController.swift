@@ -8,14 +8,23 @@
 
 import UIKit
 
-class AddFeelingViewController: UIViewController {
+class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDelegate {
 
     @IBOutlet weak var textViewThoughts: UITextView!
     @IBOutlet weak var colorCollectionView: UICollectionView!
     @IBOutlet weak var tagCollectionView: UICollectionView!
+    @IBAction func selectEmojiPressed(_ sender: Any) {
+        openCard()
+    }
+    
+    var cardViewController: EmojiPickerViewController!
+    var visualEffectView: UIVisualEffectView!
+    var cardHeight: CGFloat = 0
+    let cardHandleAreaHeight: CGFloat = 60
     
     var cellTagIds: [String] = []
     let cellIds = ["1cell","2cell","3cell","4cell","5cell","6cell","7cell","8cell","9cell","10cell"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +32,53 @@ class AddFeelingViewController: UIViewController {
         setTextView()
         // Do any additional setup after loading the view.
     }
-}
-    extension AddFeelingViewController: UICollectionViewDelegate {
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            print("User tapped on \(cellIds[indexPath.row])")
+    
+    func backButton(_ emojiCode: String?) {
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.cardViewController.view.frame.origin.y = self.view.frame.height
+            self.visualEffectView.effect = nil
+        }, completion: {(bool) in
+            self.cardViewController.removeFromParent()
+            self.cardViewController.view.removeFromSuperview()
+            self.visualEffectView.removeFromSuperview()
+        })
+        if let emojiCode = emojiCode{
+            print("fechou e o codigo é \(emojiCode)")
         }
     }
     
-    extension AddFeelingViewController: UICollectionViewDataSource {
+    func openCard() {
+        cardHeight = self.view.frame.height * 0.9
+        let cardY = self.view.frame.height - cardHeight
+        visualEffectView = UIVisualEffectView()
+        visualEffectView.frame = self.view.frame
+        self.view.addSubview(visualEffectView)
+        
+        cardViewController = storyboard?.instantiateViewController(withIdentifier:"emojiPickerViewController") as? EmojiPickerViewController
+        cardViewController.delegateBackButton = self
+        self.addChild(cardViewController)
+        
+        self.view.addSubview(cardViewController.view)
+        cardViewController.view.frame = CGRect(x: 0, y: cardY, width: self.view.bounds.width, height: cardHeight)
+        
+        cardViewController.view.clipsToBounds = true
+        visualEffectView.effect = UIBlurEffect(style: .dark)
+        cardViewController.view.layer.cornerRadius = 30
+    }
+    
+    
+} // end Class AddFeelingViewController
+
+
+extension AddFeelingViewController: UICollectionViewDelegate {
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            print("User tapped on \(cellIds[indexPath.row])")
+        }
+    
+} // end extension AddFeelingViewController
+
+extension AddFeelingViewController: UICollectionViewDataSource {
         
         func collectionView( _ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             if collectionView == self.colorCollectionView {
@@ -59,10 +107,11 @@ class AddFeelingViewController: UIViewController {
                 return cellTag
             }
         }
-    }
     
+} // end extension AddFeelingViewController
     
-    extension AddFeelingViewController: UICollectionViewDelegateFlowLayout {
+
+extension AddFeelingViewController: UICollectionViewDelegateFlowLayout {
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
             return 5
         }
@@ -73,7 +122,44 @@ class AddFeelingViewController: UIViewController {
             let cellSizes = Array( repeatElement(CGSize(width:(collectionView.bounds.width - 45)/10, height:(collectionView.bounds.width - 45)/10), count: 10))
             return cellSizes[indexPath.item]
         }
+    
+} // end extension AddFeelingViewController
+
+
+extension AddFeelingViewController: UITextViewDelegate {
+    
+    func setTextView() {
+        
+        textViewThoughts.text = "Conte seus pensamentos"
+        textViewThoughts.textColor = .lightGray
+        textViewThoughts.returnKeyType = .done
     }
+    
+    //  MARK: PlacehoulderTextView
+    //  Apaga o placeholder e altera a cor da letra quando identificar digitação
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        if textView.text == "Conte seus pensamentos" {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+    // Não sei o que faz
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    // Reescreve o placeholder caso não haja nada escrito na textView
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "Conte seus pensamentos"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
+} // end extension AddFeelingViewController
 
 
 
