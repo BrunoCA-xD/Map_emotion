@@ -89,7 +89,7 @@ class SingUpViewController: UIViewController {
     func transitionToHome() {
         
         let homeViewController = storyboard?.instantiateViewController(withIdentifier:
-            "HomeViewController") as? HomeViewController
+            "mainTabBar") as? UITabBarController
         
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()

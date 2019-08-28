@@ -34,13 +34,23 @@ class LoginViewController: UIViewController {
                 print("Senha incorreta")
             }
             else {
-               self.performSegue(withIdentifier: "getInAppSegue", sender: self)
+               self.transitionToHome()
                 
 //                let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-//
 //                self.view.window?.rootViewController = homeViewController
 //                self.view.window?.makeKeyAndVisible()
             }
         }
     }
+    
+    func transitionToHome() {
+        
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier:
+            "mainTabBar") as? UITabBarController
+        
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
+        
+    }
+    
 }

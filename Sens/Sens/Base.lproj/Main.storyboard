@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="68W-eF-tkW">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SensLogo" translatesAutoresizingMaskIntoConstraints="NO" id="cmu-5C-oWa">
-                                <rect key="frame" x="20.5" y="253" width="373" height="153"/>
+                                <rect key="frame" x="20.5" y="269" width="373" height="153"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cmu-5C-oWa" secondAttribute="height" multiplier="373:153" id="dVC-SB-cyK"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0d-g2-8pO">
-                                <rect key="frame" x="104.5" y="648.5" width="205" height="32"/>
+                                <rect key="frame" x="104.5" y="680.5" width="205" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f0d-g2-8pO" secondAttribute="height" multiplier="205:32" id="rDz-rZ-CaK"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpN-M6-rt9">
-                                <rect key="frame" x="43.5" y="593" width="327" height="42"/>
+                                <rect key="frame" x="43.5" y="622.5" width="327" height="42"/>
                                 <color key="backgroundColor" red="0.097291936528497436" green="0.097291936528497436" blue="0.097291936528497436" alpha="0.7258220277547639" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GpN-M6-rt9" secondAttribute="height" multiplier="109:14" id="p2p-mn-3Nh"/>
@@ -56,7 +56,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Combine suas emoçoes a lugares e compartilhe sua experiência com outras pessoas." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nbp-2L-fdg">
-                                <rect key="frame" x="43.5" y="538.5" width="327" height="45"/>
+                                <rect key="frame" x="43.5" y="566" width="327" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Nbp-2L-fdg" secondAttribute="height" multiplier="109:15" id="aDr-Re-TjG"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIz-qY-X5L">
-                                <rect key="frame" x="43.5" y="798" width="327" height="42"/>
+                                <rect key="frame" x="43.5" y="838" width="327" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EIz-qY-X5L" secondAttribute="height" multiplier="109:14" id="SeO-ob-I3I"/>
@@ -77,7 +77,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Já possui uma conta? Entrar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ce2-Yg-hy0">
-                                <rect key="frame" x="104.5" y="648.5" width="205" height="32"/>
+                                <rect key="frame" x="104.5" y="680.5" width="205" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ce2-Yg-hy0" secondAttribute="height" multiplier="205:32" id="gj9-kp-gyT"/>
                                 </constraints>
@@ -109,10 +109,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="tPt-R8-EXh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-571.01449275362324" y="116.51785714285714"/>
+            <point key="canvasLocation" x="339.13043478260875" y="116.51785714285714"/>
         </scene>
         <!--Sing Up View Controller-->
         <scene sceneID="EuK-co-LzJ">
@@ -193,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="755-Fe-Fvo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="431.8840579710145" y="-175.44642857142856"/>
+            <point key="canvasLocation" x="1342.0289855072465" y="-175.44642857142856"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Yjq-g3-cIr">
@@ -223,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eB5-Wz-4Dd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3358" y="181"/>
+            <point key="canvasLocation" x="4268.115942028986" y="180.80357142857142"/>
         </scene>
         <!--Location Search Table View Controller-->
         <scene sceneID="Uwd-eu-7yM">
@@ -267,7 +268,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Np-W5-Kx9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4458" y="181"/>
+            <point key="canvasLocation" x="5368.115942028986" y="180.80357142857142"/>
         </scene>
         <!--Perfil-->
         <scene sceneID="Iqg-7c-8FI">
@@ -364,25 +365,6 @@
                                                 <color key="textColor" red="0.41960784313725491" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="nxu-wf-69P">
-                                                <rect key="frame" x="118" y="242" width="164.5" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type an emotion" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W64-dN-c67">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128.5" height="30"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxp-Ar-y4x">
-                                                        <rect key="frame" x="134.5" y="0.0" width="30" height="30"/>
-                                                        <state key="normal" title="Add"/>
-                                                        <connections>
-                                                            <action selector="addEmotionTagPressed:" destination="xd3-K7-5Da" eventType="touchUpInside" id="IjU-VV-EEs"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S59-jb-z7E">
                                                 <rect key="frame" x="28" y="272" width="305" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -901,7 +883,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgr-9n-DQC">
-                                        <rect key="frame" x="43.5" y="627" width="327" height="42"/>
+                                        <rect key="frame" x="43.5" y="652.5" width="327" height="42"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wgr-9n-DQC" secondAttribute="height" multiplier="109:14" id="rIr-aW-yPy"/>
@@ -914,7 +896,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="b@gmail.com" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jbu-TS-mRL">
-                                        <rect key="frame" x="43.5" y="331.5" width="327" height="30"/>
+                                        <rect key="frame" x="43.5" y="342.5" width="327" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Jbu-TS-mRL" secondAttribute="height" multiplier="109:10" id="Vjc-Fc-Mwp"/>
                                         </constraints>
@@ -923,7 +905,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Asdaa1390@" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Psx-1l-6iO">
-                                        <rect key="frame" x="43.5" y="388.5" width="327" height="30"/>
+                                        <rect key="frame" x="43.5" y="401.5" width="327" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Psx-1l-6iO" secondAttribute="height" multiplier="109:10" id="3LF-ea-BUl"/>
                                         </constraints>
@@ -932,7 +914,7 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="password"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faça seu login" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1Uc-qA-dq6">
-                                        <rect key="frame" x="43.5" y="273.5" width="327" height="21"/>
+                                        <rect key="frame" x="43.5" y="281" width="327" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="1Uc-qA-dq6" secondAttribute="height" multiplier="109:7" id="uI4-0k-wxL"/>
                                         </constraints>
@@ -975,17 +957,16 @@
                     <connections>
                         <outlet property="emailTextField" destination="Jbu-TS-mRL" id="6xe-Ye-vxr"/>
                         <outlet property="senhaTextField" destination="Psx-1l-6iO" id="Wu1-59-o3q"/>
-                        <segue destination="qyr-aV-Zkw" kind="show" identifier="getInAppSegue" id="y0y-1U-MjY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMM-mE-wBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="431.8840579710145" y="535.71428571428567"/>
+            <point key="canvasLocation" x="1342.0289855072465" y="535.71428571428567"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZP6-ut-32f">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qyr-aV-Zkw" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTabBar" automaticallyAdjustsScrollViewInsets="NO" id="qyr-aV-Zkw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wfj-GJ-rs7">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1002,7 +983,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqu-4b-BYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400" y="536"/>
+            <point key="canvasLocation" x="2230" y="18"/>
         </scene>
         <!--Map-->
         <scene sceneID="8F3-nx-Xsa">
@@ -1021,7 +1002,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Acz-Qi-7yu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2523" y="181"/>
+            <point key="canvasLocation" x="3431.884057971015" y="180.80357142857142"/>
         </scene>
         <!--Add-->
         <scene sceneID="jIK-Dg-YE3">
@@ -1045,6 +1026,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sis-l4-r2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2522" y="903"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sFl-gm-8Wn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="68W-eF-tkW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lox-JD-Ozk">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MtF-8C-sYc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s7B-f3-IEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-571.01449275362324" y="116.51785714285714"/>
         </scene>
     </scenes>
     <resources>
