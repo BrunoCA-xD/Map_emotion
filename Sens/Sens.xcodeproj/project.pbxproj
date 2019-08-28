@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		164B8C882316AD17008D3238 /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 164B8C862316AD14008D3238 /* DMSans-Bold.ttf */; };
+		164B8C892316AD17008D3238 /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 164B8C872316AD17008D3238 /* DMSans-Medium.ttf */; };
 		54ACFBFE230D9387009108BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54ACFBFD230D9387009108BD /* GoogleService-Info.plist */; };
 		54B47E2C230E601600BE9050 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E2B230E601600BE9050 /* LoginViewController.swift */; };
 		54B47E2E230E603300BE9050 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E2D230E603300BE9050 /* SignUpViewController.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		164B8C862316AD14008D3238 /* DMSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Bold.ttf"; sourceTree = "<group>"; };
+		164B8C872316AD17008D3238 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
 		54ACFBFD230D9387009108BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54B47E2B230E601600BE9050 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		54B47E2D230E603300BE9050 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		164B8C832316AC82008D3238 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		164B8C852316ACF2008D3238 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				164B8C862316AD14008D3238 /* DMSans-Bold.ttf */,
+				164B8C872316AD17008D3238 /* DMSans-Medium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		1CEA031CAE802849237F5110 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +108,7 @@
 		56322DA5230D7DA400C728A8 = {
 			isa = PBXGroup;
 			children = (
+				164B8C852316ACF2008D3238 /* Fonts */,
 				56322DB0230D7DA400C728A8 /* Sens */,
 				56322DAF230D7DA400C728A8 /* Products */,
 				4EEF84FEB7E14AC7440B2D40 /* Pods */,
@@ -106,6 +127,7 @@
 		56322DB0230D7DA400C728A8 /* Sens */ = {
 			isa = PBXGroup;
 			children = (
+				164B8C832316AC82008D3238 /* New Group */,
 				E2E3140F230EBC7E007591FA /* Controller */,
 				56322DB8230D7DA600C728A8 /* Assets.xcassets */,
 				56322DB1230D7DA400C728A8 /* AppDelegate.swift */,
@@ -200,9 +222,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				56322DBC230D7DA600C728A8 /* LaunchScreen.storyboard in Resources */,
+				164B8C882316AD17008D3238 /* DMSans-Bold.ttf in Resources */,
 				54ACFBFE230D9387009108BD /* GoogleService-Info.plist in Resources */,
 				56322DB9230D7DA600C728A8 /* Assets.xcassets in Resources */,
 				56322DB7230D7DA400C728A8 /* Main.storyboard in Resources */,
+				164B8C892316AD17008D3238 /* DMSans-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GJUSD98938;
+				DEVELOPMENT_TEAM = B9RR43VJXH;
 				INFOPLIST_FILE = Sens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -436,7 +460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GJUSD98938;
+				DEVELOPMENT_TEAM = B9RR43VJXH;
 				INFOPLIST_FILE = Sens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
