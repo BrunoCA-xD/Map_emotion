@@ -12,9 +12,19 @@ protocol CollectionCellTextFieldDelegate: class {
     func textDidChanged(_ textField: UITextField)
 }
 
+protocol RemoveDelegate {
+    func removeButtonPressed(_ index:Int)
+}
+
 class CollectionViewCell: UICollectionViewCell {
-    
+    var index:Int = -1
+    @IBAction func removeButtonPressed(_ sender: Any) {
+        if index > -1{
+            removeDelegate.removeButtonPressed(index)
+        }
+    }
     @IBOutlet weak var labelEmotionCell: UILabel!
     
     weak var textFieldDelegate: CollectionCellTextFieldDelegate?
+    var removeDelegate: RemoveDelegate!
 }

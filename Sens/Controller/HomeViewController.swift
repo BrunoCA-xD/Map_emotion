@@ -26,16 +26,23 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, HandleMap
 
     var resultSearchController:UISearchController? = nil
     var selectedPin:MKPlacemark? = nil
-
-    let locationManager = CLLocationManager()
-    let user = User()
     
+    let user = User()
+    let emotionPin = EmotionPin()
+
     @IBOutlet weak var mapView: MKMapView!
+    let locationManager = CLLocationManager()
+    let annotation = MKPointAnnotation()
+    var a = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //Cofiguração map
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
         
         self.user.id = Auth.auth().currentUser!.uid
         self.user.email = Auth.auth().currentUser!.email!
@@ -56,6 +63,39 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, HandleMap
             }
         })
         
+        db.collection("pins").getDocuments() { (snapshot,error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            }else{
+                for document in snapshot!.documents {
+                    if let coords = document.get("location") {
+                        let point = coords as! GeoPoint
+                        self.emotionPin.location.latitude = point.latitude
+                        self.emotionPin.location.longitude = point.longitude
+                    }
+                    self.emotionPin.testimonial = document.get("testimonial") as! String
+                    self.emotionPin.color = document.get("color") as! String
+                    self.emotionPin.user = document.get("user") as! String
+                    self.emotionPin.tags = document.get("tags") as! [String]
+//                    self.emotionPin.location = document.data()["location"] as! GeoPoint
+                    
+                    
+                    //Por que não funciona????????
+//                    if let testimonial = document.data()["testimonial"] {
+//                         if let color = document.data()["color"] as? String {
+//                            print("Location: \(testimonial); \(color)")
+//                        }
+//                    }
+                    let annotation = MKPointAnnotation()
+
+                    annotation.coordinate = self.emotionPin.location
+                    annotation.title = self.emotionPin.color
+                    annotation.subtitle = self.emotionPin.user
+                    self.mapView.addAnnotation(annotation)
+                }
+            }
+        }
+        
         //SearchBar + search result's tableView
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
@@ -72,6 +112,21 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, HandleMap
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        
+        self.mapView.setRegion(region, animated: true)
+        self.locationManager.stopUpdatingLocation()
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Errors " + error.localizedDescription)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkLocationServices()
@@ -124,15 +179,4 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, HandleMap
             break
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
