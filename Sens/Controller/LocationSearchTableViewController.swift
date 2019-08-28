@@ -17,6 +17,8 @@ class LocationSearchTableViewController : UITableViewController {
     
     var handleMapSearchDelegate:HandleMapSearch? = nil
     
+    var filteredEmotion = [EmotionPin]()
+    
     func parseAddress(selectedItem:MKPlacemark) -> String {
         // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
