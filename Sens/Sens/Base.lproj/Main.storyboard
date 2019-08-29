@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wx6-eX-1eX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="68W-eF-tkW">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -195,7 +195,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quando você faz aniversário?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="10g-2R-T0C">
                                                 <rect key="frame" x="43.5" y="407" width="327" height="30"/>
@@ -204,7 +204,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -253,6 +253,7 @@
                         <viewLayoutGuide key="safeArea" id="hIm-96-HTR"/>
                     </view>
                     <connections>
+                        <outlet property="birthDateDatePicker" destination="PJM-9E-OoV" id="fbD-Rh-vRg"/>
                         <outlet property="emailTextField" destination="O16-Xr-Sw8" id="GXQ-7O-7v7"/>
                         <outlet property="firstName" destination="gTn-yi-GBM" id="N3E-7P-Bo5"/>
                         <outlet property="lastName" destination="Mvw-CK-qDb" id="vsR-vK-F4M"/>
@@ -277,7 +278,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="YtU-th-f5i" secondAttribute="height" multiplier="327:20" id="Zaw-Rc-c47"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -293,7 +294,7 @@
                                     <constraint firstAttribute="width" secondItem="tEk-Af-UHq" secondAttribute="height" multiplier="151:17" priority="999" id="zSq-CV-36s"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfL-wr-nu2" userLabel="EmojiTgas">
@@ -311,7 +312,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="N4e-uX-Wbq" firstAttribute="centerY" secondItem="tfL-wr-nu2" secondAttribute="centerY" id="3WO-x8-hBW"/>
                                     <constraint firstItem="N4e-uX-Wbq" firstAttribute="height" secondItem="tfL-wr-nu2" secondAttribute="height" id="RKo-ub-xl0"/>
@@ -339,13 +340,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cor da emoção" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5w3-nm-CTq">
-                                        <rect key="frame" x="104.5" y="16" width="117" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cor do meu sentimento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5w3-nm-CTq">
+                                        <rect key="frame" x="104.5" y="16" width="179.5" height="32.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5w3-nm-CTq" secondAttribute="height" multiplier="39:7" id="Mo7-fA-KiO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rk4-Lz-api">
@@ -354,11 +355,11 @@
                                             <constraint firstAttribute="width" secondItem="Rk4-Lz-api" secondAttribute="height" multiplier="16:3" id="ojJ-3y-VQT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="7gt-B4-1v6" firstAttribute="height" secondItem="H2m-gC-P9f" secondAttribute="height" multiplier="0.9" id="0R1-Ij-rgP"/>
                                     <constraint firstItem="5w3-nm-CTq" firstAttribute="leading" secondItem="7gt-B4-1v6" secondAttribute="trailing" constant="16" id="8Af-P6-Ij9"/>
@@ -378,13 +379,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnm-nw-7DZ">
                                 <rect key="frame" x="35.5" y="449.5" width="343" height="348"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Observações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xxx-E6-rnd">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minha experiência" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xxx-E6-rnd">
                                         <rect key="frame" x="23" y="22.5" width="233" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Xxx-E6-rnd" secondAttribute="height" multiplier="291:20" id="si2-go-ccQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVz-Wl-wSz">
@@ -393,11 +394,11 @@
                                             <constraint firstAttribute="width" secondItem="dVz-Wl-wSz" secondAttribute="height" multiplier="291:277" id="hBY-Ac-1GS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Xxx-E6-rnd" firstAttribute="height" secondItem="jnm-nw-7DZ" secondAttribute="height" multiplier="16:348" id="EqI-ah-CX4"/>
                                     <constraint firstItem="Xxx-E6-rnd" firstAttribute="centerY" secondItem="jnm-nw-7DZ" secondAttribute="centerY" multiplier="26:148" id="Hff-Ux-CbI"/>
@@ -442,7 +443,10 @@
                         <outlet property="adressPin" destination="tEk-Af-UHq" id="LlM-Jt-5uA"/>
                         <outlet property="colorHexPin" destination="Rk4-Lz-api" id="QCK-F5-8Ge"/>
                         <outlet property="colorPin" destination="7gt-B4-1v6" id="ofC-bU-3oM"/>
+                        <outlet property="colorView" destination="H2m-gC-P9f" id="i8s-9U-k9I"/>
                         <outlet property="emojiPin" destination="N4e-uX-Wbq" id="JJV-Hs-Mty"/>
+                        <outlet property="emojiView" destination="tfL-wr-nu2" id="fLu-4L-7gG"/>
+                        <outlet property="experienceView" destination="jnm-nw-7DZ" id="dc5-w5-KqV"/>
                         <outlet property="observacoesPin" destination="dVz-Wl-wSz" id="WXX-wQ-lB7"/>
                         <outlet property="titlePin" destination="YtU-th-f5i" id="07F-eA-j0W"/>
                     </connections>
@@ -692,7 +696,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vTz-zl-XYv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Perfil" id="V60-4x-Z2u"/>
+                    <tabBarItem key="tabBarItem" title="Perfil" image="emotion-profile" id="V60-4x-Z2u"/>
                     <connections>
                         <outlet property="profileDataView" destination="bga-rZ-J5l" id="A9Y-Kk-a5T"/>
                     </connections>
@@ -1266,11 +1270,11 @@
             </objects>
             <point key="canvasLocation" x="2230" y="18"/>
         </scene>
-        <!--Map-->
+        <!--Mapa-->
         <scene sceneID="8F3-nx-Xsa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vHi-Nr-WkR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="uGR-ix-0X6"/>
+                    <tabBarItem key="tabBarItem" title="Mapa" image="pin-profile" id="uGR-ix-0X6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XbV-nL-fTu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

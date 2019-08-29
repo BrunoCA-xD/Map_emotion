@@ -12,17 +12,19 @@ import MapKit
 class DetailPin: UIViewController {
 
     @IBOutlet weak var titlePin: UILabel!
-    
     @IBOutlet weak var adressPin: UILabel!
-    
     @IBOutlet weak var emojiPin: UIImageView!
-    
     @IBOutlet weak var colorPin: UIView!
     @IBOutlet weak var colorHexPin: UILabel!
-    
     @IBOutlet weak var observacoesPin: UILabel!
     
-//    var titlePintext: String?
+    
+    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var emojiView: UIView!
+    @IBOutlet weak var experienceView: UIView!
+    
+    
+    //    var titlePintext: String?
 //    var observacoesPintext: String?
 //    var corPintext: String?
     var detailPin: Pin?
@@ -32,6 +34,39 @@ class DetailPin: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.title = detailPin?.emotionPin.user
+        
+        // color View Shadow
+        colorView.layer.shadowColor = UIColor.black.cgColor
+        colorView.layer.shadowOpacity = 0.1
+        colorView.layer.shadowOffset = .zero
+        colorView.layer.shadowRadius = 20
+        
+        colorView.layer.shadowPath = UIBezierPath(rect: colorView.bounds).cgPath
+        colorView.layer.shouldRasterize = true
+        colorView.layer.rasterizationScale = UIScreen.main.scale
+        
+        // emoji View Shadow
+        emojiView.layer.shadowColor = UIColor.black.cgColor
+        emojiView.layer.shadowOpacity = 0.1
+        emojiView.layer.shadowOffset = .zero
+        emojiView.layer.shadowRadius = 20
+        
+        emojiView.layer.shadowPath = UIBezierPath(rect: emojiView.bounds).cgPath
+        emojiView.layer.shouldRasterize = true
+        emojiView.layer.rasterizationScale = UIScreen.main.scale
+        
+        
+        // color View Shadow
+        emojiView.layer.shadowColor = UIColor.black.cgColor
+        emojiView.layer.shadowOpacity = 0.1
+        emojiView.layer.shadowOffset = .zero
+        emojiView.layer.shadowRadius = 20
+        
+        emojiView.layer.shadowPath = UIBezierPath(rect: emojiView.bounds).cgPath
+        emojiView.layer.shouldRasterize = true
+        emojiView.layer.rasterizationScale = UIScreen.main.scale
+        
+        
         
     }
     
