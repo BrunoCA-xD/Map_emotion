@@ -72,7 +72,7 @@ class DetailPin: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        titlePin.text = (detailPin?.emotionPin.user.capitalized)!
+        titlePin.text = (detailPin?.emotionPin.userName.capitalized)!
         emojiPin.image = detailPin?.emotionPin.icon.image(sizeSquare: 50)
         colorPin.backgroundColor = Utilities.hexStringToUIColor(hex: (detailPin?.emotionPin.color) ?? "ffffff")
         colorHexPin.text = "HEX: #" + (detailPin?.emotionPin.color)!

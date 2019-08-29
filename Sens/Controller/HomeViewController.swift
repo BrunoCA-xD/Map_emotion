@@ -112,6 +112,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     emotionPin.color = document.get("color") as! String
                     emotionPin.user = document.get("user") as! String
                     emotionPin.icon = document.get("icon") as! String
+                    emotionPin.userName = document.get("userName") as! String
                     
                     let stringEmotionTag = document.get("tags") as! [String]
                     
@@ -121,7 +122,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = emotionPin.location
-                    annotation.title = emotionPin.user.capitalized
+                    annotation.title = emotionPin.userName.capitalized
                     annotation.subtitle = emotionPin.tags[0].tag
                     
 //                    self.pins.emotionPin.append(self.emotionPin)
@@ -187,7 +188,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             pinView?.canShowCallout = true
             for i in self.pins {
                 if i.infoAnnotation.title == annotation.title {
-                    pinView?.image = i.emotionPin.icon.image(sizeSquare: 30)
+                    if i.infoAnnotation.subtitle == annotation.subtitle {
+                        if i.infoAnnotation.coordinate.latitude == annotation.coordinate.latitude {
+                            if i.infoAnnotation.coordinate.longitude == annotation.coordinate.longitude {
+                                pinView?.image = i.emotionPin.icon.image(sizeSquare: 30)
+                            }
+                        }
+                    }
                 }
             }
             

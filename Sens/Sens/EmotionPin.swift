@@ -18,6 +18,7 @@ class EmotionPin {
     private var _color: String = ""
     private var _testimonial: String = ""
     private var _user: String = ""
+    private var _userName: String = ""
     
     var location: CLLocationCoordinate2D {
         get {
@@ -78,6 +79,16 @@ class EmotionPin {
         }
         set {
             self._user = newValue
+            
+        }
+    }
+    
+    var userName: String {
+        get {
+            return _userName
+        }
+        set {
+            self._userName = newValue
             
         }
     }
