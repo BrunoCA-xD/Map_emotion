@@ -20,7 +20,7 @@ class DetailPin: UIViewController {
     @IBOutlet weak var colorPin: UIView!
     @IBOutlet weak var colorHexPin: UILabel!
     
-    @IBOutlet weak var observacoesPin: UITextView!
+    @IBOutlet weak var observacoesPin: UILabel!
     
 //    var titlePintext: String?
 //    var observacoesPintext: String?
@@ -31,13 +31,13 @@ class DetailPin: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = detailPin?.emotionPin.user
+//        self.title = detailPin?.emotionPin.user
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        titlePin.text = "Duas vezes? " + (detailPin?.emotionPin.user)!
+        titlePin.text = (detailPin?.emotionPin.user.capitalized)!
         emojiPin.image = detailPin?.emotionPin.icon.image(sizeSquare: 50)
         colorPin.backgroundColor = Utilities.hexStringToUIColor(hex: (detailPin?.emotionPin.color) ?? "ffffff")
         colorHexPin.text = "HEX: #" + (detailPin?.emotionPin.color)!

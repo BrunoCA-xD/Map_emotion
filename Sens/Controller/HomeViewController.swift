@@ -121,8 +121,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = emotionPin.location
-                    annotation.title = emotionPin.color
-                    annotation.subtitle = emotionPin.user
+                    annotation.title = emotionPin.user.capitalized
+                    annotation.subtitle = emotionPin.tags[0].tag
                     
 //                    self.pins.emotionPin.append(self.emotionPin)
                     self.pins.append(Pin(emotionPin: emotionPin, infoAnnotation: annotation))
