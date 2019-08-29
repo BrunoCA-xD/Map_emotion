@@ -3,18 +3,54 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		164B8C882316AD17008D3238 /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 164B8C862316AD14008D3238 /* DMSans-Bold.ttf */; };
+		164B8C892316AD17008D3238 /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 164B8C872316AD17008D3238 /* DMSans-Medium.ttf */; };
+		16AD087B23180B1200ADE0D7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AD087A23180B1200ADE0D7 /* ProfileViewController.swift */; };
+		54ACFBFE230D9387009108BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54ACFBFD230D9387009108BD /* GoogleService-Info.plist */; };
+		54B47E2C230E601600BE9050 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E2B230E601600BE9050 /* LoginViewController.swift */; };
+		54B47E2E230E603300BE9050 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E2D230E603300BE9050 /* SignUpViewController.swift */; };
+		54B47E30230E605100BE9050 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E2F230E605100BE9050 /* HomeViewController.swift */; };
+		54B47E32230E623900BE9050 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E31230E623900BE9050 /* Utilities.swift */; };
+		54BC9A6D2314C14600BD3C89 /* ViewController + HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */; };
+		54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */; };
+		54FA42032316B67000960ADA /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA42022316B67000960ADA /* CustomAnnotation.swift */; };
+		54FA42052316CD4E00960ADA /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA42042316CD4E00960ADA /* Pin.swift */; };
 		56322DB2230D7DA400C728A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB1230D7DA400C728A8 /* AppDelegate.swift */; };
 		56322DB4230D7DA400C728A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB3230D7DA400C728A8 /* ViewController.swift */; };
 		56322DB7230D7DA400C728A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB5230D7DA400C728A8 /* Main.storyboard */; };
 		56322DB9230D7DA600C728A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB8230D7DA600C728A8 /* Assets.xcassets */; };
 		56322DBC230D7DA600C728A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */; };
+		56801EDB2317F1F80097C0B2 /* DetailPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56801EDA2317F1F80097C0B2 /* DetailPin.swift */; };
+		56801EE0231813B60097C0B2 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56801EDF231813B60097C0B2 /* RadioButton.swift */; };
+		56B18717230EBE6D00765C5A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B18716230EBE6D00765C5A /* User.swift */; };
+		56B1871C2310643800765C5A /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */; };
+		56B1871E2310C40B00765C5A /* EmotionPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1871D2310C40B00765C5A /* EmotionPin.swift */; };
+		56B187202312D51300765C5A /* EmotionTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1871F2312D51300765C5A /* EmotionTag.swift */; };
+		56B915BC2313334400AE17B2 /* AddFeelingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B915BB2313334400AE17B2 /* AddFeelingViewController.swift */; };
+		56E6F5522317082900B3ABB2 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F5512317082900B3ABB2 /* ColorCollectionViewCell.swift */; };
+		56E6F5542317284B00B3ABB2 /* AddFeelingRootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F5532317284B00B3ABB2 /* AddFeelingRootNavigationController.swift */; };
+		80A8E99EA9C4F9319279F6D1 /* Pods_Sens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63DB076306E37F76FD95B0 /* Pods_Sens.framework */; };
+		E28156E923156F9A00D5CD17 /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28156E823156F9A00D5CD17 /* EmojiPickerViewController.swift */; };
+		E28156EB231574F200D5CD17 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28156EA231574F200D5CD17 /* EmojiCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		164B8C862316AD14008D3238 /* DMSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Bold.ttf"; sourceTree = "<group>"; };
+		164B8C872316AD17008D3238 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
+		16AD087A23180B1200ADE0D7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		54ACFBFD230D9387009108BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		54B47E2B230E601600BE9050 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		54B47E2D230E603300BE9050 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		54B47E2F230E605100BE9050 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		54B47E31230E623900BE9050 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + HideKeyboard.swift"; sourceTree = "<group>"; };
+		54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionTagCollectionViewCell.swift; sourceTree = "<group>"; };
+		54FA42022316B67000960ADA /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		54FA42042316CD4E00960ADA /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		56322DAE230D7DA400C728A8 /* Sens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56322DB1230D7DA400C728A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56322DB3230D7DA400C728A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +58,20 @@
 		56322DB8230D7DA600C728A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56322DBB230D7DA600C728A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56322DBD230D7DA600C728A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56801EDA2317F1F80097C0B2 /* DetailPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPin.swift; sourceTree = "<group>"; };
+		56801EDF231813B60097C0B2 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		56B18716230EBE6D00765C5A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		56B1871D2310C40B00765C5A /* EmotionPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionPin.swift; sourceTree = "<group>"; };
+		56B1871F2312D51300765C5A /* EmotionTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionTag.swift; sourceTree = "<group>"; };
+		56B915BB2313334400AE17B2 /* AddFeelingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeelingViewController.swift; sourceTree = "<group>"; };
+		56E6F5512317082900B3ABB2 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		56E6F5532317284B00B3ABB2 /* AddFeelingRootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeelingRootNavigationController.swift; sourceTree = "<group>"; };
+		AA63DB076306E37F76FD95B0 /* Pods_Sens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC64600B94152A1E73496FD4 /* Pods-Sens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sens.release.xcconfig"; path = "Target Support Files/Pods-Sens/Pods-Sens.release.xcconfig"; sourceTree = "<group>"; };
+		E28156E823156F9A00D5CD17 /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
+		E28156EA231574F200D5CD17 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
+		F65D6ED57D980DA6E17EC052 /* Pods-Sens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sens.debug.xcconfig"; path = "Target Support Files/Pods-Sens/Pods-Sens.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +79,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A8E99EA9C4F9319279F6D1 /* Pods_Sens.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		164B8C852316ACF2008D3238 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				164B8C862316AD14008D3238 /* DMSans-Bold.ttf */,
+				164B8C872316AD17008D3238 /* DMSans-Medium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1CEA031CAE802849237F5110 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA63DB076306E37F76FD95B0 /* Pods_Sens.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4EEF84FEB7E14AC7440B2D40 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F65D6ED57D980DA6E17EC052 /* Pods-Sens.debug.xcconfig */,
+				BC64600B94152A1E73496FD4 /* Pods-Sens.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		56322DA5230D7DA400C728A8 = {
 			isa = PBXGroup;
 			children = (
+				164B8C852316ACF2008D3238 /* Fonts */,
 				56322DB0230D7DA400C728A8 /* Sens */,
 				56322DAF230D7DA400C728A8 /* Products */,
+				4EEF84FEB7E14AC7440B2D40 /* Pods */,
+				1CEA031CAE802849237F5110 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +134,52 @@
 		56322DB0230D7DA400C728A8 /* Sens */ = {
 			isa = PBXGroup;
 			children = (
-				56322DB1230D7DA400C728A8 /* AppDelegate.swift */,
-				56322DB3230D7DA400C728A8 /* ViewController.swift */,
-				56322DB5230D7DA400C728A8 /* Main.storyboard */,
+				56801EDE2318139A0097C0B2 /* Components */,
+				E2E3140F230EBC7E007591FA /* Controller */,
 				56322DB8230D7DA600C728A8 /* Assets.xcassets */,
+				56322DB1230D7DA400C728A8 /* AppDelegate.swift */,
+				54B47E31230E623900BE9050 /* Utilities.swift */,
+				56B18716230EBE6D00765C5A /* User.swift */,
+				54ACFBFD230D9387009108BD /* GoogleService-Info.plist */,
+				56322DB5230D7DA400C728A8 /* Main.storyboard */,
 				56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */,
 				56322DBD230D7DA600C728A8 /* Info.plist */,
+				56B1871D2310C40B00765C5A /* EmotionPin.swift */,
+				56B1871F2312D51300765C5A /* EmotionTag.swift */,
+				54FA42022316B67000960ADA /* CustomAnnotation.swift */,
+				54FA42042316CD4E00960ADA /* Pin.swift */,
 			);
 			path = Sens;
+			sourceTree = "<group>";
+		};
+		56801EDE2318139A0097C0B2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				56801EDF231813B60097C0B2 /* RadioButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E2E3140F230EBC7E007591FA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56801EDA2317F1F80097C0B2 /* DetailPin.swift */,
+				54B47E2D230E603300BE9050 /* SignUpViewController.swift */,
+				54B47E2B230E601600BE9050 /* LoginViewController.swift */,
+				54B47E2F230E605100BE9050 /* HomeViewController.swift */,
+				56322DB3230D7DA400C728A8 /* ViewController.swift */,
+				56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */,
+				56B915BB2313334400AE17B2 /* AddFeelingViewController.swift */,
+				54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */,
+				54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */,
+				E28156E823156F9A00D5CD17 /* EmojiPickerViewController.swift */,
+				E28156EA231574F200D5CD17 /* EmojiCollectionViewCell.swift */,
+				56E6F5512317082900B3ABB2 /* ColorCollectionViewCell.swift */,
+				56E6F5532317284B00B3ABB2 /* AddFeelingRootNavigationController.swift */,
+				16AD087A23180B1200ADE0D7 /* ProfileViewController.swift */,
+			);
+			name = Controller;
+			path = ../Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +189,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56322DC0230D7DA600C728A8 /* Build configuration list for PBXNativeTarget "Sens" */;
 			buildPhases = (
+				4CED08189D8F36030B62A2E0 /* [CP] Check Pods Manifest.lock */,
 				56322DAA230D7DA400C728A8 /* Sources */,
 				56322DAB230D7DA400C728A8 /* Frameworks */,
 				56322DAC230D7DA400C728A8 /* Resources */,
+				DA0583E318EA6EC13004B25D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,20 +243,85 @@
 			buildActionMask = 2147483647;
 			files = (
 				56322DBC230D7DA600C728A8 /* LaunchScreen.storyboard in Resources */,
+				164B8C882316AD17008D3238 /* DMSans-Bold.ttf in Resources */,
+				54ACFBFE230D9387009108BD /* GoogleService-Info.plist in Resources */,
 				56322DB9230D7DA600C728A8 /* Assets.xcassets in Resources */,
 				56322DB7230D7DA400C728A8 /* Main.storyboard in Resources */,
+				164B8C892316AD17008D3238 /* DMSans-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CED08189D8F36030B62A2E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sens-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA0583E318EA6EC13004B25D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sens/Pods-Sens-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sens/Pods-Sens-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sens/Pods-Sens-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		56322DAA230D7DA400C728A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56801EDB2317F1F80097C0B2 /* DetailPin.swift in Sources */,
+				56B1871C2310643800765C5A /* LocationSearchTableViewController.swift in Sources */,
+				54FA42052316CD4E00960ADA /* Pin.swift in Sources */,
+				54B47E32230E623900BE9050 /* Utilities.swift in Sources */,
+				56E6F5542317284B00B3ABB2 /* AddFeelingRootNavigationController.swift in Sources */,
+				56B915BC2313334400AE17B2 /* AddFeelingViewController.swift in Sources */,
+				E28156EB231574F200D5CD17 /* EmojiCollectionViewCell.swift in Sources */,
+				E28156E923156F9A00D5CD17 /* EmojiPickerViewController.swift in Sources */,
+				54B47E30230E605100BE9050 /* HomeViewController.swift in Sources */,
+				54B47E2C230E601600BE9050 /* LoginViewController.swift in Sources */,
+				54FA42032316B67000960ADA /* CustomAnnotation.swift in Sources */,
 				56322DB4230D7DA400C728A8 /* ViewController.swift in Sources */,
+				56B1871E2310C40B00765C5A /* EmotionPin.swift in Sources */,
+				54B47E2E230E603300BE9050 /* SignUpViewController.swift in Sources */,
 				56322DB2230D7DA400C728A8 /* AppDelegate.swift in Sources */,
+				56801EE0231813B60097C0B2 /* RadioButton.swift in Sources */,
+				54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */,
+				56B187202312D51300765C5A /* EmotionTag.swift in Sources */,
+				56B18717230EBE6D00765C5A /* User.swift in Sources */,
+				16AD087B23180B1200ADE0D7 /* ProfileViewController.swift in Sources */,
+				56E6F5522317082900B3ABB2 /* ColorCollectionViewCell.swift in Sources */,
+				54BC9A6D2314C14600BD3C89 /* ViewController + HideKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +465,7 @@
 		};
 		56322DC1230D7DA600C728A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F65D6ED57D980DA6E17EC052 /* Pods-Sens.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +484,7 @@
 		};
 		56322DC2230D7DA600C728A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC64600B94152A1E73496FD4 /* Pods-Sens.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
