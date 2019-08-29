@@ -14,6 +14,9 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
     
     var tagText = false
     
+    @IBOutlet weak var addTagButton: UIButton!
+    @IBOutlet weak var addEmojiButton: UIButton!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var tagTextField: UITextField!
@@ -68,6 +71,10 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
+  
+        addTagButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+        addEmojiButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+        
         hideKeyboardWhenTappedAround()
         setTextView()
         colorCollectionView.allowsMultipleSelection = false

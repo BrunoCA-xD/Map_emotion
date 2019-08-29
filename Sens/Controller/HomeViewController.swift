@@ -18,6 +18,8 @@ protocol HandleMapSearch {
 
 class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, HandleMapSearch, UIPopoverPresentationControllerDelegate {
     
+    @IBOutlet weak var addPinButton: UIButton!
+    
     @IBAction func tapGesture(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began{
             let touchPoint: CGPoint = sender.location(in: mapView)
@@ -67,6 +69,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addPinButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         
         self.mapView.delegate = self
         self.mapView.mapType = MKMapType.standard // o que isso faz?

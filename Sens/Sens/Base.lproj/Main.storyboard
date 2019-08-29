@@ -115,6 +115,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="tPt-R8-EXh"/>
+                    <connections>
+                        <outlet property="entrarButton" destination="B3b-pq-N9P" id="A6S-L5-hZG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -539,6 +542,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="sjX-OY-PMK"/>
                     <connections>
+                        <outlet property="addPinButton" destination="jKj-T6-Zty" id="C81-W8-YnC"/>
                         <outlet property="mapView" destination="YWw-Mu-qqv" id="k7D-09-cWR"/>
                         <segue destination="zuH-JZ-wxb" kind="show" identifier="description" id="ZpT-1M-utx"/>
                     </connections>
@@ -1054,6 +1058,8 @@
                     </navigationItem>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
+                        <outlet property="addEmojiButton" destination="WOy-9V-23V" id="f4q-qW-Qak"/>
+                        <outlet property="addTagButton" destination="Mxp-Ar-y4x" id="uog-Di-eHQ"/>
                         <outlet property="colorCollectionView" destination="9T9-1O-tNO" id="QfL-2i-sOA"/>
                         <outlet property="emojiSelectedImageView" destination="hGM-mg-Dop" id="y8m-qu-IQW"/>
                         <outlet property="scrollView" destination="bZ9-4V-fuk" id="sJn-Bf-6NW"/>
