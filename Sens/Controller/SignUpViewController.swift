@@ -18,8 +18,33 @@ class SingUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var birthDateDatePicker: UIDatePicker!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var dateTextField: UITextField!
     
     
+    @IBAction func birthDateTextEditing(_ sender: UITextField) {
+        
+        let datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePicker.Mode.date
+        
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControl.Event.valueChanged)
+    }
+    
+    @objc func datePickerValueChanged(sender:UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = .medium
+        
+        dateFormatter.timeStyle = .none
+        
+        dateTextField.text = dateFormatter.string(from: sender.date)
+        
+        print(dateFormatter.date(from: dateTextField.text!))
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,8 +99,17 @@ class SingUpViewController: UIViewController {
             user.name = self.firstName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             user.lastName = self.lastName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             user.email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            if let dateText = dateTextField.text{
+                let dateFormatter = DateFormatter()
+                
+                dateFormatter.dateStyle = .medium
+                dateFormatter.timeStyle = .none
+                let parsedDateString = dateFormatter.date(from: dateText)
+                    print(parsedDateString)
+                user.birthDate = parsedDateString!
+            }
             user.password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            user.birthDate = birthDateDatePicker.date
+            
             // Create the user
             Auth.auth().createUser(withEmail: user.email, password: user.password) { (result, err) in
                 // Check for errors
@@ -128,4 +162,21 @@ class SingUpViewController: UIViewController {
         view.frame.origin.y += 150
     }
     
+}
+
+extension String {
+    
+    func toDate(withFormat format: String = "yyyy-MM-dd HH:mm:ss")-> Date?{
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Tehran")
+        dateFormatter.locale = Locale(identifier: "fa-IR")
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = format
+        dateFormatter.dateStyle = .medium
+        let date = dateFormatter.date(from: self)
+        
+        return date
+        
+    }
 }

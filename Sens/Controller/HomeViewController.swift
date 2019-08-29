@@ -30,6 +30,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let addFeelingView = addFeelingViewController?.viewControllers[0] as? AddFeelingViewController
             addFeelingView?.userLocation = userLocation
             addFeelingView?.touchedLocation = newCoordinate
+            addFeelingView?.user = self.user
             
             present(addFeelingViewController!,animated: true)
         }
@@ -42,7 +43,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         let addFeelingView = addFeelingViewController?.viewControllers[0] as? AddFeelingViewController
         addFeelingView?.touchedLocation = nil
         addFeelingView?.userLocation = userLocation
-        
+        addFeelingView?.user = self.user
         present(addFeelingViewController!,animated: true)
         
     }
@@ -63,9 +64,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var infoPin = Pin()
     let emotionPin = EmotionPin()
     var userLocation:CLLocationCoordinate2D! = nil
+    let db = Firestore.firestore()
 
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +87,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         self.user.id = Auth.auth().currentUser!.uid
         self.user.email = Auth.auth().currentUser!.email!
         
-        let db = Firestore.firestore()
+        
         
         db.collection("users").whereField("uid", isEqualTo: self.user.id).getDocuments(completion: {(snapshot,err) in
             if let err = err {
@@ -100,44 +103,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             }
         })
         
-        db.collection("pins").getDocuments() { (snapshot,error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            }else{
-                for document in snapshot!.documents {
-                    let emotionPin = EmotionPin()
-                    
-                    if let coords = document.get("location") {
-                        let point = coords as! GeoPoint
-                        emotionPin.location.latitude = point.latitude
-                        emotionPin.location.longitude = point.longitude
-                    }
-                    emotionPin.testimonial = document.get("testimonial") as! String
-                    emotionPin.color = document.get("color") as! String
-                    emotionPin.user = document.get("user") as! String
-                    emotionPin.icon = document.get("icon") as! String
-                    emotionPin.userName = document.get("userName") as! String
-                    
-                    let stringEmotionTag = document.get("tags") as! [String]
-                    
-                    for tag in stringEmotionTag {
-                        emotionPin.tags.append(EmotionTag(tag: tag))
-                    }
-                    
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = emotionPin.location
-                    annotation.title = emotionPin.userName.capitalized
-                    annotation.subtitle = emotionPin.tags[0].tag
-                    
-//                    self.pins.emotionPin.append(self.emotionPin)
-                    self.pins.append(Pin(emotionPin: emotionPin, infoAnnotation: annotation))
-//                    self.annotations.append(annotation)
-//                    self.emojis.append(emotionPin)
-                    
-                    self.mapView.addAnnotation(annotation)
-                }
-            }
-        }
+        
         
         //SearchBar + search result's tableView
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
@@ -254,6 +220,45 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkLocationServices()
+        
+        db.collection("pins").getDocuments() { (snapshot,error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            }else{
+                for document in snapshot!.documents {
+                    let emotionPin = EmotionPin()
+                    
+                    if let coords = document.get("location") {
+                        let point = coords as! GeoPoint
+                        emotionPin.location.latitude = point.latitude
+                        emotionPin.location.longitude = point.longitude
+                    }
+                    emotionPin.testimonial = document.get("testimonial") as! String
+                    emotionPin.color = document.get("color") as! String
+                    emotionPin.user = document.get("user") as! String
+                    emotionPin.icon = document.get("icon") as! String
+                    emotionPin.userName = document.get("userName") as! String
+                    
+                    print(emotionPin.icon)
+                    
+                    if let stringEmotionTag = document.get("tags") as? [String] {
+                        emotionPin.tags = stringEmotionTag
+                        
+                    }
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = emotionPin.location
+                    annotation.title = emotionPin.userName.capitalized
+                    annotation.subtitle = emotionPin.tags[0]
+                    
+                    //                    self.pins.emotionPin.append(self.emotionPin)
+                    self.pins.append(Pin(emotionPin: emotionPin, infoAnnotation: annotation))
+                    //                    self.annotations.append(annotation)
+                    //                    self.emojis.append(emotionPin)
+                    
+                    self.mapView.addAnnotation(annotation)
+                }
+            }
+        }
     }
     
     func setupLocationManager(){

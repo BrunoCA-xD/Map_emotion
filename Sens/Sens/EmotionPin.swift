@@ -13,7 +13,7 @@ import Firebase
 class EmotionPin {
     private var _location: CLLocationCoordinate2D = CLLocationCoordinate2D()
     private var _id: Int = 0
-    private var _tags: [EmotionTag] = []
+    private var _tags: [String] = []
     private var _icon: String = ""
     private var _color: String = ""
     private var _testimonial: String = ""
@@ -38,7 +38,7 @@ class EmotionPin {
         }
     }
     
-    var tags: [EmotionTag] {
+    var tags: [String] {
         get {
             return _tags
         }

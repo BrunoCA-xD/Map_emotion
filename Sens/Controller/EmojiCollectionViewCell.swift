@@ -12,6 +12,8 @@ class EmojiCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    var emojiCode: String = ""
+    
     
     
 } // end class EmojiCollectionViewCell

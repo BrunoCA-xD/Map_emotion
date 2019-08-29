@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        entrarButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+        entrarButton.layer.borderColor = Utilities.hexStringToUIColor(hex: "FFFFFF").cgColor
         // Do any additional setup after loading the view.
     }
 

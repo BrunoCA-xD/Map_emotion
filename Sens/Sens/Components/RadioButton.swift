@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable
 class RadioButton: UIButton {
+    var alternateButton:Array<RadioButton>?
     
     @IBInspectable
     var gap:CGFloat = 8 {
@@ -76,8 +77,19 @@ class RadioButton: UIButton {
     
     @objc func buttonClicked(sender: UIButton) {
         if sender == self {
-            isOn = !isOn
             setNeedsDisplay()
+            unselectAlternateButtons()
         }
     }
+    
+    func unselectAlternateButtons(){
+        if alternateButton != nil {
+            self.isOn = true
+            for aButton:RadioButton in alternateButton! {
+                aButton.isOn = false
+            }
+        }
+    }
+    
+
 }

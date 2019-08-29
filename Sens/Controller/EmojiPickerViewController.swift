@@ -42,15 +42,14 @@ class EmojiPickerViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let emojiCode = emojiList[indexPath.section][indexPath.item]
-        print("bla bla \(emojiCode)")
-        delegateBackButton.backButton(emojiCode)
+        let cell = collectionView.cellForItem(at: indexPath) as? EmojiCollectionViewCell
+        delegateBackButton.backButton(cell?.emojiCode)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EmojiCollectionViewCell
         cell.imageView.image = emojiList[indexPath.section][indexPath.item].image(sizeSquare: 100)
-        print("asdasdasdas\(emojiList[0][0])")
+        cell.emojiCode = emojiList[indexPath.section][indexPath.item]
         return cell
     }
 
