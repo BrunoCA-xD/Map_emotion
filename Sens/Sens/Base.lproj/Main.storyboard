@@ -369,7 +369,7 @@
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQx-0b-AdK">
-                                <rect key="frame" x="62" y="613" width="290" height="159"/>
+                                <rect key="frame" x="62" y="593" width="290" height="198"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Associe suas emoções ao local onde se encontra. Para marcar outra região, pressione o local desejado." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEq-7E-kUo">
@@ -387,16 +387,35 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Não mostrar mais esta mensagem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVM-Kb-meC">
-                                        <rect key="frame" x="16" y="113" width="197" height="15"/>
+                                        <rect key="frame" x="17" y="163" width="197" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fx2-vz-i3j">
-                                        <rect key="frame" x="223" y="104" width="49" height="31"/>
+                                        <rect key="frame" x="221" y="154" width="49" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKj-T6-Zty">
+                                        <rect key="frame" x="16" y="104" width="252" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Estou me sentindo...">
+                                            <color key="titleColor" red="0.50980392159999999" green="0.2784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="AddFeelingPressed:" destination="ssp-9B-Qpc" eventType="touchUpInside" id="Ffr-IG-r6C"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -428,7 +447,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4277" y="181"/>
+            <point key="canvasLocation" x="4276.811594202899" y="180.80357142857142"/>
         </scene>
         <!--Location Search Table View Controller-->
         <scene sceneID="Uwd-eu-7yM">
@@ -753,9 +772,9 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </switch>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o75-Ke-OdH">
-                                                <rect key="frame" x="377" y="594" width="23" height="22"/>
+                                                <rect key="frame" x="382" y="594" width="13" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="x" image="x_red"/>
+                                                <state key="normal" image="x_red"/>
                                                 <connections>
                                                     <action selector="clearSelectedColor:" destination="xd3-K7-5Da" eventType="touchUpInside" id="3ze-ic-aX8"/>
                                                 </connections>
@@ -1076,9 +1095,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SensLogo" width="3078" height="1119"/>
-        <image name="x_red" width="13" height="13"/>
         <image name="background" width="375" height="812"/>
         <image name="sens_primary" width="1400" height="455"/>
+        <image name="x_red" width="13" height="13"/>
     </resources>
 </document>

@@ -26,16 +26,28 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let addFeelingViewController = storyboard?.instantiateViewController(withIdentifier:
                 "addFeelingRootNavController") as? UINavigationController
             let addFeelingView = addFeelingViewController?.viewControllers[0] as? AddFeelingViewController
+            addFeelingView?.userLocation = userLocation
             addFeelingView?.touchedLocation = newCoordinate
             
             present(addFeelingViewController!,animated: true)
         }
     }
+    @IBAction func AddFeelingPressed(_ sender: Any) {
+        
+        
+        let addFeelingViewController = storyboard?.instantiateViewController(withIdentifier:
+            "addFeelingRootNavController") as? UINavigationController
+        let addFeelingView = addFeelingViewController?.viewControllers[0] as? AddFeelingViewController
+        addFeelingView?.touchedLocation = nil
+        addFeelingView?.userLocation = userLocation
+        
+        present(addFeelingViewController!,animated: true)
+        
+    }
     func dropPinZoomIn(placemark: MKPlacemark) {
         //
     }
     
-    @IBOutlet weak var imageView: UIImageView!
 
 //    var annotations: [MKPointAnnotation] = []
 //    var emojis: [EmotionPin] = []

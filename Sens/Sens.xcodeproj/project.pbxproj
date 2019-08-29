@@ -15,14 +15,15 @@
 		54B47E30230E605100BE9050 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E2F230E605100BE9050 /* HomeViewController.swift */; };
 		54B47E32230E623900BE9050 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E31230E623900BE9050 /* Utilities.swift */; };
 		54BC9A6D2314C14600BD3C89 /* ViewController + HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */; };
+		54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */; };
 		54FA42032316B67000960ADA /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA42022316B67000960ADA /* CustomAnnotation.swift */; };
 		54FA42052316CD4E00960ADA /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA42042316CD4E00960ADA /* Pin.swift */; };
-		54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */; };
 		56322DB2230D7DA400C728A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB1230D7DA400C728A8 /* AppDelegate.swift */; };
 		56322DB4230D7DA400C728A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB3230D7DA400C728A8 /* ViewController.swift */; };
 		56322DB7230D7DA400C728A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB5230D7DA400C728A8 /* Main.storyboard */; };
 		56322DB9230D7DA600C728A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB8230D7DA600C728A8 /* Assets.xcassets */; };
 		56322DBC230D7DA600C728A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */; };
+		56801EDB2317F1F80097C0B2 /* DetailPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56801EDA2317F1F80097C0B2 /* DetailPin.swift */; };
 		56B18717230EBE6D00765C5A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B18716230EBE6D00765C5A /* User.swift */; };
 		56B1871C2310643800765C5A /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */; };
 		56B1871E2310C40B00765C5A /* EmotionPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1871D2310C40B00765C5A /* EmotionPin.swift */; };
@@ -44,9 +45,9 @@
 		54B47E2F230E605100BE9050 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		54B47E31230E623900BE9050 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + HideKeyboard.swift"; sourceTree = "<group>"; };
+		54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		54FA42022316B67000960ADA /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		54FA42042316CD4E00960ADA /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
-		54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		56322DAE230D7DA400C728A8 /* Sens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56322DB1230D7DA400C728A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56322DB3230D7DA400C728A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		56322DB8230D7DA600C728A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56322DBB230D7DA600C728A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56322DBD230D7DA600C728A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56801EDA2317F1F80097C0B2 /* DetailPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPin.swift; sourceTree = "<group>"; };
 		56B18716230EBE6D00765C5A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		56B1871D2310C40B00765C5A /* EmotionPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionPin.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		E2E3140F230EBC7E007591FA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				56801EDA2317F1F80097C0B2 /* DetailPin.swift */,
 				54B47E2D230E603300BE9050 /* SignUpViewController.swift */,
 				54B47E2B230E601600BE9050 /* LoginViewController.swift */,
 				54B47E2F230E605100BE9050 /* HomeViewController.swift */,
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56801EDB2317F1F80097C0B2 /* DetailPin.swift in Sources */,
 				56B1871C2310643800765C5A /* LocationSearchTableViewController.swift in Sources */,
 				54FA42052316CD4E00960ADA /* Pin.swift in Sources */,
 				54B47E32230E623900BE9050 /* Utilities.swift in Sources */,
