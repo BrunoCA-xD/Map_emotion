@@ -600,35 +600,35 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S59-jb-z7E">
-                                                <rect key="frame" x="28" y="361" width="305" height="72"/>
+                                                <rect key="frame" x="25" y="271" width="367" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="teK-0y-0xP">
-                                                    <size key="itemSize" width="90" height="50"/>
+                                                    <size key="itemSize" width="114" height="36"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Opc-gV-6bw" customClass="EmotionTagCollectionViewCell" customModule="Sens" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="36"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="114" height="36"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ovL-dS-sdE">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="73" height="50"/>
+                                                                    <rect key="frame" x="5" y="0.0" width="90" height="36"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyc-ij-8rl">
-                                                                    <rect key="frame" x="78" y="0.0" width="9" height="50"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyc-ij-8rl">
+                                                                    <rect key="frame" x="99" y="0.0" width="10" height="36"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="9" id="DbG-77-77q"/>
+                                                                        <constraint firstAttribute="width" constant="10" id="DbG-77-77q"/>
                                                                     </constraints>
-                                                                    <state key="normal" title="X"/>
+                                                                    <state key="normal" title="X" image="x_purple"/>
                                                                     <connections>
                                                                         <action selector="removeButtonPressed:" destination="Opc-gV-6bw" eventType="touchUpInside" id="9iF-6V-1iY"/>
                                                                     </connections>
@@ -637,11 +637,11 @@
                                                         </view>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="ovL-dS-sdE" firstAttribute="leading" secondItem="Opc-gV-6bw" secondAttribute="leading" id="7aE-o4-6Vx"/>
+                                                            <constraint firstItem="ovL-dS-sdE" firstAttribute="leading" secondItem="Opc-gV-6bw" secondAttribute="leading" constant="5" id="7aE-o4-6Vx"/>
                                                             <constraint firstAttribute="bottom" secondItem="Eyc-ij-8rl" secondAttribute="bottom" id="Lgc-Vo-kfR"/>
-                                                            <constraint firstItem="Eyc-ij-8rl" firstAttribute="leading" secondItem="ovL-dS-sdE" secondAttribute="trailing" constant="5" id="NU0-ud-RWs"/>
+                                                            <constraint firstItem="Eyc-ij-8rl" firstAttribute="leading" secondItem="ovL-dS-sdE" secondAttribute="trailing" constant="4" id="NU0-ud-RWs"/>
                                                             <constraint firstItem="ovL-dS-sdE" firstAttribute="top" secondItem="Opc-gV-6bw" secondAttribute="top" id="aY1-qr-MsC"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Eyc-ij-8rl" secondAttribute="trailing" constant="3" id="ap9-EK-aNF"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Eyc-ij-8rl" secondAttribute="trailing" constant="5" id="ap9-EK-aNF"/>
                                                             <constraint firstItem="Eyc-ij-8rl" firstAttribute="top" secondItem="Opc-gV-6bw" secondAttribute="top" id="bql-Kh-4n9"/>
                                                             <constraint firstAttribute="bottom" secondItem="ovL-dS-sdE" secondAttribute="bottom" id="g0I-DC-cbr"/>
                                                         </constraints>
@@ -730,7 +730,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9T9-1O-tNO">
-                                                <rect key="frame" x="25" y="668" width="343" height="50"/>
+                                                <rect key="frame" x="25" y="579" width="323" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B2R-hU-fMo">
@@ -764,7 +764,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="15"/>
+                                                        <integer key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -777,7 +777,7 @@
                                                 <color key="onTintColor" red="0.50980392159999999" green="0.2784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </switch>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o75-Ke-OdH">
-                                                <rect key="frame" x="382" y="683" width="13" height="22"/>
+                                                <rect key="frame" x="351" y="579" width="42" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="x_red"/>
                                                 <connections>
@@ -1126,6 +1126,7 @@
     <resources>
         <image name="background" width="375" height="812"/>
         <image name="sens_primary" width="1400" height="455"/>
+        <image name="x_purple" width="13.5" height="13.5"/>
         <image name="x_red" width="13" height="13"/>
     </resources>
 </document>

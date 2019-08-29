@@ -158,8 +158,10 @@ extension AddFeelingViewController: UICollectionViewDataSource {
                 let cellTag = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionTagCollectionViewCell
                 cellTag.removeDelegate = self
                 cellTag.index = indexPath.item
-                cellTag.labelEmotionCell.text = pin.tags[indexPath.item].tag
-                cellTag.layer.borderColor = UIColor.red.cgColor
+                cellTag.labelEmotionCell.textColor = Utilities.hexStringToUIColor(hex: "8247FF")
+                cellTag.labelEmotionCell.text = pin.tags[indexPath.item].tag.capitalized
+                cellTag.layer.borderColor = Utilities.hexStringToUIColor(hex: "8247FF").cgColor
+                cellTag.layer.cornerRadius = 4
                 cellTag.layer.borderWidth = 1
                 return cellTag
             }
@@ -171,19 +173,19 @@ extension AddFeelingViewController: UICollectionViewDataSource {
 extension AddFeelingViewController: UICollectionViewDelegateFlowLayout {
 
     
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            if collectionView == self.colorCollectionView {
-                let cellSizes = Array( repeatElement(CGSize(width:(collectionView.bounds.width - 45)/10, height:(collectionView.bounds.width - 45)/10), count: 10))
-                return cellSizes[indexPath.item]
-            } else{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionTagCollectionViewCell
-                var size:CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-//                size.height += 10
-//                size.width += 15
-                print("\(size)")
-                return size
-            }
-        }
+//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//            if collectionView == self.colorCollectionView {
+//                let cellSizes = Array( repeatElement(CGSize(width:(collectionView.bounds.width - 45)/10, height:(collectionView.bounds.width - 45)/10), count: 10))
+//                return cellSizes[indexPath.item]
+//            } else{
+//                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionTagCollectionViewCell
+//                var size:CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+////                size.height += 10
+////                size.width += 15
+//                print("\(size)")
+//                return size
+//            }
+//        }
     
 } // end extension AddFeelingViewController
 
