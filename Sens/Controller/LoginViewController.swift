@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     @IBAction func login(_ sender: Any) {

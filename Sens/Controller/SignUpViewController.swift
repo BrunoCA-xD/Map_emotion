@@ -22,6 +22,7 @@ class SingUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     func validateFields() -> String? {
