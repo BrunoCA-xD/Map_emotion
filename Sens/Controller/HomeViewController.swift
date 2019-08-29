@@ -187,7 +187,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             pinView?.canShowCallout = true
             for i in self.pins {
                 if i.infoAnnotation.title == annotation.title {
-                    pinView?.image = i.emotionPin.icon.image()
+                    pinView?.image = i.emotionPin.icon.image(sizeSquare: 30)
                 }
             }
             

@@ -288,16 +288,16 @@
                                 <rect key="frame" x="35.5" y="449.5" width="343" height="348"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Observações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xxx-E6-rnd">
-                                        <rect key="frame" x="25.5" y="22.5" width="76.5" height="16"/>
+                                        <rect key="frame" x="23" y="22.5" width="233" height="16"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Xxx-E6-rnd" secondAttribute="height" multiplier="24:5" id="si2-go-ccQ"/>
+                                            <constraint firstAttribute="width" secondItem="Xxx-E6-rnd" secondAttribute="height" multiplier="291:20" id="si2-go-ccQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="erh-sb-9oR">
-                                        <rect key="frame" x="25.5" y="54.5" width="291.5" height="277.5"/>
+                                        <rect key="frame" x="23" y="54.5" width="291.5" height="277.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -312,7 +312,7 @@
                                     <constraint firstItem="erh-sb-9oR" firstAttribute="top" secondItem="Xxx-E6-rnd" secondAttribute="bottom" constant="16" id="Uq3-QG-gfv"/>
                                     <constraint firstAttribute="width" secondItem="jnm-nw-7DZ" secondAttribute="height" multiplier="343:348" id="iWl-hc-v20"/>
                                     <constraint firstItem="erh-sb-9oR" firstAttribute="width" secondItem="jnm-nw-7DZ" secondAttribute="width" multiplier="0.85" id="u6l-xs-ZTZ"/>
-                                    <constraint firstItem="Xxx-E6-rnd" firstAttribute="centerX" secondItem="jnm-nw-7DZ" secondAttribute="centerX" multiplier="64:172" id="ve1-b3-mpz"/>
+                                    <constraint firstItem="Xxx-E6-rnd" firstAttribute="centerX" secondItem="jnm-nw-7DZ" secondAttribute="centerX" multiplier="140:172" id="ve1-b3-mpz"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -38,8 +38,9 @@ class DetailPin: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titlePin.text = "Duas vezes? " + (detailPin?.emotionPin.user)!
-        emojiPin.image = detailPin?.emotionPin.icon.image()
-        colorHexPin.text = "HEX: " + (detailPin?.emotionPin.color)!
+        emojiPin.image = detailPin?.emotionPin.icon.image(sizeSquare: 50)
+        colorPin.backgroundColor = Utilities.hexStringToUIColor(hex: (detailPin?.emotionPin.color) ?? "ffffff")
+        colorHexPin.text = "HEX: #" + (detailPin?.emotionPin.color)!
         observacoesPin.text = detailPin?.emotionPin.testimonial
         
 //        let loc: CLLocation = CLLocation(latitude: (detailPin?.infoAnnotation.coordinate.latitude)!,

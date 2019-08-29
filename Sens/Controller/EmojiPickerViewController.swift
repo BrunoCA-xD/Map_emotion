@@ -49,7 +49,7 @@ class EmojiPickerViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EmojiCollectionViewCell
-        cell.imageView.image = emojiList[indexPath.section][indexPath.item].image()
+        cell.imageView.image = emojiList[indexPath.section][indexPath.item].image(sizeSquare: 100)
         print("asdasdasdas\(emojiList[0][0])")
         return cell
     }
@@ -67,18 +67,18 @@ class EmojiPickerViewController: UIViewController, UICollectionViewDataSource, U
 
 extension String {
     
-    func image() -> UIImage? {
-        let size = CGSize(width: 100, height: 100)
+    func image(sizeSquare: Double) -> UIImage? {
+        let size = CGSize(width: sizeSquare, height: sizeSquare)
         UIGraphicsBeginImageContextWithOptions(size, false, 0);
         UIColor.clear.set()
         
-        let stringBounds = (self as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 75)])
+        let stringBounds = (self as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: CGFloat(sizeSquare * 0.75))])
         let originX = (size.width - stringBounds.width)/2
         let originY = (size.height - stringBounds.height)/2
         let rect = CGRect(origin: CGPoint(x: originX, y: originY), size: size)
         UIRectFill(rect)
         
-        (self as NSString).draw(in: rect, withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 75)])
+        (self as NSString).draw(in: rect, withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: CGFloat(sizeSquare * 0.75))])
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

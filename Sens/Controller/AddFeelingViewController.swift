@@ -87,7 +87,7 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
             self.visualEffectView.removeFromSuperview()
         })
         if let emojiCode = emojiCode{
-            emojiSelectedImageView.image = emojiCode.image()
+            emojiSelectedImageView.image = emojiCode.image(sizeSquare: 100)
             pin.icon = emojiCode // seta o icon do pin
         }
     }
