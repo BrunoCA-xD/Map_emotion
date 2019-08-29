@@ -18,6 +18,19 @@ protocol HandleMapSearch {
 
 class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, HandleMapSearch, UIPopoverPresentationControllerDelegate {
     
+    @IBAction func tapGesture(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began{
+            let touchPoint: CGPoint = sender.location(in: mapView)
+            let newCoordinate: CLLocationCoordinate2D = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+            
+            let addFeelingViewController = storyboard?.instantiateViewController(withIdentifier:
+                "addFeelingRootNavController") as? UINavigationController
+            let addFeelingView = addFeelingViewController?.viewControllers[0] as? AddFeelingViewController
+            addFeelingView?.touchedLocation = newCoordinate
+            
+            present(addFeelingViewController!,animated: true)
+        }
+    }
     func dropPinZoomIn(placemark: MKPlacemark) {
         //
     }
@@ -32,14 +45,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var selectedPin:MKPlacemark? = nil
     
     let user = User()
-    
     var count = 0
-    
     var infoPin = Pin()
-//    var infoTitle = ""
-//    var infoColor = ""
-//    var infoTestimonial = ""
-//    var infoEmoji = ""
+    let emotionPin = EmotionPin()
+    var userLocation:CLLocationCoordinate2D! = nil
 
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
@@ -136,14 +145,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let location = locations.last
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        guard let location = locations.last else {return}
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        userLocation = center
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         
         self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
-
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

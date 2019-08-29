@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import CoreLocation
 
 class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDelegate, RemoveDelegate{
     
@@ -14,7 +16,8 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
     @IBOutlet weak var textViewThoughts: UITextView!
     @IBOutlet weak var colorCollectionView: UICollectionView!
     @IBOutlet weak var tagCollectionView: UICollectionView!
-    
+    @IBOutlet weak var emojiSelectedImageView: UIImageView!
+    @IBOutlet weak var testimonialTextView: UITextView!
     @IBAction func addEmotionTagPressed(_ sender: Any) {
         if let tagText = tagTextField.text{
             var tag:EmotionTag = EmotionTag()
@@ -23,26 +26,52 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
             tagCollectionView.reloadData()
         }
     }
+    @IBAction func cancelPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func selectEmojiPressed(_ sender: Any) {
         openCard()
     }
     
+    @IBAction func clearSelectedColor(_ sender: Any) {
+        guard let selectedItems = colorCollectionView.indexPathsForSelectedItems else { return }
+        for index in selectedItems{
+            colorCollectionView.deselectItem(at: index, animated: true)
+        }
+        pin.color = ""
+    }
+    @IBAction func saveEmotionPressed(_ sender: Any) {
+        //color, icon and tags are managed by events
+        
+        if let testimonialText = testimonialTextView.text {
+            pin.testimonial = testimonialText
+        }
+        pin.user = Auth.auth().currentUser!.uid
+        
+        
+    }
     var cardViewController: EmojiPickerViewController!
     var visualEffectView: UIVisualEffectView!
     var cardHeight: CGFloat = 0
     let cardHandleAreaHeight: CGFloat = 60
     var pin: EmotionPin = EmotionPin()
     var cellTagIds: [String] = []
-    let cellIds = ["1cell","2cell","3cell","4cell","5cell","6cell","7cell","8cell","9cell","10cell"]
+    var touchedLocation: CLLocationCoordinate2D! = nil
+    var userLocation: CLLocationCoordinate2D! = nil
+    let colors = ["#000000","#FFFFFF","#FF0000","0085FF","FFE600","21E510","FF8A00","DB00FF","AE6027"]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setTextView()
+        colorCollectionView.allowsMultipleSelection = false
+        print("\(touchedLocation)")
+        
         
         // Do any additional setup after loading the view.
     }
+    
     func removeButtonPressed(_ index: Int) {
         pin.tags.remove(at: index)
         tagCollectionView.reloadData()
@@ -58,11 +87,14 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
             self.visualEffectView.removeFromSuperview()
         })
         if let emojiCode = emojiCode{
-            print("fechou e o codigo é \(emojiCode)")
+            emojiSelectedImageView.image = emojiCode.image()
+            pin.icon = emojiCode // seta o icon do pin
         }
     }
     
+    
     func openCard() {
+        
         cardHeight = self.view.frame.height * 0.9
         let cardY = self.view.frame.height - cardHeight
         visualEffectView = UIVisualEffectView()
@@ -74,11 +106,17 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
         self.addChild(cardViewController)
         
         self.view.addSubview(cardViewController.view)
-        cardViewController.view.frame = CGRect(x: 0, y: cardY, width: self.view.bounds.width, height: cardHeight)
+        cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.bounds.width, height: cardHeight)
         
         cardViewController.view.clipsToBounds = true
-        visualEffectView.effect = UIBlurEffect(style: .dark)
-        cardViewController.view.layer.cornerRadius = 30
+        
+        UIView.animate(withDuration: 0.6, animations: {
+            self.cardViewController.view.frame.origin.y = cardY
+            self.visualEffectView.effect = UIBlurEffect(style: .dark)
+            self.cardViewController.view.layer.cornerRadius = 30
+        }, completion: nil)
+//        visualEffectView.effect = UIBlurEffect(style: .dark)
+//        cardViewController.view.layer.cornerRadius = 30
     }
     
     
@@ -87,8 +125,14 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
 
 extension AddFeelingViewController: UICollectionViewDelegate {
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            print("User tapped on \(cellIds[indexPath.row])")
-           
+            //Selecionar a cor
+            
+            if collectionView == self.colorCollectionView{
+
+                let cellColor = collectionView.cellForItem(at: indexPath) as! ColorCollectionViewCell
+                pin.color = cellColor.color
+            }
+            
         }
     
 } // end extension AddFeelingViewController
@@ -97,7 +141,7 @@ extension AddFeelingViewController: UICollectionViewDataSource {
         
         func collectionView( _ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             if collectionView == self.colorCollectionView {
-                return cellIds.count
+                return colors.count
             } else {
                 return pin.tags.count
             }
@@ -105,11 +149,13 @@ extension AddFeelingViewController: UICollectionViewDataSource {
 
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             if collectionView == self.colorCollectionView {
-                let cellColor = collectionView.dequeueReusableCell(withReuseIdentifier: cellIds[indexPath.item], for: indexPath)
+                let cellColor = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as! ColorCollectionViewCell
+                
+                    cellColor.configCell(color: colors[indexPath.item])
                 
                 return cellColor
             } else {
-                let cellTag = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
+                let cellTag = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionTagCollectionViewCell
                 cellTag.removeDelegate = self
                 cellTag.index = indexPath.item
                 cellTag.labelEmotionCell.text = pin.tags[indexPath.item].tag
@@ -123,18 +169,14 @@ extension AddFeelingViewController: UICollectionViewDataSource {
     
 
 extension AddFeelingViewController: UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            
-            return 5
-            
-        }
+
     
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             if collectionView == self.colorCollectionView {
                 let cellSizes = Array( repeatElement(CGSize(width:(collectionView.bounds.width - 45)/10, height:(collectionView.bounds.width - 45)/10), count: 10))
                 return cellSizes[indexPath.item]
             } else{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionTagCollectionViewCell
                 var size:CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
 //                size.height += 10
 //                size.width += 15
