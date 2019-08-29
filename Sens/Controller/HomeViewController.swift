@@ -215,10 +215,19 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         for i in pins {
             if i.infoAnnotation.title == capital?.title {
-                self.infoPin = i as! Pin
-//                self.infoTitle = i.title as! String
-//                self.infoColor = i.subtitle as! String
+                if i.infoAnnotation.subtitle == capital?.subtitle {
+                    if i.infoAnnotation.coordinate.latitude == capital?.coordinate.latitude {
+                        if i.infoAnnotation.coordinate.longitude == capital?.coordinate.longitude {
+                            self.infoPin = i as! Pin
+                        }
+                    }
+                }
             }
+//            if i.infoAnnotation.title == capital?.title {
+//                self.infoPin = i as! Pin
+////                self.infoTitle = i.title as! String
+////                self.infoColor = i.subtitle as! String
+//            }
         }
         
         if control == view.rightCalloutAccessoryView {

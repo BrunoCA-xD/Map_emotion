@@ -75,7 +75,7 @@ class DetailPin: UIViewController {
         titlePin.text = (detailPin?.emotionPin.userName.capitalized)!
         emojiPin.image = detailPin?.emotionPin.icon.image(sizeSquare: 50)
         colorPin.backgroundColor = Utilities.hexStringToUIColor(hex: (detailPin?.emotionPin.color) ?? "ffffff")
-        colorHexPin.text = "HEX: #" + (detailPin?.emotionPin.color)!
+        colorHexPin.text = "HEX: " + (detailPin?.emotionPin.color)!
         observacoesPin.text = detailPin?.emotionPin.testimonial
         
 //        let loc: CLLocation = CLLocation(latitude: (detailPin?.infoAnnotation.coordinate.latitude)!,
