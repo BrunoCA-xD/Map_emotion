@@ -24,6 +24,7 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
             tag.tag = tagText
             pin.tags.append(tag)
             tagCollectionView.reloadData()
+            tagTextField.text = ""
         }
     }
     @IBAction func cancelPressed(_ sender: Any) {
