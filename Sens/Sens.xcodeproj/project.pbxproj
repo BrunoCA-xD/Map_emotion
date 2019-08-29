@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		164B8C882316AD17008D3238 /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 164B8C862316AD14008D3238 /* DMSans-Bold.ttf */; };
 		164B8C892316AD17008D3238 /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 164B8C872316AD17008D3238 /* DMSans-Medium.ttf */; };
+		16AD087B23180B1200ADE0D7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AD087A23180B1200ADE0D7 /* ProfileViewController.swift */; };
 		54ACFBFE230D9387009108BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54ACFBFD230D9387009108BD /* GoogleService-Info.plist */; };
 		54B47E2C230E601600BE9050 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E2B230E601600BE9050 /* LoginViewController.swift */; };
 		54B47E2E230E603300BE9050 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E2D230E603300BE9050 /* SignUpViewController.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		164B8C862316AD14008D3238 /* DMSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Bold.ttf"; sourceTree = "<group>"; };
 		164B8C872316AD17008D3238 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
+		16AD087A23180B1200ADE0D7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		54ACFBFD230D9387009108BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54B47E2B230E601600BE9050 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		54B47E2D230E603300BE9050 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				E28156EA231574F200D5CD17 /* EmojiCollectionViewCell.swift */,
 				56E6F5512317082900B3ABB2 /* ColorCollectionViewCell.swift */,
 				56E6F5532317284B00B3ABB2 /* AddFeelingRootNavigationController.swift */,
+				16AD087A23180B1200ADE0D7 /* ProfileViewController.swift */,
 			);
 			name = Controller;
 			path = ../Controller;
@@ -316,6 +319,7 @@
 				54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */,
 				56B187202312D51300765C5A /* EmotionTag.swift in Sources */,
 				56B18717230EBE6D00765C5A /* User.swift in Sources */,
+				16AD087B23180B1200ADE0D7 /* ProfileViewController.swift in Sources */,
 				56E6F5522317082900B3ABB2 /* ColorCollectionViewCell.swift in Sources */,
 				54BC9A6D2314C14600BD3C89 /* ViewController + HideKeyboard.swift in Sources */,
 			);
