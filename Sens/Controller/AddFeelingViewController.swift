@@ -14,11 +14,12 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
     @IBOutlet weak var textViewThoughts: UITextView!
     @IBOutlet weak var colorCollectionView: UICollectionView!
     @IBOutlet weak var tagCollectionView: UICollectionView!
+    
     @IBAction func addEmotionTagPressed(_ sender: Any) {
         if let tagText = tagTextField.text{
             var tag:EmotionTag = EmotionTag()
             tag.tag = tagText
-            pin.tags.append(tag.tag)
+            pin.tags.append(tag)
             tagCollectionView.reloadData()
         }
     }
@@ -111,7 +112,7 @@ extension AddFeelingViewController: UICollectionViewDataSource {
                 let cellTag = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
                 cellTag.removeDelegate = self
                 cellTag.index = indexPath.item
-                cellTag.labelEmotionCell.text = pin.tags[indexPath.item]
+                cellTag.labelEmotionCell.text = pin.tags[indexPath.item].tag
                 cellTag.layer.borderColor = UIColor.red.cgColor
                 cellTag.layer.borderWidth = 1
                 return cellTag
