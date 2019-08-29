@@ -77,7 +77,7 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
                 ,"userName": userName
                 ,"location": GeoPoint.init(latitude: pin.location.latitude, longitude: pin.location.longitude)],merge: false)
         
-        print("sera q salvou?")
+        self.dismiss(animated: true, completion: nil)
         
     }
     var cardViewController: EmojiPickerViewController!
