@@ -10,7 +10,11 @@ import UIKit
 import FirebaseAuth
 import CoreLocation
 
-class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDelegate, RemoveDelegate{
+class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPickerViewBackButtonDelegate, RemoveDelegate{
+    
+    var tagText = false
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var tagTextField: UITextField!
     @IBOutlet weak var textViewThoughts: UITextView!
@@ -69,9 +73,35 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
         colorCollectionView.allowsMultipleSelection = false
         print("\(touchedLocation)")
         
+        tagTextField.delegate = self
         
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 && self.tagText == false {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0  {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.tagText = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.tagText = false
+    }
+
     
     func removeButtonPressed(_ index: Int) {
         pin.tags.remove(at: index)
@@ -120,7 +150,7 @@ class AddFeelingViewController: UIViewController, EmojiPickerViewBackButtonDeleg
 //        cardViewController.view.layer.cornerRadius = 30
     }
     
-    
+
 } // end Class AddFeelingViewController
 
 

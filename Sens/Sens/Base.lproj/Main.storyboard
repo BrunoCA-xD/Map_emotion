@@ -619,7 +619,7 @@
                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bga-rZ-J5l" customClass="profileDataView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bga-rZ-J5l">
                                 <rect key="frame" x="24" y="320" width="366" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -1056,6 +1056,7 @@
                     <connections>
                         <outlet property="colorCollectionView" destination="9T9-1O-tNO" id="QfL-2i-sOA"/>
                         <outlet property="emojiSelectedImageView" destination="hGM-mg-Dop" id="y8m-qu-IQW"/>
+                        <outlet property="scrollView" destination="bZ9-4V-fuk" id="sJn-Bf-6NW"/>
                         <outlet property="tagCollectionView" destination="S59-jb-z7E" id="OQA-2V-zN1"/>
                         <outlet property="tagTextField" destination="W64-dN-c67" id="ffs-JQ-OhV"/>
                         <outlet property="testimonialTextView" destination="SL8-KZ-C85" id="qbX-dZ-ePg"/>
