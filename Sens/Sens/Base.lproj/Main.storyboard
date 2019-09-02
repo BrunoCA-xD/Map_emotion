@@ -292,6 +292,47 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfL-wr-nu2" userLabel="EmojiTgas">
                                 <rect key="frame" x="35.5" y="231" width="343" height="93"/>
                                 <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Up-FJ-oQN">
+                                        <rect key="frame" x="103" y="7" width="237" height="84"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oeC-HJ-5ZS">
+                                            <size key="itemSize" width="111" height="36"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Kdm-6v-pcH" customClass="EmotionTagCollectionViewCell" customModule="Sens" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="111" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iPs-qb-k56">
+                                                            <rect key="frame" x="5" y="0.0" width="42" height="36"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="iPs-qb-k56" firstAttribute="leading" secondItem="Kdm-6v-pcH" secondAttribute="leading" constant="5" id="Jvh-Ym-vyg"/>
+                                                    <constraint firstAttribute="bottom" secondItem="iPs-qb-k56" secondAttribute="bottom" id="YNM-hb-bpd"/>
+                                                    <constraint firstItem="iPs-qb-k56" firstAttribute="top" secondItem="Kdm-6v-pcH" secondAttribute="top" id="Zk0-3i-Ajo"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="labelEmotionCell" destination="iPs-qb-k56" id="ErD-u8-ixJ"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="zuH-JZ-wxb" id="ZVv-kX-pxB"/>
+                                            <outlet property="delegate" destination="zuH-JZ-wxb" id="JLA-qc-jeI"/>
+                                        </connections>
+                                    </collectionView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N4e-uX-Wbq" userLabel="Emoji">
                                         <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
                                         <constraints>
@@ -307,7 +348,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="N4e-uX-Wbq" firstAttribute="centerY" secondItem="tfL-wr-nu2" secondAttribute="centerY" id="3WO-x8-hBW"/>
+                                    <constraint firstItem="6Up-FJ-oQN" firstAttribute="leading" secondItem="N4e-uX-Wbq" secondAttribute="trailing" constant="10" id="A9g-Be-nWE"/>
+                                    <constraint firstItem="6Up-FJ-oQN" firstAttribute="top" secondItem="tfL-wr-nu2" secondAttribute="top" constant="7" id="Olg-6p-oXD"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Up-FJ-oQN" secondAttribute="bottom" constant="2" id="On1-Hp-eRH"/>
                                     <constraint firstItem="N4e-uX-Wbq" firstAttribute="height" secondItem="tfL-wr-nu2" secondAttribute="height" id="RKo-ub-xl0"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Up-FJ-oQN" secondAttribute="trailing" constant="3" id="bwY-4d-v3r"/>
                                     <constraint firstAttribute="width" secondItem="tfL-wr-nu2" secondAttribute="height" multiplier="343:93" id="mm6-hR-zZi"/>
                                     <constraint firstItem="N4e-uX-Wbq" firstAttribute="leading" secondItem="tfL-wr-nu2" secondAttribute="leading" id="uJP-gq-baI"/>
                                 </constraints>
@@ -442,6 +487,7 @@
                         <outlet property="emojiView" destination="tfL-wr-nu2" id="fLu-4L-7gG"/>
                         <outlet property="experienceView" destination="jnm-nw-7DZ" id="dc5-w5-KqV"/>
                         <outlet property="observacoesPin" destination="dVz-Wl-wSz" id="WXX-wQ-lB7"/>
+                        <outlet property="tagsCollectionView" destination="6Up-FJ-oQN" id="0PI-30-rEK"/>
                         <outlet property="titlePin" destination="YtU-th-f5i" id="07F-eA-j0W"/>
                     </connections>
                 </viewController>

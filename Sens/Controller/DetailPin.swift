@@ -11,6 +11,7 @@ import MapKit
 
 class DetailPin: UIViewController {
 
+    @IBOutlet weak var tagsCollectionView: UICollectionView!
     @IBOutlet weak var titlePin: UILabel!
     @IBOutlet weak var adressPin: UILabel!
     @IBOutlet weak var emojiPin: UIImageView!
@@ -151,4 +152,24 @@ class DetailPin: UIViewController {
     }
     */
 
+}
+
+
+extension DetailPin: UICollectionViewDataSource {
+    
+    func collectionView( _ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (detailPin?.emotionPin.tags.count)!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+            let cellTag = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionTagCollectionViewCell
+            cellTag.index = indexPath.item
+            cellTag.labelEmotionCell.textColor = Utilities.hexStringToUIColor(hex: "8247FF")
+            cellTag.labelEmotionCell.text = detailPin?.emotionPin.tags[indexPath.item].capitalized
+            cellTag.layer.borderColor = Utilities.hexStringToUIColor(hex: "8247FF").cgColor
+            cellTag.layer.cornerRadius = 4
+            cellTag.layer.borderWidth = 1
+            return cellTag
+    }
 }
