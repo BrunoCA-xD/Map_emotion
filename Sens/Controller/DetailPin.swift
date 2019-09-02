@@ -77,39 +77,69 @@ class DetailPin: UIViewController {
         colorPin.backgroundColor = Utilities.hexStringToUIColor(hex: (detailPin?.emotionPin.color) ?? "ffffff")
         colorHexPin.text = "HEX: " + (detailPin?.emotionPin.color)!
         observacoesPin.text = detailPin?.emotionPin.testimonial
-        
-//        let loc: CLLocation = CLLocation(latitude: (detailPin?.infoAnnotation.coordinate.latitude)!,
-//                                         longitude: (detailPin?.infoAnnotation.coordinate.longitude)!)
-//        geoCoder.reverseGeocodeLocation(loc, completionHandler: { (placemarks, error) -> Void in
-            
-            // Place details
-//            var placeMark: CLPlacemark!
-//            placeMark = placemarks?[0]
-            
-//            // Location name
-//            if let locationName = placeMark.location {
-//                print(locationName)
-//            }
-//            // Street address
-//            if let street = placeMark.thoroughfare {
-//                print(street)
-//            }
-//            // City
-//            if let city = placeMark.subAdministrativeArea {
-//                print(city)
-//            }
-//            // Zip code
-//            if let zip = placeMark.isoCountryCode {
-//                print(zip)
-//            }
-//            // Country
-//            if let country = placeMark.country {
-//                print(country)
-//            }
-//
-//
-//
-//        })
+        recoveryAddress(locationCoordinate: (detailPin?.emotionPin.location)!)
+
+    }
+    
+    func recoveryAddress(locationCoordinate:CLLocationCoordinate2D) {
+        let location:CLLocation = CLLocation(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude)
+        var address = ""
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(locationDetais, error) in
+            if error == nil{
+                if let locationData = locationDetais?.first {
+                    
+                    var thoroughfare = ""// rua
+                    if let thoroughfareValue = locationData.thoroughfare{
+                        thoroughfare = thoroughfareValue
+                    }
+                    
+                    var subThoroughfare = "" //numero
+                    if let subThoroughfareValue = locationData.subThoroughfare{
+                        subThoroughfare = subThoroughfareValue
+                    }
+                    
+                    var locality = "" //cidade
+                    if let localityValue = locationData.locality{
+                        locality = localityValue
+                    }
+                    
+                    var subLocality = ""// bairro
+                    if let subLocalityValue = locationData.subLocality{
+                        subLocality = subLocalityValue
+                    }
+                    
+                    var postalCode = "" // cep
+                    if let postalCodeValue = locationData.postalCode{
+                        postalCode = postalCodeValue
+                    }
+                    
+                    var country = ""
+                    if let countryValue = locationData.country{
+                        country = countryValue
+                    }
+                    
+                    var administrativeArea = "" //(UF)
+                    if let administrativeAreaValue = locationData.administrativeArea{
+                        administrativeArea = administrativeAreaValue
+                    }
+                    
+                    var subAdministrativeArea = ""
+                    if let subAdministrativeAreaValue = locationData.subAdministrativeArea{
+                        subAdministrativeArea = subAdministrativeAreaValue
+                    }
+                    address = thoroughfare + ", "
+                        + subThoroughfare + " - "
+                        + subLocality + " - "
+                        + locality + " - "
+                        + administrativeArea + " - "
+                        + country
+                    
+                    self.adressPin.text = address
+                }else{
+                    print("deu erro nessa porra")
+                }
+            }
+        })
     }
     /*
     // MARK: - Navigation
