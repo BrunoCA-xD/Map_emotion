@@ -18,6 +18,9 @@ protocol HandleMapSearch {
 
 class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, HandleMapSearch, UIPopoverPresentationControllerDelegate {
     
+    var customPointAnnotation: [CustomPointAnnotation] = []  //Pós entrega
+    var infoCustomPointAnnptation : CustomPointAnnotation = CustomPointAnnotation()
+    
     @IBOutlet weak var addPinButton: UIButton!
     
     @IBAction func tapGesture(_ sender: UILongPressGestureRecognizer) {
@@ -161,52 +164,92 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 //    }
     
     // Called when the annotation was added
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        if annotation is MKUserLocation {
+//            return nil
+//        }
+////        let p = annotation is CustomAnnotation
+//
+//        let reuseId = "image"
+//        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+//        if pinView == nil {
+//            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+//            pinView?.canShowCallout = true
+//            for i in self.customAnnotation {
+//                if i.infoAnnotation.title == annotation.title {
+//                    if i.infoAnnotation.subtitle == annotation.subtitle {
+//                        if i.infoAnnotation.coordinate.latitude == annotation.coordinate.latitude {
+//                            if i.infoAnnotation.coordinate.longitude == annotation.coordinate.longitude {
+//                                pinView?.image = i.emotionPin.icon.image(sizeSquare: 30)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//
+//            let rightButton: AnyObject! = UIButton(type: UIButton.ButtonType.detailDisclosure)
+//            pinView?.rightCalloutAccessoryView = rightButton as? UIView
+//        }
+//        else {
+//            pinView?.annotation = annotation
+//        }
+//        count += 1
+//        return pinView
+//    }
+    //pós entrega
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
-        }
-        
-        let reuseId = "image"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-        if pinView == nil {
-            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView?.canShowCallout = true
-            for i in self.pins {
-                if i.infoAnnotation.title == annotation.title {
-                    if i.infoAnnotation.subtitle == annotation.subtitle {
-                        if i.infoAnnotation.coordinate.latitude == annotation.coordinate.latitude {
-                            if i.infoAnnotation.coordinate.longitude == annotation.coordinate.longitude {
-                                pinView?.image = i.emotionPin.icon.image(sizeSquare: 30)
-                            }
-                        }
+
+         let reuseIdentifier = "pin"
+        //let p = annotation is CustomPointAnnotation
+        if let customPointAnnotation = annotation as? CustomPointAnnotation {
+
+
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+            
+                let rightButton = UIButton(type: .infoLight)
+                rightButton.tag = customPointAnnotation.hash
+            
+                annotationView?.canShowCallout = true
+                annotationView?.rightCalloutAccessoryView = rightButton
+                
+                for i in self.customPointAnnotation {
+                    if i.pinId == customPointAnnotation.pinId{
+                        annotationView?.image = i.icon.image(sizeSquare: 20)
                     }
                 }
+            } else {
+                annotationView?.annotation = annotation
             }
-            
-            
-            let rightButton: AnyObject! = UIButton(type: UIButton.ButtonType.detailDisclosure)
-            pinView?.rightCalloutAccessoryView = rightButton as? UIView
+
+            print("Colocando \(annotationView) \(annotation.coordinate)")
+
+            return annotationView
         }
-        else {
-            pinView?.annotation = annotation
-        }
-        count += 1
-        return pinView
+
+        print("Oops \(annotation)")
+        return  MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+
+        let capital = view.annotation as? CustomPointAnnotation
         
-        let capital = view.annotation
-        
-        for i in pins {
-            if i.infoAnnotation.title == capital?.title {
-                if i.infoAnnotation.subtitle == capital?.subtitle {
-                    if i.infoAnnotation.coordinate.latitude == capital?.coordinate.latitude {
-                        if i.infoAnnotation.coordinate.longitude == capital?.coordinate.longitude {
-                            self.infoPin = i as! Pin
-                        }
-                    }
-                }
+        for i in self.customPointAnnotation {
+//            if i.infoAnnotation.title == capital?.title {
+//                if i.infoAnnotation.subtitle == capital?.subtitle {
+//                    if i.infoAnnotation.coordinate.latitude == capital?.coordinate.latitude {
+//                        if i.infoAnnotation.coordinate.longitude == capital?.coordinate.longitude {
+//                            self.infoPin = i as! Pin
+//                        }
+//                    }
+//                }
+//            }
+            if i.pinId == capital?.pinId{
+                self.infoCustomPointAnnptation = i
             }
 //            if i.infoAnnotation.title == capital?.title {
 //                self.infoPin = i as! Pin
@@ -214,6 +257,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 ////                self.infoColor = i.subtitle as! String
 //            }
         }
+//        for i in self.customPointAnnotation {
+//            if i.pinId == capital?.pinId{
+//                self.infoPin = i as! Pin
+//            }
+//        }
         
         if control == view.rightCalloutAccessoryView {
             performSegue(withIdentifier: "description", sender: self)
@@ -227,7 +275,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 let child01 = segue.destination as? DetailPin {
 //                child01.titlePintext = self.infoTitle
 //                child01.observacoesPintext = self.infoColor
-                child01.detailPin = self.infoPin
+                child01.detailPin = self.infoCustomPointAnnptation
             }
         
     }
@@ -270,7 +318,24 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     //                    self.annotations.append(annotation)
                     //                    self.emojis.append(emotionPin)
                     
-                    self.mapView.addAnnotation(annotation)
+                    //Pós entrega
+                    
+                    let customAnnotation = CustomPointAnnotation()
+                    customAnnotation.color = emotionPin.color
+                    customAnnotation.icon = emotionPin.icon
+                    customAnnotation.tags = emotionPin.tags
+                    customAnnotation.pinId = document.documentID
+                    customAnnotation.title = emotionPin.userName.capitalized
+                    customAnnotation.subtitle = emotionPin.tags[0]
+                    customAnnotation.coordinate = emotionPin.location
+                    
+                    self.customPointAnnotation.append(customAnnotation)
+                    
+                    OperationQueue.main.addOperation {
+                        print("Adicionando pin")
+                        self.mapView.addAnnotation(customAnnotation)
+                    }
+                   
                 }
             }
         }

@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import Firebase
+import MapKit
 
 class EmotionPin {
     private var _location: CLLocationCoordinate2D = CLLocationCoordinate2D()
@@ -92,4 +93,5 @@ class EmotionPin {
             
         }
     }
+    
 }

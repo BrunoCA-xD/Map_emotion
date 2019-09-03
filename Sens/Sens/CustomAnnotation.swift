@@ -6,9 +6,17 @@
 //  Copyright © 2019 Bruno Cardoso Ambrosio. All rights reserved.
 //
 //
-//import MapKit
-//import UIKit
-//
-//class CustomAnnotation: MKPointAnnotation {
-//    var pinCustomImageName:String!
-//}
+import MapKit
+
+class CustomPointAnnotation: MKPointAnnotation {
+    
+    var color: String = ""
+    var icon: String = ""
+    var tags: [String] = []
+    var tesmonial: String = ""
+    var userName: String = ""
+    var userId: String = ""
+    var pinId: String = ""
+
+}
+

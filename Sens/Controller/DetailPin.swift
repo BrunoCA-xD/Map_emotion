@@ -28,7 +28,7 @@ class DetailPin: UIViewController {
     //    var titlePintext: String?
 //    var observacoesPintext: String?
 //    var corPintext: String?
-    var detailPin: Pin?
+    var detailPin: CustomPointAnnotation?
     let geoCoder: CLGeocoder = CLGeocoder()
     
     
@@ -73,12 +73,12 @@ class DetailPin: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        titlePin.text = (detailPin?.emotionPin.userName.capitalized)!
-        emojiPin.image = detailPin?.emotionPin.icon.image(sizeSquare: 50)
-        colorPin.backgroundColor = Utilities.hexStringToUIColor(hex: (detailPin?.emotionPin.color) ?? "ffffff")
-        colorHexPin.text = "HEX: " + (detailPin?.emotionPin.color)!
-        observacoesPin.text = detailPin?.emotionPin.testimonial
-        recoveryAddress(locationCoordinate: (detailPin?.emotionPin.location)!)
+        titlePin.text = (detailPin?.userName.capitalized)!
+        emojiPin.image = detailPin?.icon.image(sizeSquare: 50)
+        colorPin.backgroundColor = Utilities.hexStringToUIColor(hex: (detailPin?.color) ?? "ffffff")
+        colorHexPin.text = "HEX: " + (detailPin?.color)!
+        observacoesPin.text = detailPin?.tesmonial
+        recoveryAddress(locationCoordinate: (detailPin?.coordinate)!)
 
     }
     
@@ -158,7 +158,7 @@ class DetailPin: UIViewController {
 extension DetailPin: UICollectionViewDataSource {
     
     func collectionView( _ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (detailPin?.emotionPin.tags.count)!
+        return (detailPin?.tags.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -166,7 +166,7 @@ extension DetailPin: UICollectionViewDataSource {
             let cellTag = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionTagCollectionViewCell
             cellTag.index = indexPath.item
             cellTag.labelEmotionCell.textColor = Utilities.hexStringToUIColor(hex: "8247FF")
-            cellTag.labelEmotionCell.text = detailPin?.emotionPin.tags[indexPath.item].capitalized
+            cellTag.labelEmotionCell.text = detailPin?.tags[indexPath.item].capitalized
             cellTag.layer.borderColor = Utilities.hexStringToUIColor(hex: "8247FF").cgColor
             cellTag.layer.cornerRadius = 4
             cellTag.layer.borderWidth = 1
