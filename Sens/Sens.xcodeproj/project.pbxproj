@@ -17,14 +17,15 @@
 		54B47E32230E623900BE9050 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E31230E623900BE9050 /* Utilities.swift */; };
 		54BC9A6D2314C14600BD3C89 /* ViewController + HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */; };
 		54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */; };
-		54FA42032316B67000960ADA /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA42022316B67000960ADA /* CustomAnnotation.swift */; };
 		54FA42052316CD4E00960ADA /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA42042316CD4E00960ADA /* Pin.swift */; };
+		562BADAC2322A5F000E48842 /* EmotionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BADAB2322A5F000E48842 /* EmotionAnnotation.swift */; };
 		56322DB2230D7DA400C728A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB1230D7DA400C728A8 /* AppDelegate.swift */; };
 		56322DB4230D7DA400C728A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB3230D7DA400C728A8 /* ViewController.swift */; };
 		56322DB7230D7DA400C728A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB5230D7DA400C728A8 /* Main.storyboard */; };
 		56322DB9230D7DA600C728A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB8230D7DA600C728A8 /* Assets.xcassets */; };
 		56322DBC230D7DA600C728A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */; };
-		56801EDB2317F1F80097C0B2 /* DetailPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56801EDA2317F1F80097C0B2 /* DetailPin.swift */; };
+		56435C3923227FE80004E0F7 /* EmotiPinAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435C3823227FE80004E0F7 /* EmotiPinAnnotationView.swift */; };
+		56801EDB2317F1F80097C0B2 /* DetailPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56801EDA2317F1F80097C0B2 /* DetailPinViewController.swift */; };
 		56801EE0231813B60097C0B2 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56801EDF231813B60097C0B2 /* RadioButton.swift */; };
 		56B18717230EBE6D00765C5A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B18716230EBE6D00765C5A /* User.swift */; };
 		56B1871C2310643800765C5A /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */; };
@@ -49,8 +50,8 @@
 		54B47E31230E623900BE9050 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + HideKeyboard.swift"; sourceTree = "<group>"; };
 		54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionTagCollectionViewCell.swift; sourceTree = "<group>"; };
-		54FA42022316B67000960ADA /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		54FA42042316CD4E00960ADA /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		562BADAB2322A5F000E48842 /* EmotionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionAnnotation.swift; sourceTree = "<group>"; };
 		56322DAE230D7DA400C728A8 /* Sens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56322DB1230D7DA400C728A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56322DB3230D7DA400C728A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +59,8 @@
 		56322DB8230D7DA600C728A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56322DBB230D7DA600C728A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56322DBD230D7DA600C728A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56801EDA2317F1F80097C0B2 /* DetailPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPin.swift; sourceTree = "<group>"; };
+		56435C3823227FE80004E0F7 /* EmotiPinAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotiPinAnnotationView.swift; sourceTree = "<group>"; };
+		56801EDA2317F1F80097C0B2 /* DetailPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPinViewController.swift; sourceTree = "<group>"; };
 		56801EDF231813B60097C0B2 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		56B18716230EBE6D00765C5A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
@@ -134,19 +136,17 @@
 		56322DB0230D7DA400C728A8 /* Sens */ = {
 			isa = PBXGroup;
 			children = (
+				56EFD4672329154E003D71D5 /* view */,
+				56EFD466232914AB003D71D5 /* Storyboard */,
+				56EFD4652329134A003D71D5 /* Utility */,
+				56EFD4632329128E003D71D5 /* Model */,
 				56801EDE2318139A0097C0B2 /* Components */,
 				E2E3140F230EBC7E007591FA /* Controller */,
 				56322DB8230D7DA600C728A8 /* Assets.xcassets */,
 				56322DB1230D7DA400C728A8 /* AppDelegate.swift */,
-				54B47E31230E623900BE9050 /* Utilities.swift */,
-				56B18716230EBE6D00765C5A /* User.swift */,
 				54ACFBFD230D9387009108BD /* GoogleService-Info.plist */,
-				56322DB5230D7DA400C728A8 /* Main.storyboard */,
-				56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */,
 				56322DBD230D7DA600C728A8 /* Info.plist */,
-				56B1871D2310C40B00765C5A /* EmotionPin.swift */,
 				56B1871F2312D51300765C5A /* EmotionTag.swift */,
-				54FA42022316B67000960ADA /* CustomAnnotation.swift */,
 				54FA42042316CD4E00960ADA /* Pin.swift */,
 			);
 			path = Sens;
@@ -160,10 +160,64 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		56EFD4632329128E003D71D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				56B18716230EBE6D00765C5A /* User.swift */,
+				56B1871D2310C40B00765C5A /* EmotionPin.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56EFD4652329134A003D71D5 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				54B47E31230E623900BE9050 /* Utilities.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		56EFD466232914AB003D71D5 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				56322DB5230D7DA400C728A8 /* Main.storyboard */,
+				56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		56EFD4672329154E003D71D5 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				56EFD4692329155E003D71D5 /* Annotation */,
+				56EFD46823291557003D71D5 /* Cell */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		56EFD46823291557003D71D5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */,
+				E28156EA231574F200D5CD17 /* EmojiCollectionViewCell.swift */,
+				56E6F5512317082900B3ABB2 /* ColorCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		56EFD4692329155E003D71D5 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				56435C3823227FE80004E0F7 /* EmotiPinAnnotationView.swift */,
+				562BADAB2322A5F000E48842 /* EmotionAnnotation.swift */,
+			);
+			path = Annotation;
+			sourceTree = "<group>";
+		};
 		E2E3140F230EBC7E007591FA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				56801EDA2317F1F80097C0B2 /* DetailPin.swift */,
+				56801EDA2317F1F80097C0B2 /* DetailPinViewController.swift */,
 				54B47E2D230E603300BE9050 /* SignUpViewController.swift */,
 				54B47E2B230E601600BE9050 /* LoginViewController.swift */,
 				54B47E2F230E605100BE9050 /* HomeViewController.swift */,
@@ -171,10 +225,7 @@
 				56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */,
 				56B915BB2313334400AE17B2 /* AddFeelingViewController.swift */,
 				54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */,
-				54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */,
 				E28156E823156F9A00D5CD17 /* EmojiPickerViewController.swift */,
-				E28156EA231574F200D5CD17 /* EmojiCollectionViewCell.swift */,
-				56E6F5512317082900B3ABB2 /* ColorCollectionViewCell.swift */,
 				56E6F5532317284B00B3ABB2 /* AddFeelingRootNavigationController.swift */,
 				16AD087A23180B1200ADE0D7 /* ProfileViewController.swift */,
 			);
@@ -300,8 +351,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56801EDB2317F1F80097C0B2 /* DetailPin.swift in Sources */,
+				56801EDB2317F1F80097C0B2 /* DetailPinViewController.swift in Sources */,
 				56B1871C2310643800765C5A /* LocationSearchTableViewController.swift in Sources */,
+				562BADAC2322A5F000E48842 /* EmotionAnnotation.swift in Sources */,
 				54FA42052316CD4E00960ADA /* Pin.swift in Sources */,
 				54B47E32230E623900BE9050 /* Utilities.swift in Sources */,
 				56E6F5542317284B00B3ABB2 /* AddFeelingRootNavigationController.swift in Sources */,
@@ -310,11 +362,11 @@
 				E28156E923156F9A00D5CD17 /* EmojiPickerViewController.swift in Sources */,
 				54B47E30230E605100BE9050 /* HomeViewController.swift in Sources */,
 				54B47E2C230E601600BE9050 /* LoginViewController.swift in Sources */,
-				54FA42032316B67000960ADA /* CustomAnnotation.swift in Sources */,
 				56322DB4230D7DA400C728A8 /* ViewController.swift in Sources */,
 				56B1871E2310C40B00765C5A /* EmotionPin.swift in Sources */,
 				54B47E2E230E603300BE9050 /* SignUpViewController.swift in Sources */,
 				56322DB2230D7DA400C728A8 /* AppDelegate.swift in Sources */,
+				56435C3923227FE80004E0F7 /* EmotiPinAnnotationView.swift in Sources */,
 				56801EE0231813B60097C0B2 /* RadioButton.swift in Sources */,
 				54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */,
 				56B187202312D51300765C5A /* EmotionTag.swift in Sources */,
@@ -469,7 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22U723CBKY;
+				DEVELOPMENT_TEAM = GJUSD98938;
 				INFOPLIST_FILE = Sens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -488,7 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22U723CBKY;
+				DEVELOPMENT_TEAM = GJUSD98938;
 				INFOPLIST_FILE = Sens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class DetailPin: UIViewController {
+class DetailPinViewController: UIViewController {
 
     @IBOutlet weak var tagsCollectionView: UICollectionView!
     @IBOutlet weak var titlePin: UILabel!
@@ -28,7 +28,7 @@ class DetailPin: UIViewController {
     //    var titlePintext: String?
 //    var observacoesPintext: String?
 //    var corPintext: String?
-    var detailPin: CustomPointAnnotation?
+    var detailPin: EmotionPin?
     let geoCoder: CLGeocoder = CLGeocoder()
     
     
@@ -77,8 +77,8 @@ class DetailPin: UIViewController {
         emojiPin.image = detailPin?.icon.image(sizeSquare: 50)
         colorPin.backgroundColor = Utilities.hexStringToUIColor(hex: (detailPin?.color) ?? "ffffff")
         colorHexPin.text = "HEX: " + (detailPin?.color)!
-        observacoesPin.text = detailPin?.tesmonial
-        recoveryAddress(locationCoordinate: (detailPin?.coordinate)!)
+        observacoesPin.text = detailPin?.testimonial
+        recoveryAddress(locationCoordinate: (detailPin?.location)!)
 
     }
     
@@ -109,11 +109,6 @@ class DetailPin: UIViewController {
                         subLocality = subLocalityValue
                     }
                     
-                    var postalCode = "" // cep
-                    if let postalCodeValue = locationData.postalCode{
-                        postalCode = postalCodeValue
-                    }
-                    
                     var country = ""
                     if let countryValue = locationData.country{
                         country = countryValue
@@ -124,10 +119,6 @@ class DetailPin: UIViewController {
                         administrativeArea = administrativeAreaValue
                     }
                     
-                    var subAdministrativeArea = ""
-                    if let subAdministrativeAreaValue = locationData.subAdministrativeArea{
-                        subAdministrativeArea = subAdministrativeAreaValue
-                    }
                     address = thoroughfare + ", "
                         + subThoroughfare + " - "
                         + subLocality + " - "
@@ -155,7 +146,7 @@ class DetailPin: UIViewController {
 }
 
 
-extension DetailPin: UICollectionViewDataSource {
+extension DetailPinViewController: UICollectionViewDataSource {
     
     func collectionView( _ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (detailPin?.tags.count)!

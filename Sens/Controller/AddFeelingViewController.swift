@@ -84,7 +84,7 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
     var visualEffectView: UIVisualEffectView!
     var cardHeight: CGFloat = 0
     let cardHandleAreaHeight: CGFloat = 60
-    var pin: EmotionPin = EmotionPin()
+    var pin: EmotionPin = EmotionPin() 
     var cellTagIds: [String] = []
     var touchedLocation: CLLocationCoordinate2D! = nil
     var userLocation: CLLocationCoordinate2D! = nil

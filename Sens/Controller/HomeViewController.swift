@@ -17,51 +17,76 @@ protocol HandleMapSearch {
 }
 
 class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, HandleMapSearch, UIPopoverPresentationControllerDelegate {
+
+    // MARK: Atributes
+    var pins = [EmotionPin]()
+    var resultSearchController:UISearchController? = nil
+    var selectedPlace:MKPlacemark? = nil
+    var count = 0
+    var infoPin = Pin()
+    var emotionPin = EmotionPin()
+    var userLocation:CLLocationCoordinate2D! = nil
     
-    var customPointAnnotation: [CustomPointAnnotation] = []  //Pós entrega
-    var infoCustomPointAnnptation : CustomPointAnnotation = CustomPointAnnotation()
+    let placePinIdentifier:String = "placePin"
+    let emotionPinIdentifier:String = "emotionPin"
+    var user: User! = nil
+    let db = Firestore.firestore()
+    let locationManager = CLLocationManager()
     
+    // MARK: Outlets
     @IBOutlet weak var addPinButton: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func tapGesture(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began{
             let touchPoint: CGPoint = sender.location(in: mapView)
             let newCoordinate: CLLocationCoordinate2D = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-            
-            let addFeelingViewController = storyboard?.instantiateViewController(withIdentifier:
-                "addFeelingRootNavController") as? UINavigationController
-            let addFeelingView = addFeelingViewController?.viewControllers[0] as? AddFeelingViewController
-            addFeelingView?.userLocation = userLocation
-            addFeelingView?.touchedLocation = newCoordinate
-            addFeelingView?.user = self.user
-            
-            present(addFeelingViewController!,animated: true)
+        
+           openAddFeeling(coordinate: newCoordinate)
         }
     }
     @IBAction func AddFeelingPressed(_ sender: Any) {
+        openAddFeeling(coordinate: nil)
         
-        
+    }
+    
+    func openAddFeeling( coordinate:CLLocationCoordinate2D? ){
         let addFeelingViewController = storyboard?.instantiateViewController(withIdentifier:
             "addFeelingRootNavController") as? UINavigationController
         let addFeelingView = addFeelingViewController?.viewControllers[0] as? AddFeelingViewController
-        addFeelingView?.touchedLocation = nil
         addFeelingView?.userLocation = userLocation
         addFeelingView?.user = self.user
+        if coordinate != nil {
+            addFeelingView?.touchedLocation = coordinate
+        }
+        
         present(addFeelingViewController!,animated: true)
         
     }
+    
     func dropPinZoomIn(placemark: MKPlacemark) {
         // cache the pin
-        selectedPin = placemark
-        // clear existing pins
-        mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
+        selectedPlace = placemark
+        let annotation = EmotionAnnotation()
+        annotation.pin = nil
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
         if let city = placemark.locality,
             let state = placemark.administrativeArea {
             annotation.subtitle = "\(city) \(state)"
         }
+        
+        var annotations: [MKAnnotation] = []
+        
+        mapView.annotations.forEach { (annon) in
+            if let emotionAnnotation = annon as? EmotionAnnotation {
+                if emotionAnnotation.pin == nil{
+                    annotations.append(annon)
+                }
+            }
+        }
+        
+        mapView.removeAnnotations(annotations)
         mapView.addAnnotation(annotation)
         
         let region = MKCoordinateRegion(center: placemark.coordinate, span: mapView.region.span)
@@ -69,28 +94,14 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
     }
     
+ 
 
-//    var annotations: [MKPointAnnotation] = []
-//    var emojis: [EmotionPin] = []
-    var pins = [Pin]()
     
-    var resultSearchController:UISearchController? = nil
-    var selectedPin:MKPlacemark? = nil
-    
-    let user = User()
-    var count = 0
-    var infoPin = Pin()
-    let emotionPin = EmotionPin()
-    var userLocation:CLLocationCoordinate2D! = nil
-    let db = Firestore.firestore()
-
-    @IBOutlet weak var mapView: MKMapView!
-    let locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.user = User()
         addPinButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         
         self.mapView.delegate = self
@@ -101,15 +112,20 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-        
-        self.user.id = Auth.auth().currentUser!.uid
-        self.user.email = Auth.auth().currentUser!.email!
+        if let currUser = Auth.auth().currentUser{
+            self.user.id = currUser.uid
+            if let email = currUser.email{
+                self.user.email = email
+            }
+        }
+        var color = Utilities.hexStringToUIColor(hex: "FFFFFF")
+        tabBarController?.tabBar.unselectedItemTintColor = color.withAlphaComponent(0.5)
         
         
         
         db.collection("users").whereField("uid", isEqualTo: self.user.id).getDocuments(completion: {(snapshot,err) in
             if let err = err {
-                print("deu erro nessa merda")
+                print("\(err.localizedDescription)")
             }else{
                 
                 var dic = snapshot?.documents.first?.data()
@@ -130,7 +146,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
-        searchBar.placeholder = "Search for places"
+        searchBar.placeholder = "Procure por locais"
         navigationItem.titleView = resultSearchController?.searchBar
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
@@ -140,10 +156,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         locationSearchTable.handleMapSearchDelegate = self
     }
     
-//    private func registerAnnotationViewClasses() {
-//        mapView.register(CustomAnnotation.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-//    }
-
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {return}
@@ -159,183 +171,51 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         print("Errors " + error.localizedDescription)
     }
     
-//    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-//        print(#function)
-//    }
-    
-    // Called when the annotation was added
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        if annotation is MKUserLocation {
-//            return nil
-//        }
-////        let p = annotation is CustomAnnotation
-//
-//        let reuseId = "image"
-//        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-//        if pinView == nil {
-//            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-//            pinView?.canShowCallout = true
-//            for i in self.customAnnotation {
-//                if i.infoAnnotation.title == annotation.title {
-//                    if i.infoAnnotation.subtitle == annotation.subtitle {
-//                        if i.infoAnnotation.coordinate.latitude == annotation.coordinate.latitude {
-//                            if i.infoAnnotation.coordinate.longitude == annotation.coordinate.longitude {
-//                                pinView?.image = i.emotionPin.icon.image(sizeSquare: 30)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//
-//            let rightButton: AnyObject! = UIButton(type: UIButton.ButtonType.detailDisclosure)
-//            pinView?.rightCalloutAccessoryView = rightButton as? UIView
-//        }
-//        else {
-//            pinView?.annotation = annotation
-//        }
-//        count += 1
-//        return pinView
-//    }
-    //pós entrega
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-
-         let reuseIdentifier = "pin"
-        //let p = annotation is CustomPointAnnotation
-        if let customPointAnnotation = annotation as? CustomPointAnnotation {
-
-
-            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
-
-            if annotationView == nil {
-                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-            
-                let rightButton = UIButton(type: .infoLight)
-                rightButton.tag = customPointAnnotation.hash
-            
-                annotationView?.canShowCallout = true
-                annotationView?.rightCalloutAccessoryView = rightButton
-                
-                for i in self.customPointAnnotation {
-                    if i.pinId == customPointAnnotation.pinId{
-                        annotationView?.image = i.icon.image(sizeSquare: 20)
-                    }
-                }
-            } else {
-                annotationView?.annotation = annotation
-            }
-
-            print("Colocando \(annotationView) \(annotation.coordinate)")
-
-            return annotationView
-        }
-
-        print("Oops \(annotation)")
-        return  MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-
-        let capital = view.annotation as? CustomPointAnnotation
-        
-        for i in self.customPointAnnotation {
-//            if i.infoAnnotation.title == capital?.title {
-//                if i.infoAnnotation.subtitle == capital?.subtitle {
-//                    if i.infoAnnotation.coordinate.latitude == capital?.coordinate.latitude {
-//                        if i.infoAnnotation.coordinate.longitude == capital?.coordinate.longitude {
-//                            self.infoPin = i as! Pin
-//                        }
-//                    }
-//                }
-//            }
-            if i.pinId == capital?.pinId{
-                self.infoCustomPointAnnptation = i
-            }
-//            if i.infoAnnotation.title == capital?.title {
-//                self.infoPin = i as! Pin
-////                self.infoTitle = i.title as! String
-////                self.infoColor = i.subtitle as! String
-//            }
-        }
-//        for i in self.customPointAnnotation {
-//            if i.pinId == capital?.pinId{
-//                self.infoPin = i as! Pin
-//            }
-//        }
-        
-        if control == view.rightCalloutAccessoryView {
-            performSegue(withIdentifier: "description", sender: self)
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
             
             if segue.identifier == "description",
-                let child01 = segue.destination as? DetailPin {
-//                child01.titlePintext = self.infoTitle
-//                child01.observacoesPintext = self.infoColor
-                child01.detailPin = self.infoCustomPointAnnptation
+                let child01 = segue.destination as? DetailPinViewController {
+                child01.detailPin = emotionPin
             }
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         checkLocationServices()
-        
-        db.collection("pins").getDocuments() { (snapshot,error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            }else{
+        db.collection("pins").getDocuments { (snapshot, error) in
+            if error != nil{
+                print("error \(String(describing: error?.localizedDescription))")
+            }else {
                 for document in snapshot!.documents {
-                    let emotionPin = EmotionPin()
+                    let pin: EmotionPin = EmotionPin()
                     
-                    if let coords = document.get("location") {
-                        let point = coords as! GeoPoint
-                        emotionPin.location.latitude = point.latitude
-                        emotionPin.location.longitude = point.longitude
-                    }
-                    emotionPin.testimonial = document.get("testimonial") as! String
-                    emotionPin.color = document.get("color") as! String
-                    emotionPin.user = document.get("user") as! String
-                    emotionPin.icon = document.get("icon") as! String
-                    emotionPin.userName = document.get("userName") as! String
+                    guard
+                        let coords = document.get("location") as? GeoPoint,
+                        let user = document.get("user") as? String else {return}
                     
-                    print(emotionPin.icon)
+                    pin.location.latitude = coords.latitude
+                    pin.location.longitude = coords.longitude
+                    pin.user = user
+                    pin.testimonial = document.get("testimonial") as? String ?? ""
+                    pin.color = document.get("color") as? String ?? ""
+                    pin.icon = document.get("icon") as? String ?? ""
+                    pin.userName = document.get("userName") as? String  ?? ""
                     
                     if let stringEmotionTag = document.get("tags") as? [String] {
-                        emotionPin.tags = stringEmotionTag
-                        
+                        pin.tags = stringEmotionTag
                     }
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = emotionPin.location
-                    annotation.title = emotionPin.userName.capitalized
-                    annotation.subtitle = emotionPin.tags[0]
                     
-                    //                    self.pins.emotionPin.append(self.emotionPin)
-                    self.pins.append(Pin(emotionPin: emotionPin, infoAnnotation: annotation))
-                    //                    self.annotations.append(annotation)
-                    //                    self.emojis.append(emotionPin)
-                    
-                    //Pós entrega
-                    
-                    let customAnnotation = CustomPointAnnotation()
-                    customAnnotation.color = emotionPin.color
-                    customAnnotation.icon = emotionPin.icon
-                    customAnnotation.tags = emotionPin.tags
-                    customAnnotation.pinId = document.documentID
-                    customAnnotation.title = emotionPin.userName.capitalized
-                    customAnnotation.subtitle = emotionPin.tags[0]
-                    customAnnotation.coordinate = emotionPin.location
-                    
-                    self.customPointAnnotation.append(customAnnotation)
-                    
+                    let annotationToAdd = EmotionAnnotation()
+                    annotationToAdd.pin = pin
+                    annotationToAdd.coordinate = pin.location
+                    annotationToAdd.title = pin.userName.capitalized
+                    annotationToAdd.subtitle = pin.tags[0].capitalized
+                
                     OperationQueue.main.addOperation {
-                        print("Adicionando pin")
-                        self.mapView.addAnnotation(customAnnotation)
+                        self.mapView.addAnnotation(annotationToAdd)
                     }
-                   
                 }
             }
         }
@@ -362,13 +242,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 //            centerViewOnUserLocation()
             break
         case .denied:
-            let alertController = UIAlertController(title: "Location permission", message: "This app needs permission to access your location. Please, turn on", preferredStyle: .alert)
-            let allowAction = UIAlertAction(title: "Open settings", style: .default, handler: { (alert) in
+            let alertController = UIAlertController(title: "Permissão de localização", message: "Este aplicativo precisa de acesso à sua localização. Por favor, habilite", preferredStyle: .alert)
+            let allowAction = UIAlertAction(title: "Abrir configurações", style: .default, handler: { (alert) in
                 if let configsURL = NSURL(string: UIApplication.openSettingsURLString){
                     UIApplication.shared.open(configsURL as URL)
                 }
             })
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
             
             alertController.addAction(allowAction)
             alertController.addAction(cancelAction)
@@ -383,10 +263,55 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             // Show an alert letting them know what's up
             break
         case .authorizedAlways:
-            //
             break
         @unknown default:
             break
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
+        
+        if annotation is MKUserLocation{
+            return nil
+        }
+        
+        var reuseId: String!
+        var detailsButtonType: UIButton.ButtonType!
+        var pinImage: UIImage!
+        guard let emotionAnnotation = annotation as? EmotionAnnotation else { return nil }
+        
+        
+        if let pin = emotionAnnotation.pin{
+            reuseId = emotionPinIdentifier
+            detailsButtonType = UIButton.ButtonType.infoLight
+            pinImage = pin.icon.image(sizeSquare: 20)
+        } else {
+            reuseId = placePinIdentifier
+            detailsButtonType = UIButton.ButtonType.contactAdd
+            pinImage = "📍".image(sizeSquare: 20)
+        }
+        
+        let detailsButton = UIButton(type: detailsButtonType)
+        detailsButton.tag = emotionAnnotation.hash
+        
+        let annotationView: EmotiPinAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? EmotiPinAnnotationView ?? EmotiPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+
+        annotationView.canShowCallout = true
+        annotationView.rightCalloutAccessoryView = detailsButton
+        annotationView.image = pinImage
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            if let emotionAnnotation = view.annotation as? EmotionAnnotation{
+                guard let emotionPin = emotionAnnotation.pin  else {
+                    openAddFeeling( coordinate: emotionAnnotation.coordinate)
+                    return
+                }
+                self.emotionPin = emotionPin
+                performSegue(withIdentifier: "description", sender: self)
+            }
         }
     }
 }
