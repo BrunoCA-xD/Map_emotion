@@ -136,7 +136,7 @@
 		56322DB0230D7DA400C728A8 /* Sens */ = {
 			isa = PBXGroup;
 			children = (
-				56EFD4672329154E003D71D5 /* view */,
+				56EFD4672329154E003D71D5 /* View */,
 				56EFD466232914AB003D71D5 /* Storyboard */,
 				56EFD4652329134A003D71D5 /* Utility */,
 				56EFD4632329128E003D71D5 /* Model */,
@@ -186,13 +186,13 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		56EFD4672329154E003D71D5 /* view */ = {
+		56EFD4672329154E003D71D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				56EFD4692329155E003D71D5 /* Annotation */,
 				56EFD46823291557003D71D5 /* Cell */,
 			);
-			path = view;
+			path = View;
 			sourceTree = "<group>";
 		};
 		56EFD46823291557003D71D5 /* Cell */ = {
