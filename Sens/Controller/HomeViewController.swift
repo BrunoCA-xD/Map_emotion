@@ -23,13 +23,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var resultSearchController:UISearchController? = nil
     var selectedPlace:MKPlacemark? = nil
     var count = 0
-    var infoPin = Pin()
     var emotionPin = EmotionPin()
     var userLocation:CLLocationCoordinate2D! = nil
+    var user: User! = nil
+    var region: MKCoordinateRegion! = nil
     
     let placePinIdentifier:String = "placePin"
     let emotionPinIdentifier:String = "emotionPin"
-    var user: User! = nil
     let db = Firestore.firestore()
     let locationManager = CLLocationManager()
     
@@ -65,7 +65,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     func dropPinZoomIn(placemark: MKPlacemark) {
-        // cache the pin
         selectedPlace = placemark
         let annotation = EmotionAnnotation()
         annotation.pin = nil
@@ -161,7 +160,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         guard let location = locations.last else {return}
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         userLocation = center
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        
+        let region = self.region ?? MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         
         self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
@@ -180,10 +180,17 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             }
         
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        region = mapView.region
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkLocationServices()
+        if region != nil{
+            mapView.region = region
+        }
         db.collection("pins").getDocuments { (snapshot, error) in
             if error != nil{
                 print("error \(String(describing: error?.localizedDescription))")

@@ -17,7 +17,6 @@
 		54B47E32230E623900BE9050 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B47E31230E623900BE9050 /* Utilities.swift */; };
 		54BC9A6D2314C14600BD3C89 /* ViewController + HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */; };
 		54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */; };
-		54FA42052316CD4E00960ADA /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FA42042316CD4E00960ADA /* Pin.swift */; };
 		562BADAC2322A5F000E48842 /* EmotionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BADAB2322A5F000E48842 /* EmotionAnnotation.swift */; };
 		56322DB2230D7DA400C728A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB1230D7DA400C728A8 /* AppDelegate.swift */; };
 		56322DB4230D7DA400C728A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB3230D7DA400C728A8 /* ViewController.swift */; };
@@ -50,7 +49,6 @@
 		54B47E31230E623900BE9050 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		54BC9A6C2314C14600BD3C89 /* ViewController + HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + HideKeyboard.swift"; sourceTree = "<group>"; };
 		54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionTagCollectionViewCell.swift; sourceTree = "<group>"; };
-		54FA42042316CD4E00960ADA /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		562BADAB2322A5F000E48842 /* EmotionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionAnnotation.swift; sourceTree = "<group>"; };
 		56322DAE230D7DA400C728A8 /* Sens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56322DB1230D7DA400C728A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 				54ACFBFD230D9387009108BD /* GoogleService-Info.plist */,
 				56322DBD230D7DA600C728A8 /* Info.plist */,
 				56B1871F2312D51300765C5A /* EmotionTag.swift */,
-				54FA42042316CD4E00960ADA /* Pin.swift */,
 			);
 			path = Sens;
 			sourceTree = "<group>";
@@ -354,7 +351,6 @@
 				56801EDB2317F1F80097C0B2 /* DetailPinViewController.swift in Sources */,
 				56B1871C2310643800765C5A /* LocationSearchTableViewController.swift in Sources */,
 				562BADAC2322A5F000E48842 /* EmotionAnnotation.swift in Sources */,
-				54FA42052316CD4E00960ADA /* Pin.swift in Sources */,
 				54B47E32230E623900BE9050 /* Utilities.swift in Sources */,
 				56E6F5542317284B00B3ABB2 /* AddFeelingRootNavigationController.swift in Sources */,
 				56B915BC2313334400AE17B2 /* AddFeelingViewController.swift in Sources */,

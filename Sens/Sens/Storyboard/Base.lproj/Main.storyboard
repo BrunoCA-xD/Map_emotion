@@ -272,10 +272,10 @@
             </objects>
             <point key="canvasLocation" x="1342.0289855072465" y="-175.44642857142856"/>
         </scene>
-        <!--Detail Pin Controller-->
+        <!--Detail Pin View Controller-->
         <scene sceneID="Q05-ST-g1v">
             <objects>
-                <viewController id="zuH-JZ-wxb" customClass="DetailPinController" customModule="Sens" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zuH-JZ-wxb" customClass="DetailPinViewController" customModule="Sens" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JlR-7o-Kax">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
