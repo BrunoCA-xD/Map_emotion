@@ -62,7 +62,7 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
         }
         pin.user = user.id
         
-        var userName = anonSwitch.isOn ? "Anonimo" : user.name
+        let userName = anonSwitch.isOn ? "Anonimo" : user.name
         
         if tappedLocationRadioButton.isOn{
             pin.location = touchedLocation

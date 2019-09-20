@@ -100,7 +100,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.user = User()
+        
         addPinButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         
         self.mapView.delegate = self
@@ -111,18 +111,19 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
+        
+        let color = Utilities.hexStringToUIColor(hex: "FFFFFF")
+        tabBarController?.tabBar.unselectedItemTintColor = color.withAlphaComponent(0.5)
+       user = User()
+        
         if let currUser = Auth.auth().currentUser{
-            self.user.id = currUser.uid
+            user.id = currUser.uid
             if let email = currUser.email{
-                self.user.email = email
+                user.email = email
             }
         }
-        var color = Utilities.hexStringToUIColor(hex: "FFFFFF")
-        tabBarController?.tabBar.unselectedItemTintColor = color.withAlphaComponent(0.5)
         
-        
-        
-        db.collection("users").whereField("uid", isEqualTo: self.user.id).getDocuments(completion: {(snapshot,err) in
+        db.collection("users").whereField("uid", isEqualTo: user.id).getDocuments(completion: {(snapshot,err) in
             if let err = err {
                 print("\(err.localizedDescription)")
             }else{
@@ -135,8 +136,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 
             }
         })
-        
-        
         
         //SearchBar + search result's tableView
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTableViewController
@@ -191,7 +190,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         if region != nil{
             mapView.region = region
         }
-        db.collection("pins").getDocuments { (snapshot, error) in
+        db.collection("pins").whereField("user", isEqualTo: user.id).getDocuments { (snapshot, error) in
             if error != nil{
                 print("error \(String(describing: error?.localizedDescription))")
             }else {

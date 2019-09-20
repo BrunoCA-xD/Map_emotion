@@ -29,7 +29,7 @@ class User{
     
     var name: String{
         get{
-            return  _name!
+            return  _name ?? ""
         }
         set(newName){
             self._name = newName
@@ -37,16 +37,20 @@ class User{
     }
     var lastName: String{
         get{
-            return  _lastName!
+            return  _lastName ?? ""
         }
         set(newLastName){
             self._lastName = newLastName
         }
     }
     
+    var fullName: String {
+        return "\(name) \(lastName)"
+    }
+    
     var email:String{
         get{
-            return  _email!
+            return  _email ?? ""
         }
         set(newEmail){
             self._email = newEmail
@@ -55,7 +59,7 @@ class User{
     
     var birthDate:Date{
         get{
-            return  _birthDate!
+            return  _birthDate ?? Date()
         }
         set(newBirthDate){
             self._birthDate = newBirthDate
@@ -64,7 +68,7 @@ class User{
     
     var password:String{
         get{
-            return _password!
+            return _password ?? ""
         }
         set(newPassword){
             self._password = newPassword

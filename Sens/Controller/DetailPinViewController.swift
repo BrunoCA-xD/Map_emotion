@@ -79,6 +79,7 @@ class DetailPinViewController: UIViewController {
         colorHexPin.text = "HEX: " + (detailPin?.color)!
         observacoesPin.text = detailPin?.testimonial
         recoveryAddress(locationCoordinate: (detailPin?.location)!)
+        print("\(detailPin?.user)")
 
     }
     
