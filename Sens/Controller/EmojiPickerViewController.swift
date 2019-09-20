@@ -19,27 +19,30 @@ class EmojiPickerViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var emojiCollection: UICollectionView!
     let reuseIdentifier = "cell"
     var delegateBackButton: EmojiPickerViewBackButtonDelegate!
-    var emojiList: [[String]] = []
+    var emojis: [[String]] = []
+    var emojiList: [[String]] = [
+        ["😀","😄","😁","😆","😅"],["😂","🤣","☺️","😊","😇"],["🙂","🙃","😉","😌","😍"],["🥰","😘","😗","😙","😚"],["😋","😛","😝","😜","🤪"],["🤨","🧐","🤓","😎","🤩"],["🥳","😏","😒","😞","😔"],["😟","😕","🙁","☹️","😣"],["😖","😫","😩","🥺","😢"],["😭","😤","😠","🤬","🤯"],["😳","🥵","🥶","😱","😨"],["😰","😥","😓","🤗","🤔"],["🤭","🤫","🤥","😶","😐"],["😑","😬","🙄","😯","😦"],["😧","😮","😲","😴","🤤"],["😪","😵","🤐","🥴","🤢"],["🤮","🤧","😷","🤒","😡"],["🤕","🤑"]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchEmojis()
+//        fetchEmojis()
     }
     
-    func fetchEmojis(){
-        let emojiRanges = [
-            0x1F601...0x1F64F
-        ]
-        for range in emojiRanges {
-            var array: [String] = []
-            for i in range {
-                if let unicodeScalar = UnicodeScalar(i){
-                    array.append(String(describing: unicodeScalar))
-                }
-            }
-            emojiList.append(array)
-        }
-    }
+//    func fetchEmojis(){
+//        let emojiRanges = [
+//            0x1F601...0x1F64F
+//        ]
+//        for range in emojiRanges {
+//            var array: [String] = []
+//            for i in range {
+//                if let unicodeScalar = UnicodeScalar(i){
+//                    array.append(String(describing: unicodeScalar))
+//                }
+//            }
+//            emojiList.append(array)
+//        }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as? EmojiCollectionViewCell
@@ -48,7 +51,7 @@ class EmojiPickerViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EmojiCollectionViewCell
-        cell.imageView.image = emojiList[indexPath.section][indexPath.item].image(sizeSquare: 100)
+        cell.imageView.image = "\(emojiList[indexPath.section][indexPath.item])\u{fe0e}".image(sizeSquare: 100)
         cell.emojiCode = emojiList[indexPath.section][indexPath.item]
         return cell
     }
