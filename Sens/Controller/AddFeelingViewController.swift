@@ -70,7 +70,7 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate{
         for index in selectedItems{
             colorCollectionView.deselectItem(at: index, animated: true)
         }
-        pin.color = ""
+        pin.color = nil
     }
     
     @IBAction func saveEmotionPressed(_ sender: Any) {
@@ -98,15 +98,11 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        saveButtonArea.layer.shadowColor = UIColor.black.cgColor
-//        saveButtonArea.layer.shadowOpacity = 0.1
-//        saveButtonArea.layer.shadowOffset = .zero
-//        saveButtonArea.layer.shadowRadius = 20
-//         
-//        saveButtonArea.layer.shadowPath = UIBezierPath(rect: saveButtonArea.bounds).cgPath
-//        saveButtonArea.layer.shouldRasterize = true
-//        saveButtonArea.layer.rasterizationScale = UIScreen.main.scale
+        ViewUtilities.setupBorderShadow(inView: saveButtonArea)
 //        saveButtonArea.layer.borderColor = UIColor.red.cgColor
+//        saveButtonArea.layer.borderWidth = 2.0
+        saveButtonArea.layer.cornerRadius = 16.0
+        saveButtonArea.layer.backgroundColor = Utilities.hexStringToUIColor(hex: "EDEDED").cgColor
         
         addTagButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         addEmojiButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
@@ -122,9 +118,9 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate{
             userLocationRadioButton.isOn = true
             tappedLocationRadioButton.isOn = false
             tappedLocationlabel.superview?.isHidden = true
-            scrollHightConstraint.constant = 930
+            scrollHightConstraint.constant = 950
         }else {
-            scrollHightConstraint.constant = 1000
+            scrollHightConstraint.constant = 1020
             tappedLocationRadioButton.isOn = true
             tappedLocationlabel.superview?.isHidden = false
             Utilities.recoveryAddress(locationCoordinate: touchedLocation,completion:{(address,err) in
