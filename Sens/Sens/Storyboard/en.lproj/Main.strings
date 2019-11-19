@@ -1,0 +1,192 @@
+
+/* Class = "UILabel"; text = "Data de Nascimento"; ObjectID = "0uC-jw-Kgq"; */
+"0uC-jw-Kgq.text" = "Birth date";
+
+/* Class = "UITextField"; placeholder = "Quando você faz aniversário?"; ObjectID = "10g-2R-T0C"; */
+"10g-2R-T0C.placeholder" = "When is your birthday?";
+
+/* Class = "UILabel"; text = "Faça seu login"; ObjectID = "1Uc-qA-dq6"; */
+"1Uc-qA-dq6.text" = "Log in";
+
+/* Class = "UILabel"; text = "As emoções nos guiam: felicidade, tristeza, calma, ansiedade, etc. Digite ao menos uma emoção que sente no momento."; ObjectID = "5hB-jm-6RE"; */
+"5hB-jm-6RE.text" = "Emotions guide us: happiness, sadness, calmness, anxiety, etc. Enter at least one emotion you currently feel.";
+
+/* Class = "UILabel"; text = "Cor do meu sentimento"; ObjectID = "5w3-nm-CTq"; */
+"5w3-nm-CTq.text" = "Color of my feeling";
+
+/* Class = "UILabel"; text = "Como você se sente?"; ObjectID = "9kQ-rK-BRi"; */
+"9kQ-rK-BRi.text" = "How do you feel?";
+
+/* Class = "UIButton"; normalTitle = "Entrar"; ObjectID = "B3b-pq-N9P"; */
+"B3b-pq-N9P.normalTitle" = "Sign In";
+
+/* Class = "UIButton"; normalTitle = "Quero apenas explorar >"; ObjectID = "EIz-qY-X5L"; */
+"EIz-qY-X5L.normalTitle" = "I just want to explore>";
+
+/* Class = "UILabel"; text = "Localização"; ObjectID = "EhF-Uk-1K8"; */
+"EhF-Uk-1K8.text" = "Localization";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "Eyc-ij-8rl"; */
+"Eyc-ij-8rl.normalTitle" = "X";
+
+/* Class = "UINavigationItem"; title = "Adicionar Emoção"; ObjectID = "Fnq-mC-XiT"; */
+"Fnq-mC-XiT.title" = "Add emotion";
+
+/* Class = "UIButton"; normalTitle = "Cadastrar com o email"; ObjectID = "GpN-M6-rt9"; */
+"GpN-M6-rt9.normalTitle" = "Register using your email";
+
+/* Class = "UILabel"; text = "Publicar como anônimo"; ObjectID = "Iq2-gJ-OGH"; */
+"Iq2-gJ-OGH.text" = "Publish as anonnymous";
+
+/* Class = "UILabel"; text = "Uma palavra nem sempre define nossas emoções. Você pode detalhar a sua experiência."; ObjectID = "JQY-Hx-ECZ"; */
+"JQY-Hx-ECZ.text" = "A word does not always define our emotions. You can detail your experience.";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "Jbu-TS-mRL"; */
+"Jbu-TS-mRL.placeholder" = "E-mail";
+
+/* Class = "UITextField"; text = "b@gmail.com"; ObjectID = "Jbu-TS-mRL"; */
+"Jbu-TS-mRL.text" = "b@gmail.com";
+
+/* Class = "UILabel"; text = "rmtmakoto@gmail.com"; ObjectID = "Jn1-ES-RpA"; */
+"Jn1-ES-RpA.text" = "rmtmakoto@gmail.com";
+
+/* Class = "UIButton"; normalTitle = "Cadastrar"; ObjectID = "Kom-sf-Mz3"; */
+"Kom-sf-Mz3.normalTitle" = "Register";
+
+/* Class = "UILabel"; text = "Como se sente aqui?"; ObjectID = "Kux-gM-WKR"; */
+"Kux-gM-WKR.text" = "What do you feel here?";
+
+/* Class = "UITextField"; placeholder = "Sobrenome"; ObjectID = "Mvw-CK-qDb"; */
+"Mvw-CK-qDb.placeholder" = "Surname";
+
+/* Class = "UIButton"; normalTitle = "ADICIONAR"; ObjectID = "Mxp-Ar-y4x"; */
+"Mxp-Ar-y4x.normalTitle" = "ADD";
+
+/* Class = "UILabel"; text = "18 emoções"; ObjectID = "N6d-xH-G7E"; */
+"N6d-xH-G7E.text" = "18 emotions";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "O16-Xr-Sw8"; */
+"O16-Xr-Sw8.placeholder" = "E-mail";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "O86-oT-s2r"; */
+"O86-oT-s2r.text" = "Subtitle";
+
+/* Class = "UITextField"; placeholder = "Senha"; ObjectID = "Psx-1l-6iO"; */
+"Psx-1l-6iO.placeholder" = "Password";
+
+/* Class = "UITextField"; text = "@1234567Aa"; ObjectID = "Psx-1l-6iO"; */
+"Psx-1l-6iO.text" = "@1234567Aa";
+
+/* Class = "UILabel"; text = "E-mail"; ObjectID = "QEi-Hv-BlA"; */
+"QEi-Hv-BlA.text" = "E-mail";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Rk4-Lz-api"; */
+"Rk4-Lz-api.text" = "Label";
+
+/* Class = "UITextView"; text = "Relate sua experiência"; ObjectID = "SL8-KZ-C85"; */
+"SL8-KZ-C85.text" = "Relate your expirience";
+
+/* Class = "UILabel"; text = "Local onde me encontro"; ObjectID = "SXe-bC-vL9"; */
+"SXe-bC-vL9.text" = "Place where I'm";
+
+/* Class = "UILabel"; text = "Associe suas emoções ao local onde se encontra. Para marcar outra região, pressione o local desejado."; ObjectID = "UEq-7E-kUo"; */
+"UEq-7E-kUo.text" = "Associate your emotions with the place where you are. To mark another region, touch and hold on the desired place.";
+
+/* Class = "UILabel"; text = "Bruno Cardoso Ambrosio"; ObjectID = "Uf8-Qy-sFn"; */
+"Uf8-Qy-sFn.text" = "Bruno Cardoso Ambrosio";
+
+/* Class = "UITabBarItem"; title = "Perfil"; ObjectID = "V60-4x-Z2u"; */
+"V60-4x-Z2u.title" = "Profile";
+
+/* Class = "UILabel"; text = "31/08/1994"; ObjectID = "Vks-ge-avR"; */
+"Vks-ge-avR.text" = "31/08/1994";
+
+/* Class = "UITextField"; placeholder = "Adicione uma emoção"; ObjectID = "W64-dN-c67"; */
+"W64-dN-c67.placeholder" = "Add an emotion";
+
+/* Class = "UIButton"; normalTitle = "Selecionar emoji"; ObjectID = "WOy-9V-23V"; */
+"WOy-9V-23V.normalTitle" = "Pick an emoji";
+
+/* Class = "UILabel"; text = "Minha experiência"; ObjectID = "Xxx-E6-rnd"; */
+"Xxx-E6-rnd.text" = "My experience";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "YtU-th-f5i"; */
+"YtU-th-f5i.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Add"; ObjectID = "aPf-0m-m8F"; */
+"aPf-0m-m8F.title" = "Add";
+
+/* Class = "UILabel"; text = "Endereço aqui Endereço aqui Endereço aqui Endereço aqui"; ObjectID = "cDx-aD-gAk"; */
+"cDx-aD-gAk.text" = "Endereço aqui Endereço aqui Endereço aqui Endereço aqui";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dVz-Wl-wSz"; */
+"dVz-Wl-wSz.text" = "Label";
+
+/* Class = "UILabel"; text = "Caso opte, você poderá escolher uma cor para representar o que sente, que tal?"; ObjectID = "dZO-GH-Ea9"; */
+"dZO-GH-Ea9.text" = "If you'd want, you could pick a color to represent what do you feel, what do you think?";
+
+/* Class = "UIButton"; normalTitle = "Voltar"; ObjectID = "gGS-rM-hjc"; */
+"gGS-rM-hjc.normalTitle" = "Back";
+
+/* Class = "UITextField"; placeholder = "Nome"; ObjectID = "gTn-yi-GBM"; */
+"gTn-yi-GBM.placeholder" = "Name";
+
+/* Class = "UILabel"; text = "Fale mais sobre sua experiência"; ObjectID = "hp9-6C-76v"; */
+"hp9-6C-76v.text" = "Tell us more about your experience";
+
+/* Class = "UIButton"; normalTitle = "Salvar emoção"; ObjectID = "iEE-b0-xlo"; */
+"iEE-b0-xlo.normalTitle" = "Save emotion";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "iPs-qb-k56"; */
+"iPs-qb-k56.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Estou me sentindo..."; ObjectID = "jKj-T6-Zty"; */
+"jKj-T6-Zty.normalTitle" = "I`m felling...";
+
+/* Class = "UILabel"; text = "Adicione uma ou mais emoções e escolhe um emoji que a melhor represente. "; ObjectID = "jSr-Gt-6Sv"; */
+"jSr-Gt-6Sv.text" = "Add one or more emotions and pick an emoji that best represents it.";
+
+/* Class = "UILabel"; text = "Para uma melhor experiência, precisaremos dos seus dados."; ObjectID = "jlQ-oQ-Hj5"; */
+"jlQ-oQ-Hj5.text" = "To a better experience, we'll need your info.";
+
+/* Class = "UILabel"; text = "Qual cor se relaciona à sua emoção?"; ObjectID = "l6F-VB-ljA"; */
+"l6F-VB-ljA.text" = "Which color better relate with your emotion?";
+
+/* Class = "UILabel"; text = "18 marcações"; ObjectID = "mEv-aj-A5G"; */
+"mEv-aj-A5G.text" = "18 marks";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "mnl-JM-h7s"; */
+"mnl-JM-h7s.text" = "Title";
+
+/* Class = "UIBarButtonItem"; title = "Cancelar"; ObjectID = "niY-kg-eEG"; */
+"niY-kg-eEG.title" = "Cancel";
+
+/* Class = "UILabel"; text = "Qual emoji te representa?"; ObjectID = "onZ-Zy-1JO"; */
+"onZ-Zy-1JO.text" = "Which emoji represents you?";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ovL-dS-sdE"; */
+"ovL-dS-sdE.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Senha"; ObjectID = "sRy-d3-3Nj"; */
+"sRy-d3-3Nj.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Não mostrar mais esta mensagem"; ObjectID = "tVM-Kb-meC"; */
+"tVM-Kb-meC.text" = "Don't show this message again";
+
+/* Class = "UITabBarItem"; title = "Mapa"; ObjectID = "uGR-ix-0X6"; */
+"uGR-ix-0X6.title" = "Map";
+
+/* Class = "UILabel"; text = "O que você está sentindo ?"; ObjectID = "wc2-rk-pDl"; */
+"wc2-rk-pDl.text" = "What are you feeling?";
+
+/* Class = "UIButton"; normalTitle = "Entrar"; ObjectID = "wgr-9n-DQC"; */
+"wgr-9n-DQC.normalTitle" = "Sign In";
+
+/* Class = "UILabel"; text = "Local Selecionado"; ObjectID = "ym0-Fv-8V6"; */
+"ym0-Fv-8V6.text" = "Selected place";
+
+/* Class = "UILabel"; text = "18 cores"; ObjectID = "yn2-lO-T1x"; */
+"yn2-lO-T1x.text" = "18 colors";
+
+/* Class = "UILabel"; text = "Endereço aqui Endereço aqui Endereço aqui Endereço aqui"; ObjectID = "zdO-uv-xtS"; */
+"zdO-uv-xtS.text" = "Endereço aqui Endereço aqui Endereço aqui Endereço aqui";

@@ -7,24 +7,28 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var entrarButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         entrarButton.layer.borderColor = Utilities.hexStringToUIColor(hex: "FFFFFF").cgColor
+        Auth.auth().addStateDidChangeListener { (autentication, user) in
+            if user != nil{
+              
+            }
+        }
         // Do any additional setup after loading the view.
     }
-
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         
     }
-
+    
 }
 

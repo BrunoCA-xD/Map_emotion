@@ -11,6 +11,7 @@ import MapKit
 
 class DetailPinViewController: UIViewController {
 
+    //MARK:IBOutlet
     @IBOutlet weak var tagsCollectionView: UICollectionView!
     @IBOutlet weak var titlePin: UILabel!
     @IBOutlet weak var adressPin: UILabel!
@@ -18,57 +19,19 @@ class DetailPinViewController: UIViewController {
     @IBOutlet weak var colorPin: UIView!
     @IBOutlet weak var colorHexPin: UILabel!
     @IBOutlet weak var observacoesPin: UILabel!
-    
-    
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var emojiView: UIView!
     @IBOutlet weak var experienceView: UIView!
     
-    
-    //    var titlePintext: String?
-//    var observacoesPintext: String?
-//    var corPintext: String?
+    //MARK: Variable
     var detailPin: EmotionPin?
     let geoCoder: CLGeocoder = CLGeocoder()
     
-    
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title = detailPin?.emotionPin.user
         
-        // color View Shadow
-        colorView.layer.shadowColor = UIColor.black.cgColor
-        colorView.layer.shadowOpacity = 0.1
-        colorView.layer.shadowOffset = .zero
-        colorView.layer.shadowRadius = 20
-        
-        colorView.layer.shadowPath = UIBezierPath(rect: colorView.bounds).cgPath
-        colorView.layer.shouldRasterize = true
-        colorView.layer.rasterizationScale = UIScreen.main.scale
-        
-        // emoji View Shadow
-        emojiView.layer.shadowColor = UIColor.black.cgColor
-        emojiView.layer.shadowOpacity = 0.1
-        emojiView.layer.shadowOffset = .zero
-        emojiView.layer.shadowRadius = 20
-        
-        emojiView.layer.shadowPath = UIBezierPath(rect: emojiView.bounds).cgPath
-        emojiView.layer.shouldRasterize = true
-        emojiView.layer.rasterizationScale = UIScreen.main.scale
-        
-        
-        // color View Shadow
-        emojiView.layer.shadowColor = UIColor.black.cgColor
-        emojiView.layer.shadowOpacity = 0.1
-        emojiView.layer.shadowOffset = .zero
-        emojiView.layer.shadowRadius = 20
-        
-        emojiView.layer.shadowPath = UIBezierPath(rect: emojiView.bounds).cgPath
-        emojiView.layer.shouldRasterize = true
-        emojiView.layer.rasterizationScale = UIScreen.main.scale
-        
-        
-        
+        ViewUtilities.setupBorderShadow(inViews: [colorView,emojiView])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,73 +39,15 @@ class DetailPinViewController: UIViewController {
         titlePin.text = (detailPin?.userName.capitalized)!
         emojiPin.image = detailPin?.icon.image(sizeSquare: 50)
         colorPin.backgroundColor = Utilities.hexStringToUIColor(hex: (detailPin?.color) ?? "ffffff")
-        colorHexPin.text = "HEX: " + (detailPin?.color)!
+        colorHexPin.text = detailPin?.color != nil ? "HEX: " + (detailPin?.color)! : NSLocalizedString("emotionColorNotSelected", comment: "")
         observacoesPin.text = detailPin?.testimonial
-        recoveryAddress(locationCoordinate: (detailPin?.location)!)
-        print("\(detailPin?.user)")
-
-    }
-    
-    func recoveryAddress(locationCoordinate:CLLocationCoordinate2D) {
-        let location:CLLocation = CLLocation(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude)
-        var address = ""
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(locationDetais, error) in
-            if error == nil{
-                if let locationData = locationDetais?.first {
-                    
-                    var thoroughfare = ""// rua
-                    if let thoroughfareValue = locationData.thoroughfare{
-                        thoroughfare = thoroughfareValue
-                    }
-                    
-                    var subThoroughfare = "" //numero
-                    if let subThoroughfareValue = locationData.subThoroughfare{
-                        subThoroughfare = subThoroughfareValue
-                    }
-                    
-                    var locality = "" //cidade
-                    if let localityValue = locationData.locality{
-                        locality = localityValue
-                    }
-                    
-                    var subLocality = ""// bairro
-                    if let subLocalityValue = locationData.subLocality{
-                        subLocality = subLocalityValue
-                    }
-                    
-                    var country = ""
-                    if let countryValue = locationData.country{
-                        country = countryValue
-                    }
-                    
-                    var administrativeArea = "" //(UF)
-                    if let administrativeAreaValue = locationData.administrativeArea{
-                        administrativeArea = administrativeAreaValue
-                    }
-                    
-                    address = thoroughfare + ", "
-                        + subThoroughfare + " - "
-                        + subLocality + " - "
-                        + locality + " - "
-                        + administrativeArea + " - "
-                        + country
-                    
+        Utilities.recoveryAddress(locationCoordinate: (detailPin?.location)!, completion:
+            {(address,err) in
+                if(err == nil){
                     self.adressPin.text = address
-                }else{
-                    print("deu erro nessa porra")
                 }
-            }
         })
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

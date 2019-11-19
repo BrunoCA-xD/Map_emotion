@@ -11,87 +11,93 @@ import CoreLocation
 import Firebase
 import MapKit
 
-class EmotionPin {
-    private var _location: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    private var _id: Int = 0
-    private var _tags: [String] = []
-    private var _icon: String = ""
-    private var _color: String = ""
-    private var _testimonial: String = ""
-    private var _user: String = ""
-    private var _userName: String = ""
+class EmotionPin{
     
-    var location: CLLocationCoordinate2D {
-        get {
-            return _location
-        }
-        set {
-            _location = newValue
-        }
+    var location: CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var id: String?
+    var tags: [String] = []
+    var icon: String
+    var color: String?
+    var testimonial: String?
+    var user: String
+    var userName: String
+    
+    init(){
+        self.icon = ""
+        self.user = ""
+        self.userName = ""
     }
     
-    var id: Int{
-        get{
-            return _id
+    init?(snapshot: NSDictionary){
+        guard
+            let id: String = Self.snapshotReader(snapshot,.id),
+            let icon: String = Self.snapshotReader(snapshot,.icon),
+            let tags: [String] = Self.snapshotReader(snapshot,.tags),
+            let location: GeoPoint = Self.snapshotReader(snapshot,.location) ,
+            let userID: String = Self.snapshotReader(snapshot,.userID),
+            let userName: String = Self.snapshotReader(snapshot,.userName)
+            else{ return nil }
+        
+        self.id = id
+        self.icon = icon
+        self.tags = tags
+        self.location = CLLocationCoordinate2D.fromGeoPoint(value: location)
+        self.user = userID
+        self.userName = userName
+        
+        if let color: String = Self.snapshotReader(snapshot,.color){
+            self.color = color
         }
-        set{
-            _id = newValue
+        
+        if let testimonial: String = Self.snapshotReader(snapshot,.testimonial){
+            self.testimonial = testimonial
         }
+    }
+}
+extension EmotionPin: DictionaryInterpreter {
+    
+    static func interpret(data: NSDictionary) -> Self? {
+        return EmotionPin(snapshot: data) as? Self
+    }
+}
+extension EmotionPin: DatabaseRepresentation{
+    typealias fieldsEnum = EmotionPinFields
+    
+    static func snapshotReader<T>(_ snapshot: NSDictionary, _ field: EmotionPinFields) -> T? {
+        return snapshot[field.rawValue] as? T
     }
     
-    var tags: [String] {
-        get {
-            return _tags
+    var representation: [String : Any] {
+        var rep: [EmotionPinFields: Any] = [
+            .id: id!,
+            .userID: user,
+            .userName: userName,
+            .icon: icon,
+            .tags: tags,
+            .location: location.toGeoPoint()
+        ]
+        
+        if let testimonial = self.testimonial {
+            rep[.testimonial] = testimonial
         }
-        set {
-            _tags = newValue
-            
+        if let color = self.color {
+            rep[.color] = color
         }
-    }
-    var icon: String {
-        get {
-            return _icon
-        }
-        set {
-            _icon = newValue
-        }
-    }
-    var color: String {
-        get {
-            return _color
-        }
-        set {
-            _color = newValue
-        }
+        return Dictionary(uniqueKeysWithValues: rep.map({ (key,value) in
+            (key.rawValue,value)
+        }))
     }
     
-    var testimonial: String {
-        get {
-            return _testimonial
-        }
-        set {
-            _testimonial = newValue
-        }
-    }
     
-    var user: String {
-        get {
-            return _user
-        }
-        set {
-            self._user = newValue
-            
-        }
-    }
-    
-    var userName: String {
-        get {
-            return _userName
-        }
-        set {
-            self._userName = newValue
-            
-        }
-    }
-    
+}
+
+enum EmotionPinFields: String, Hashable {
+    case id = "id"
+    case icon = "icon"
+    case color = "color"
+    case tags = "tags"
+    case userName = "userName"
+    case location = "location"
+    case testimonial = "testimonial"
+    case userID = "userID"
 }

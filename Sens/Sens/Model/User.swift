@@ -7,85 +7,106 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class User{
     
+    var id: String?
+    var name: String
+    var lastName: String?
+    var email: String
+    var birthDate: Date?
+    var profilePic: String?
     
-    private var _id: String?
-    private var _name: String?
-    private var _lastName: String?
-    private var _email: String?
-    private var _birthDate: Date?
-    private var _password: String?
-    
-    var id: String{
-        get{
-            return  _id!
-        }
-        set(newId){
-            self._id = newId
-        }
-    }
-    
-    var name: String{
-        get{
-            return  _name ?? ""
-        }
-        set(newName){
-            self._name = newName
-        }
-    }
-    var lastName: String{
-        get{
-            return  _lastName ?? ""
-        }
-        set(newLastName){
-            self._lastName = newLastName
-        }
-    }
     
     var fullName: String {
-        return "\(name) \(lastName)"
-    }
-    
-    var email:String{
-        get{
-            return  _email ?? ""
-        }
-        set(newEmail){
-            self._email = newEmail
-        }
-    }
-    
-    var birthDate:Date{
-        get{
-            return  _birthDate ?? Date()
-        }
-        set(newBirthDate){
-            self._birthDate = newBirthDate
-        }
-    }
-    
-    var password:String{
-        get{
-            return _password ?? ""
-        }
-        set(newPassword){
-            self._password = newPassword
+        if let lastName = lastName{
+            return "\(name) \(lastName)"
+        }else {
+            return "\(name)"
         }
     }
     
     init(){
-        
+        self.name = ""
+        self.email = ""
     }
     
-    init?(user: User){
+    
+    //Copy initializer
+    convenience init(user: User){
+        self.init()
         self.id = user.id
         self.name = user.name
         self.lastName = user.lastName
         self.birthDate = user.birthDate
         self.email = user.email
-        self.password = user.password
+        self.profilePic = user.profilePic
+    }
+    
+    init?(snapshot: NSDictionary){
+        guard
+            let id: String = Self.snapshotReader(snapshot, .id),
+            let name: String = Self.snapshotReader(snapshot, .name),
+            let lastName: String = Self.snapshotReader(snapshot, .lastname),
+            let email: String = Self.snapshotReader(snapshot, .email)
+            else{ return nil}
+        
+        self.id = id
+        self.name = name
+        self.lastName = lastName
+        self.email = email
+        
+        if let timestamp:Timestamp = Self.snapshotReader(snapshot, .birthDate){
+            self.birthDate = timestamp.dateValue()
+        }
+        
+        self.profilePic = Self.snapshotReader(snapshot, .profilePic)
         
     }
+}
+
+extension User: DictionaryInterpreter{
+    static func interpret(data: NSDictionary) -> Self? {
+        return User(snapshot: data) as? Self
+    }
+}
+
+extension User: DatabaseRepresentation{
+    typealias fieldsEnum = UserFields
+    
+    static func snapshotReader<T>(_ snapshot: NSDictionary,_ field: UserFields) -> T? {
+        return snapshot[field.rawValue] as? T
+    }
+    
+    var representation: [String : Any] {
+        var rep: [UserFields : Any] = [
+            .id: id!,
+            .name: name,
+            .email: email
+        ]
+        
+        if let lastName = lastName{
+            rep[.lastname] = lastName
+        }
+        if let birthDate = birthDate {
+            rep[.birthDate] = birthDate
+        }
+        if let profilePic = profilePic {
+            rep[.profilePic] = profilePic
+        }
+        
+        return Dictionary(uniqueKeysWithValues: rep.map{ (key,value) in
+            (key.rawValue,value)
+        })
+    }
+}
+
+enum UserFields: String,Hashable {
+    case id = "uid"
+    case name = "firstname"
+    case lastname = "lastname"
+    case email = "email"
+    case birthDate = "birthDate"
+    case profilePic = "profilePic"
 }

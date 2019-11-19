@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1006070650504-tde260o645u3s5lfj1dhuou0qunsjc53.apps.googleusercontent.com</string>
+	<string>721780952833-livbs5mba18umuvcmufh4bnuq638nh2b.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1006070650504-tde260o645u3s5lfj1dhuou0qunsjc53</string>
+	<string>com.googleusercontent.apps.721780952833-livbs5mba18umuvcmufh4bnuq638nh2b</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBkYSXAu7ISOSqioYbZepMgudhXkh5JYpA</string>
+	<string>AIzaSyBf1JGTFNUBVYuD77IKjr9H1ul1iUwQOBc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1006070650504</string>
+	<string>721780952833</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>ca.bruno.Sens</string>
 	<key>PROJECT_ID</key>
-	<string>sens-4cf40</string>
+	<string>sens-c5be7</string>
 	<key>STORAGE_BUCKET</key>
-	<string>sens-4cf40.appspot.com</string>
+	<string>sens-c5be7.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1006070650504:ios:7f9b4ba7bf2a6374</string>
+	<string>1:721780952833:ios:aefa2e83fdeb11e4f65500</string>
 	<key>DATABASE_URL</key>
-	<string>https://sens-4cf40.firebaseio.com</string>
+	<string>https://sens-c5be7.firebaseio.com</string>
 </dict>
 </plist>

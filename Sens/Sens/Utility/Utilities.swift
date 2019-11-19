@@ -18,7 +18,7 @@ class Utilities {
         return passwordTest.evaluate(with: password)
     }
     
-    static  func hexStringToUIColor (hex:String) -> UIColor {
+    static func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
@@ -38,5 +38,58 @@ class Utilities {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+    
+    static func recoveryAddress(locationCoordinate:CLLocationCoordinate2D, completion: @escaping (String?, Error?) -> Void) {
+        let location:CLLocation = CLLocation(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude)
+        var address = ""
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(locationDetais, error) in
+            if error == nil{
+                if let locationData = locationDetais?.first {
+                    
+                    var thoroughfare = ""// rua
+                    if let thoroughfareValue = locationData.thoroughfare{
+                        thoroughfare = thoroughfareValue
+                    }
+                    
+                    var subThoroughfare = "" //numero
+                    if let subThoroughfareValue = locationData.subThoroughfare{
+                        subThoroughfare = subThoroughfareValue
+                    }
+                    
+                    var locality = "" //cidade
+                    if let localityValue = locationData.locality{
+                        locality = localityValue
+                    }
+                    
+                    var subLocality = ""// bairro
+                    if let subLocalityValue = locationData.subLocality{
+                        subLocality = subLocalityValue
+                    }
+                    
+                    var country = ""
+                    if let countryValue = locationData.country{
+                        country = countryValue
+                    }
+                    
+                    var administrativeArea = "" //(UF)
+                    if let administrativeAreaValue = locationData.administrativeArea{
+                        administrativeArea = administrativeAreaValue
+                    }
+                    
+                    address = thoroughfare + ", "
+                        + subThoroughfare + " - "
+                        + subLocality + " - "
+                        + locality + " - "
+                        + administrativeArea + " - "
+                        + country
+                    
+                    completion(address,nil)
+                }else{
+                    print("deu erro nessa porra")
+                    completion(nil,error)
+                }
+            }
+        })
     }
 }

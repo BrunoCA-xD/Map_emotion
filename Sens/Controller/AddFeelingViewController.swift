@@ -11,13 +11,27 @@ import FirebaseAuth
 import FirebaseFirestore
 import CoreLocation
 
-class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPickerViewBackButtonDelegate, RemoveDelegate{
-    
+class AddFeelingViewController: UIViewController, UITextFieldDelegate{
+    //MARK: Variables
     var tagText = false
+    var cardViewController: EmojiPickerViewController!
+    var visualEffectView: UIVisualEffectView!
+    var cardHeight: CGFloat = 0
+    let cardHandleAreaHeight: CGFloat = 60
+    var pin: EmotionPin = EmotionPin()
+    var cellTagIds: [String] = []
+    var touchedLocation: CLLocationCoordinate2D! = nil
+    var userLocation: CLLocationCoordinate2D! = nil
+    var user: User! = nil
+    let colors = ["#000000","#FFFFFF","#FF0000","0085FF","FFE600","21E510","FF8A00","DB00FF","AE6027"]
+    let emotionPinDAO = EmotionPinDAO()
     
+    var selectCompletion: (() -> Void)? = nil
+    
+    //MARK: IBOutlet
     @IBOutlet weak var addTagButton: UIButton!
     @IBOutlet weak var addEmojiButton: UIButton!
-    
+    @IBOutlet weak var saveButtonArea: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var anonSwitch: UISwitch!
     @IBOutlet weak var scrollHightConstraint: NSLayoutConstraint!
@@ -31,6 +45,8 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
     @IBOutlet weak var tagCollectionView: UICollectionView!
     @IBOutlet weak var emojiSelectedImageView: UIImageView!
     @IBOutlet weak var testimonialTextView: UITextView!
+    
+    //MARK: IBAction
     @IBAction func addEmotionTagPressed(_ sender: Any) {
         if let tagText = tagTextField.text{
             if tagText.trimmingCharacters(in: .whitespacesAndNewlines) != ""{
@@ -40,9 +56,11 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
             }
         }
     }
+    
     @IBAction func cancelPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func selectEmojiPressed(_ sender: Any) {
         openCard()
     }
@@ -54,15 +72,16 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
         }
         pin.color = ""
     }
+    
     @IBAction func saveEmotionPressed(_ sender: Any) {
         //color, icon and tags are managed by events
         
         if let testimonialText = testimonialTextView.text {
             pin.testimonial = testimonialText
         }
-        pin.user = user.id
+        pin.user = user.id!
         
-        let userName = anonSwitch.isOn ? "Anonimo" : user.name
+        pin.userName = anonSwitch.isOn ? "Anonimo" : user.name
         
         if tappedLocationRadioButton.isOn{
             pin.location = touchedLocation
@@ -70,31 +89,25 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
             pin.location = userLocation
         }
         
-        let db = Firestore.firestore()
+        emotionPinDAO.save(emotionPin: pin)
         
-        db.collection("pins").document().setData(
-            ["user":pin.user, "icon":pin.icon, "color":pin.color,"tags":pin.tags, "testimonial":pin.testimonial
-                ,"userName": userName
-                ,"location": GeoPoint.init(latitude: pin.location.latitude, longitude: pin.location.longitude)],merge: false)
-        
-        self.dismiss(animated: true, completion: nil)
-        
+        self.dismiss(animated: true, completion: selectCompletion)
     }
-    var cardViewController: EmojiPickerViewController!
-    var visualEffectView: UIVisualEffectView!
-    var cardHeight: CGFloat = 0
-    let cardHandleAreaHeight: CGFloat = 60
-    var pin: EmotionPin = EmotionPin() 
-    var cellTagIds: [String] = []
-    var touchedLocation: CLLocationCoordinate2D! = nil
-    var userLocation: CLLocationCoordinate2D! = nil
-    var user: User! = nil
-    let colors = ["#000000","#FFFFFF","#FF0000","0085FF","FFE600","21E510","FF8A00","DB00FF","AE6027"]
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+//        saveButtonArea.layer.shadowColor = UIColor.black.cgColor
+//        saveButtonArea.layer.shadowOpacity = 0.1
+//        saveButtonArea.layer.shadowOffset = .zero
+//        saveButtonArea.layer.shadowRadius = 20
+//         
+//        saveButtonArea.layer.shadowPath = UIBezierPath(rect: saveButtonArea.bounds).cgPath
+//        saveButtonArea.layer.shouldRasterize = true
+//        saveButtonArea.layer.rasterizationScale = UIScreen.main.scale
+//        saveButtonArea.layer.borderColor = UIColor.red.cgColor
+        
         addTagButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         addEmojiButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         
@@ -114,9 +127,17 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
             scrollHightConstraint.constant = 1000
             tappedLocationRadioButton.isOn = true
             tappedLocationlabel.superview?.isHidden = false
-            recoveryAddress(locationCoordinate: touchedLocation,type: 1)
+            Utilities.recoveryAddress(locationCoordinate: touchedLocation,completion:{(address,err) in
+                if (err == nil){
+                    self.tappedLocationlabel.text = address
+                }
+            })
         }
-        recoveryAddress(locationCoordinate: userLocation,type: 0)
+        Utilities.recoveryAddress(locationCoordinate: userLocation,completion:{(address,err) in
+            if (err == nil){
+                self.userLocationLabel.text = address
+            }
+        })
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -137,6 +158,7 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
         }
     }
     
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.tagText = true
     }
@@ -144,28 +166,6 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.tagText = false
     }
-
-    
-    func removeButtonPressed(_ index: Int) {
-        pin.tags.remove(at: index)
-        tagCollectionView.reloadData()
-    }
-    func backButton(_ emojiCode: String?) {
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.cardViewController.view.frame.origin.y = self.view.frame.height
-            self.visualEffectView.effect = nil
-        }, completion: {(bool) in
-            self.cardViewController.removeFromParent()
-            self.cardViewController.view.removeFromSuperview()
-            self.visualEffectView.removeFromSuperview()
-        })
-        if let emojiCode = emojiCode{
-            emojiSelectedImageView.image = emojiCode.image(sizeSquare: 100)
-            pin.icon = emojiCode // seta o icon do pin
-        }
-    }
-    
     
     func openCard() {
         
@@ -193,87 +193,41 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate, EmojiPick
 //        cardViewController.view.layer.cornerRadius = 30
     }
     
-    func recoveryAddress(locationCoordinate:CLLocationCoordinate2D, type:Int) {
-        let location:CLLocation = CLLocation(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude)
-        var address = ""
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(locationDetais, error) in
-            if error == nil{
-                if let locationData = locationDetais?.first {
-                    
-                    var thoroughfare = ""// rua
-                    if let thoroughfareValue = locationData.thoroughfare{
-                        thoroughfare = thoroughfareValue
-                    }
-                    
-                    var subThoroughfare = "" //numero
-                    if let subThoroughfareValue = locationData.subThoroughfare{
-                        subThoroughfare = subThoroughfareValue
-                    }
-                    
-                    var locality = "" //cidade
-                    if let localityValue = locationData.locality{
-                        locality = localityValue
-                    }
-                    
-                    var subLocality = ""// bairro
-                    if let subLocalityValue = locationData.subLocality{
-                        subLocality = subLocalityValue
-                    }
-                    
-                    var postalCode = "" // cep
-                    if let postalCodeValue = locationData.postalCode{
-                        postalCode = postalCodeValue
-                    }
-                    
-                    var country = ""
-                    if let countryValue = locationData.country{
-                        country = countryValue
-                    }
-                    
-                    var administrativeArea = "" //(UF)
-                    if let administrativeAreaValue = locationData.administrativeArea{
-                        administrativeArea = administrativeAreaValue
-                    }
-                    
-                    var subAdministrativeArea = ""
-                    if let subAdministrativeAreaValue = locationData.subAdministrativeArea{
-                        subAdministrativeArea = subAdministrativeAreaValue
-                    }
-                    address = thoroughfare + ", "
-                        + subThoroughfare + " - "
-                        + subLocality + " - "
-                        + locality + " - "
-                        + administrativeArea + " - "
-                        + country
-                    
-                    if type == 0 {
-                        self.userLocationLabel.text = address
-                    }else if type == 1 {
-                        self.tappedLocationlabel.text = address
-                    }
-                }else{
-                    print("deu erro nessa porra")
-                }
-            }
-        })
-    }
-    
-    
 } // end Class AddFeelingViewController
 
+extension AddFeelingViewController: EmojiPickerViewBackButtonDelegate {
+    func backButton(_ emojiCode: String?) {
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.cardViewController.view.frame.origin.y = self.view.frame.height
+            self.visualEffectView.effect = nil
+        }, completion: {(bool) in
+            self.cardViewController.removeFromParent()
+            self.cardViewController.view.removeFromSuperview()
+            self.visualEffectView.removeFromSuperview()
+        })
+        if let emojiCode = emojiCode{
+            emojiSelectedImageView.image = emojiCode.image(sizeSquare: 100)
+            pin.icon = emojiCode // seta o icon do pin
+        }
+    }
+}
+
+extension AddFeelingViewController: RemoveDelegate {
+    func removeButtonPressed(_ index: Int) {
+        pin.tags.remove(at: index)
+        tagCollectionView.reloadData()
+    }
+}
 
 extension AddFeelingViewController: UICollectionViewDelegate {
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             //Selecionar a cor
-            
             if collectionView == self.colorCollectionView{
-
                 let cellColor = collectionView.cellForItem(at: indexPath) as! ColorCollectionViewCell
                 pin.color = cellColor.color
             }
-            
         }
-    
 } // end extension AddFeelingViewController
 
 extension AddFeelingViewController: UICollectionViewDataSource {
@@ -307,8 +261,6 @@ extension AddFeelingViewController: UICollectionViewDataSource {
         }
     
 } // end extension AddFeelingViewController
-
-
 
 extension AddFeelingViewController: UITextViewDelegate {
     

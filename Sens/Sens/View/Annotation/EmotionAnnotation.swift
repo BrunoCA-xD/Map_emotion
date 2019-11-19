@@ -12,5 +12,16 @@ import MapKit
 class EmotionAnnotation: MKPointAnnotation {
     
     var pin: EmotionPin?
-
+    
+    override init() {
+        super.init()
+    }
+    
+    init(pin: EmotionPin){
+        super.init()
+        self.pin = pin
+        self.title = pin.userName.capitalized
+        self.subtitle = pin.tags[0].capitalized
+        self.coordinate = pin.location
+    }
 }

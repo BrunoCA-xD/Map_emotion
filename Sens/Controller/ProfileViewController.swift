@@ -9,15 +9,13 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     //MARK: Atributtes
     var user: User! = nil
     let userDataAccess = UserDAO()
     var i = 0
-    
-    
-    let db = Firestore.firestore()
     
     //MARK: Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -26,6 +24,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var birthDateLabel: UILabel!
     @IBOutlet weak var pinsCountLabel: UILabel!
+    @IBOutlet weak var profilePicImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,17 +58,23 @@ class ProfileViewController: UIViewController {
                 OperationQueue.main.addOperation {
                     self.nameLabel.text = "\(self.user.fullName)"
                     self.emailLabel.text = self.user.email
-                    let dateformatter = DateFormatter()
-                    dateformatter.dateStyle = .short
-                    dateformatter.timeStyle = .none
-                    self.birthDateLabel.text = dateformatter.string(from: self.user.birthDate)
+                    self.birthDateLabel.text =   self.user.birthDate?.toString()
                     self.activityIndicator.stopAnimating()
+                }
+                
+                if let profilePic = self.user.profilePic{
+                    self.userDataAccess.recoverUserProfileImage(profilePic: profilePic) { (image, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }else if let image = image{
+                            OperationQueue.main.addOperation {
+                                self.profilePicImageView.image = image
+                            }
+                        }
+                    }
                 }
             }
         })
-        
     }
-    
-    
 }
 
