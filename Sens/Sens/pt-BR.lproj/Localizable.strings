@@ -5,3 +5,17 @@
   Created by Bruno Cardoso Ambrosio on 15/11/19.
   Copyright © 2019 Bruno Cardoso Ambrosio. All rights reserved.
 */
+
+"weakPassword" = "Senha fraca";
+"rainforcePasswordMessage" = "Por favor, esteja certo de que sua senha tem ao menos 8 caracteres, contem um caracter especial e um número.";
+"mandatoryField" = "Campo obrigatório";
+"firstNameMandatory" = "Por favor, preencha o campo primeiro nome.";
+"surNameMandatory" = "Por favor, preencha o campo sobrenome.";
+"emailMandatory" = "Por favor, preencha o campo email.";
+"passwordMandatory" = "Por favor, preencha o campo senha.";
+"searchForPlace" = "Procure por lugares...";
+"locationPermissionTitle" = "Permissão de localização";
+"locationPermissionMessage" = "Este aplicativo precisa de acesso à sua localização. Por favor, habilite.";
+"openConfig" = "Abrir configurações.";
+"cancel" = "Cancelar";
+"emotionColorNotSelected" = "Nenhuma cor selecionada!";

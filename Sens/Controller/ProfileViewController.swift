@@ -30,14 +30,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         activityIndicator.startAnimating()
         // Profile Data View Shadow
-        profileDataView.layer.shadowColor = UIColor.black.cgColor
-        profileDataView.layer.shadowOpacity = 0.1
-        profileDataView.layer.shadowOffset = .zero
-        profileDataView.layer.shadowRadius = 20
-        
-        profileDataView.layer.shadowPath = UIBezierPath(rect: profileDataView.bounds).cgPath
-        profileDataView.layer.shouldRasterize = true
-        profileDataView.layer.rasterizationScale = UIScreen.main.scale
+        ViewUtilities.setupBorderShadow(inView: profileDataView)
         
         
         

@@ -5,3 +5,17 @@
   Created by Bruno Cardoso Ambrosio on 15/11/19.
   Copyright © 2019 Bruno Cardoso Ambrosio. All rights reserved.
 */
+
+"weakPassword" = "Weak password";
+"rainforcePasswordMessage" = "Please, make sure your password is at least 8 characters, contains a special character and a number.";
+"mandatoryField" = "Mandatory field";
+"firstNameMandatory" = "The first name field is mandatory.";
+"surNameMandatory" = "The surname field is mandatory.";
+"emailMandatory" = "THe email field is mandatory.";
+"passwordMandatory" = "The password field is mandatory.";
+"searchForPlace" = "Search for places...";
+"locationPermissionTitle" = "Location permission";
+"locationPermissionMessage" = "This app needs to access your location. Please, turn on.";
+"openConfig" = "Open configurations.";
+"cancel" = "Cancel";
+"emotionColorNotSelected" = "No one color selected!";
