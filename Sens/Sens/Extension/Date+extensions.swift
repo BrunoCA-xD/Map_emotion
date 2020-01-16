@@ -23,7 +23,7 @@ extension Date{
         let dateFormatter = DateFormatter()
         dateFormatter.calendar = Calendar(identifier: .gregorian)
         dateFormatter.dateFormat = format
-        dateFormatter.dateStyle = .medium
+//        dateFormatter.dateStyle = .medium
         let date = dateFormatter.date(from: string)
         
         return date

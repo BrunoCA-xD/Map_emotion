@@ -1,0 +1,9 @@
+${PODS_ROOT}/Target Support Files/Pods-SensTests/Pods-SensTests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC-iOS13.2/openssl_grpc.framework
+${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-iOS13.2/GTMSessionFetcher.framework
+${BUILT_PRODUCTS_DIR}/GoogleUtilities-iOS13.2/GoogleUtilities.framework
+${BUILT_PRODUCTS_DIR}/Protobuf-iOS13.2/protobuf.framework
+${BUILT_PRODUCTS_DIR}/gRPC-C++-iOS13.2/grpcpp.framework
+${BUILT_PRODUCTS_DIR}/gRPC-Core-iOS13.2/grpc.framework
+${BUILT_PRODUCTS_DIR}/leveldb-library-iOS13.2/leveldb.framework
+${BUILT_PRODUCTS_DIR}/nanopb-iOS13.2/nanopb.framework

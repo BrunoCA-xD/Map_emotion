@@ -102,7 +102,7 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate{
 //        saveButtonArea.layer.borderColor = UIColor.red.cgColor
 //        saveButtonArea.layer.borderWidth = 2.0
         saveButtonArea.layer.cornerRadius = 16.0
-        saveButtonArea.layer.backgroundColor = Utilities.hexStringToUIColor(hex: "EDEDED").cgColor
+        saveButtonArea.layer.backgroundColor = try? Utilities.hexStringToUIColor(hex: "EDEDED").cgColor
         
         addTagButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         addEmojiButton.layer.borderColor = UIColor(red: 130/255.0, green: 71/255.0, blue: 255/255.0, alpha: 1.0).cgColor
@@ -247,9 +247,9 @@ extension AddFeelingViewController: UICollectionViewDataSource {
                 let cellTag = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionTagCollectionViewCell
                 cellTag.removeDelegate = self
                 cellTag.index = indexPath.item
-                cellTag.labelEmotionCell.textColor = Utilities.hexStringToUIColor(hex: "8247FF")
+                cellTag.labelEmotionCell.textColor = try? Utilities.hexStringToUIColor(hex: "8247FF")
                 cellTag.labelEmotionCell.text = pin.tags[indexPath.item].capitalized
-                cellTag.layer.borderColor = Utilities.hexStringToUIColor(hex: "8247FF").cgColor
+                cellTag.layer.borderColor = try? Utilities.hexStringToUIColor(hex: "8247FF").cgColor
                 cellTag.layer.cornerRadius = 4
                 cellTag.layer.borderWidth = 1
                 return cellTag

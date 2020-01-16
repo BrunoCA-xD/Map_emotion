@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        entrarButton.layer.borderColor = Utilities.hexStringToUIColor(hex: "FFFFFF").cgColor
+        entrarButton.layer.borderColor = try? Utilities.hexStringToUIColor(hex: "FFFFFF").cgColor
         Auth.auth().addStateDidChangeListener { (autentication, user) in
             if user != nil{
               

@@ -14,7 +14,13 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.delegate = self
         
-        let color = Utilities.hexStringToUIColor(hex: "FFFFFF")
-        self.tabBar.unselectedItemTintColor = color.withAlphaComponent(0.5)
+        do {
+            let color = try Utilities.hexStringToUIColor(hex: "FFFFFF")
+            self.tabBar.unselectedItemTintColor = color.withAlphaComponent(0.5)
+        } catch  {
+            
+        }
+        
+        
     }
 }

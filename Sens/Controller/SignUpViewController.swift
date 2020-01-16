@@ -90,7 +90,7 @@ class SingUpViewController: UIViewController {
         
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if Utilities.isPasswordValid(cleanedPassword) == false {
+        if Utilities().isPasswordValid(cleanedPassword) == false {
             title = NSLocalizedString("weakPassword",comment: "")
             showAlert(title: title, Message: NSLocalizedString("rainforcePasswordMessage", comment: ""), field: passwordTextField)
             return false

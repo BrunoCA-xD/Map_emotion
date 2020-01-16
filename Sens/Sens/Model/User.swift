@@ -31,7 +31,14 @@ class User{
         self.name = ""
         self.email = ""
     }
-    
+    init(id: String?, name: String, lastName: String?, email: String, birthDate: Date?, profilePic: String?){
+        self.id = id
+        self.name = name
+        self.lastName = lastName
+        self.birthDate = birthDate
+        self.email = email
+        self.profilePic = profilePic
+    }
     
     //Copy initializer
     convenience init(user: User){

@@ -13,10 +13,10 @@ class ColorCollectionViewCell: UICollectionViewCell {
     
     func configCell(color: String){
         self.color = color
-        self.backgroundColor = Utilities.hexStringToUIColor(hex: color)
+        self.backgroundColor = try? Utilities.hexStringToUIColor(hex: color)
         self.layer.cornerRadius = 13
         self.layer.borderWidth = 1
-        self.layer.borderColor = Utilities.hexStringToUIColor(hex: "EDEDED").cgColor
+        self.layer.borderColor = try? Utilities.hexStringToUIColor(hex: "EDEDED").cgColor
         
     }
     
@@ -24,10 +24,10 @@ class ColorCollectionViewCell: UICollectionViewCell {
         didSet{
             if self.isSelected {
                 self.layer.borderWidth = 3
-                self.layer.borderColor = Utilities.hexStringToUIColor(hex: "8247FF").cgColor
+                self.layer.borderColor = try? Utilities.hexStringToUIColor(hex: "8247FF").cgColor
             }else {
                 self.layer.borderWidth = 1
-                self.layer.borderColor = Utilities.hexStringToUIColor(hex: "EDEDED").cgColor
+                self.layer.borderColor = try? Utilities.hexStringToUIColor(hex: "EDEDED").cgColor
             }
         }
     }

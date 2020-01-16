@@ -22,14 +22,7 @@ class ViewUtilities{
     }
     static func setupBorderShadow(inViews views: [UIView]) {
         views.forEach { (view) in
-            view.layer.shadowColor = UIColor.black.cgColor
-            view.layer.shadowOpacity = 0.1
-            view.layer.shadowOffset = .zero
-            view.layer.shadowRadius = 20
-            
-            view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
-            view.layer.shouldRasterize = true
-            view.layer.rasterizationScale = UIScreen.main.scale
+            setupBorderShadow(inView: view)
         }
     }
 }

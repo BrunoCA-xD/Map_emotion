@@ -10,27 +10,38 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class Utilities {
+public class Utilities {
     
-    static func isPasswordValid(_ password : String) -> Bool {
+    func isPasswordValid(_ password : String) -> Bool {
         
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@",
+                                       "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
         return passwordTest.evaluate(with: password)
     }
     
-    static func hexStringToUIColor (hex:String) -> UIColor {
+    static func hexStringToUIColor (hex:String) throws -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
             cString.remove(at: cString.startIndex)
         }
         
-        if ((cString.count) != 6) {
-            return UIColor.gray
+        if ((cString.count) != 6 && (cString.count) != 3) {
+            throw ColorConversionError.hexCodeInvalid
+        }
+        var hexString = ""
+        if ((cString.count) == 3) {
+            cString.forEach { (c) in
+                hexString.append(c)
+                hexString.append(c)
+            }
+            
+        }else {
+            hexString = cString
         }
         
         var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
+        Scanner(string: hexString).scanHexInt64(&rgbValue)
         
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
