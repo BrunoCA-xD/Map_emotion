@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     
     //MARK: Variable
     let userDAO = UserDAO()
+    let loginService = UserService()
+    let navUtil = NavigationUtilities()
     
     //MARK: IBAction
     @IBAction func login(_ sender: Any) {
@@ -28,7 +30,16 @@ class LoginViewController: UIViewController {
         
         // Signing in the user
         
-        userDAO.signIn(email: email, password: password, completion: self.transitionToHome())
+        loginService.signIn(email: email, password: password) {
+            data, response, error in
+            if response?.statusCode == 404 {
+                    //Show message "user not exist/found or invalid credentials"
+            }else {
+                DispatchQueue.main.async {
+                    self.navUtil.navigateToStoryBoard(storyboardName: "Main", storyboardID: "mainTabBar", window: self.view.window)
+                }
+            }
+        }
     }
     
     //MARK: Lifecycle
@@ -43,14 +54,21 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: Transition
-    func transitionToHome() -> (() -> ()) {
-        return{
+//    func transitionToHome() -> (() -> ()) {
+//        return{
+//            let homeViewController = self.storyboard?.instantiateViewController(withIdentifier:
+//                "mainTabBar") as? UITabBarController
+//
+//            self.view.window?.rootViewController = homeViewController
+//            self.view.window?.makeKeyAndVisible()
+//        }
+//    }
+    func transitionToHome() {
             let homeViewController = self.storyboard?.instantiateViewController(withIdentifier:
                 "mainTabBar") as? UITabBarController
             
             self.view.window?.rootViewController = homeViewController
             self.view.window?.makeKeyAndVisible()
-        }
     }
     //MARK: Keyboard
     @objc func keyboardWillShow(notification:NSNotification){

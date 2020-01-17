@@ -20,6 +20,10 @@ class SingUpViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var dateTextField: UITextField!
     
+    //MARK: - Attributes
+    let userService = UserService()
+    let navUtil = NavigationUtilities()
+    
     //MARK: IBAction
     @IBAction func birthDateTextEditing(_ sender: UITextField) {
         
@@ -33,22 +37,57 @@ class SingUpViewController: UIViewController {
         
         if validateFields() {
             // Create cleaned versions of the data
-            let user = User()
-            user.name = self.firstName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            user.lastName = self.lastName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            user.email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let login = Login(id: nil,
+                              email: emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines),
+                              password: passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
+            let user = NewUser(id: nil,
+                               name: self.firstName.text!.trimmingCharacters(in: .whitespacesAndNewlines),
+                               lastName: self.lastName.text!.trimmingCharacters(in: .whitespacesAndNewlines),
+                               birthDate: nil,
+                               profilePic: nil,
+                               login: login)
+            
             if let dateText = dateTextField.text,
                 let date = Date.fromString(dateString: dateText){
                 user.birthDate = date
             }
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            UserDAO().signUp(user: user, password: password) { (user, error) in
-                if error == nil{
-                    self.transitionToHome()
+            userService.signUp(user: user) { (resultUser, errorCode) in
+                if errorCode == nil {
+                    DispatchQueue.main.async {
+                        self.navUtil.navigateToStoryBoard(storyboardName: "Main", storyboardID: "mainTabBar", window: self.view.window)
+                    }
+                }else {
+                    switch errorCode {
+                    case .missingName:
+                        //Show message requiring name
+                        break
+                    case .missingLogin:
+                        //Show message email and password
+                        break
+                    case .missingLoginEmail:
+                        //Show message requiring email
+                        break
+                    case .missingLoginPassword:
+                        //Show message requiring password
+                        break
+                    case .emailIsAlreadyInUse:
+                        //Show message email already in use
+                        break
+                    default:
+                        break
+                    }
                 }
+                
             }
-            
         }
+        
+        //            UserDAO().signUp(user: user1, password: password) { (user, error) in
+        //                if error == nil{
+        //                    self.transitionToHome()
+        //                }
+        //            }
+        
     }
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -90,13 +129,13 @@ class SingUpViewController: UIViewController {
         
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if Utilities().isPasswordValid(cleanedPassword) == false {
-            title = NSLocalizedString("weakPassword",comment: "")
-            showAlert(title: title, Message: NSLocalizedString("rainforcePasswordMessage", comment: ""), field: passwordTextField)
-            return false
-            // Password isn't secure enough
-            //            return "Please make sure your password is at least 8 characters, contains a special character and a number."
-        }
+//        if Utilities().isPasswordValid(cleanedPassword) == false {
+//            title = NSLocalizedString("weakPassword",comment: "")
+//            showAlert(title: title, Message: NSLocalizedString("rainforcePasswordMessage", comment: ""), field: passwordTextField)
+//            return false
+//            // Password isn't secure enough
+//            //            return "Please make sure your password is at least 8 characters, contains a special character and a number."
+//        }
         
         return true
     }
