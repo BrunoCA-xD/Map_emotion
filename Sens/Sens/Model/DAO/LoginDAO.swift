@@ -9,47 +9,19 @@
 import Foundation
 
 
-class LoginDAO {
+protocol LoginDAO {
+    func signIn(jsonData:Data, completion: @escaping (Data?,HTTPURLResponse?,Error?) -> ())
+    func signUp(jsonData:Data, completion: @escaping (Data?,HTTPURLResponse?,Error?) -> ())
+}
+
+class LoginDAOImpl: GenericDAO, LoginDAO  {
     
     func signIn(jsonData:Data, completion: @escaping (Data?,HTTPURLResponse?,Error?) -> ()){
-        
-        guard let url = URL(string: apiURL.signIn) else {return}
-        
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = jsonData
-        
-        URLSession.shared.dataTask(with: request) {
-            data, response, error in
-            let httpResponse = response as? HTTPURLResponse
-            if error == nil {
-                completion(data,httpResponse,nil)
-            }else {
-                completion(nil,httpResponse,error)
-            }
-        }.resume()
+        genericPost(with: jsonData, to: apiURL.signIn, completion: completion)
     }
     
     func signUp(jsonData:Data, completion: @escaping (Data?,HTTPURLResponse?,Error?) -> ()){
-        guard let url = URL(string: apiURL.signUp) else {return}
-        
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = jsonData
-        
-        URLSession.shared.dataTask(with: request) {
-            data, response, error in
-            let httpResponse = response as? HTTPURLResponse
-            
-            if error == nil {
-                completion(data,httpResponse,nil)
-            }else {
-                completion(nil,httpResponse,error)
-            }
-        }.resume()
-        
-        
+        genericPost(with: jsonData, to: apiURL.signUp, completion: completion)
     }
+    
 }

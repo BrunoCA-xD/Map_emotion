@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class ViewController: UIViewController {
     
@@ -17,11 +16,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         entrarButton.layer.borderColor = try? Utilities.hexStringToUIColor(hex: "FFFFFF").cgColor
-        Auth.auth().addStateDidChangeListener { (autentication, user) in
-            if user != nil{
-              
-            }
-        }
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

@@ -27,8 +27,8 @@ class HomeViewController: UIViewController, UIPopoverPresentationControllerDeleg
     let placePinIdentifier:String = "placePin"
     let emotionPinIdentifier:String = "emotionPin"
     let locationManager = CLLocationManager()
-    let userDAO = UserDAO()
-    let pinDAO = EmotionPinDAO()
+    let userService = UserService()
+    let pinService = EmotionService()
     
     // MARK: Outlets
     @IBOutlet weak var addPinButton: UIButton!
@@ -58,9 +58,9 @@ class HomeViewController: UIViewController, UIPopoverPresentationControllerDeleg
         
         user = User()
         
-        userDAO.retriveCurrUser { (user, err) in
-            if let err = err {
-                print(err.localizedDescription)
+        userService.retriveUser(withId: nil) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
             }else {
                 if let user = user {
                     self.user = user
@@ -101,7 +101,7 @@ class HomeViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
     
     fileprivate func listPins() {
-        pinDAO.listAll { (pins, err) in
+        pinService.listAll { (pins, err) in
             if let err = err {
                 print(err.localizedDescription)
             }else if let pins = pins {
@@ -113,6 +113,18 @@ class HomeViewController: UIViewController, UIPopoverPresentationControllerDeleg
                 }
             }
         }
+//        pinDAO.listAll { (pins, err) in
+//            if let err = err {
+//                print(err.localizedDescription)
+//            }else if let pins = pins {
+//                pins.forEach { (pin) in
+//                    let annotationToAdd = EmotionAnnotation(pin: pin)
+//                    OperationQueue.main.addOperation {
+//                        self.mapView.addAnnotation(annotationToAdd)
+//                    }
+//                }
+//            }
+//        }
     }
     
     func openAddFeeling( coordinate:CLLocationCoordinate2D? ){
@@ -220,7 +232,9 @@ extension HomeViewController: MKMapViewDelegate {
         if let pin = emotionAnnotation.pin{
             reuseId = emotionPinIdentifier
             detailsButtonType = UIButton.ButtonType.infoLight
-            pinImage = pin.icon.image(sizeSquare: 20)
+            if let icon = pin.icon {
+                pinImage = icon.image(sizeSquare: 20)
+            }
         } else {
             reuseId = placePinIdentifier
             detailsButtonType = UIButton.ButtonType.contactAdd

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
 
 class SingUpViewController: UIViewController {
     //MARK: IBOutlet
@@ -41,7 +39,7 @@ class SingUpViewController: UIViewController {
             let login = Login(id: nil,
                               email: emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines),
                               password: passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
-            let user = NewUser(id: nil,
+            let user = User(id: nil,
                                name: self.firstName.text!.trimmingCharacters(in: .whitespacesAndNewlines),
                                lastName: self.lastName.text!.trimmingCharacters(in: .whitespacesAndNewlines),
                                birthDate: nil,
@@ -55,6 +53,8 @@ class SingUpViewController: UIViewController {
             userService.signUp(user: user) { (resultUser, errorCode) in
                 if errorCode == nil {
                     DispatchQueue.main.async {
+                        Local.userID = resultUser?.id
+                        Local.userMail = resultUser?.login.email
                         self.navUtil.navigateToStoryBoard(storyboardName: "Main", storyboardID: "mainTabBar", window: self.view.window)
                     }
                 }else {

@@ -19,44 +19,44 @@
 		54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */; };
 		561589F223CF3864000B0A8E /* UtilitiyColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561589F123CF3864000B0A8E /* UtilitiyColorTests.swift */; };
 		561C6DE1232BAAC10069637B /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C6DE0232BAAC10069637B /* RootTabBarController.swift */; };
-		561C6DE4232BABCF0069637B /* UserDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561C6DE3232BABCF0069637B /* UserDAO.swift */; };
 		562BADAC2322A5F000E48842 /* EmotionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BADAB2322A5F000E48842 /* EmotionAnnotation.swift */; };
+		562BBAA223D7464E00E9A15B /* UserDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BBAA123D7464E00E9A15B /* UserDAO.swift */; };
+		562BBAA423D7496000E9A15B /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BBAA323D7496000E9A15B /* GenericService.swift */; };
+		562BBAA623D74A1700E9A15B /* PinError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BBAA523D74A1700E9A15B /* PinError.swift */; };
+		562BBAA823D794BD00E9A15B /* EmotionPinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562BBAA723D794BD00E9A15B /* EmotionPinTests.swift */; };
 		56322DB2230D7DA400C728A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB1230D7DA400C728A8 /* AppDelegate.swift */; };
 		56322DB4230D7DA400C728A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56322DB3230D7DA400C728A8 /* ViewController.swift */; };
 		56322DB7230D7DA400C728A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB5230D7DA400C728A8 /* Main.storyboard */; };
 		56322DB9230D7DA600C728A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56322DB8230D7DA600C728A8 /* Assets.xcassets */; };
 		56322DBC230D7DA600C728A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56322DBA230D7DA600C728A8 /* LaunchScreen.storyboard */; };
-		5633E5BC237E37F700E46EE3 /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633E5BB237E37F700E46EE3 /* DatabaseRepresentation.swift */; };
-		5633E5C0237F271600E46EE3 /* CLLocationCoordinate2D+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633E5BF237F271600E46EE3 /* CLLocationCoordinate2D+extensions.swift */; };
-		5633E5C2237F333400E46EE3 /* EmotionPinDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633E5C1237F333400E46EE3 /* EmotionPinDAO.swift */; };
 		5633E5C4237F8B6300E46EE3 /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633E5C3237F8B6300E46EE3 /* Date+extensions.swift */; };
 		5633E5C9237F8FD400E46EE3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5633E5CB237F8FD400E46EE3 /* Localizable.strings */; };
 		56388ECE23CDE1DC0076BEBB /* UtilitiyPasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56388ECD23CDE1DC0076BEBB /* UtilitiyPasswordTests.swift */; };
 		56435C3923227FE80004E0F7 /* EmotiPinAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56435C3823227FE80004E0F7 /* EmotiPinAnnotationView.swift */; };
-		5650AD3023D1F014003A9AC3 /* NewUserDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5650AD2F23D1F014003A9AC3 /* NewUserDAO.swift */; };
 		5650AD3323D1F06F003A9AC3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5650AD3223D1F06F003A9AC3 /* UserService.swift */; };
 		5650AD3523D1F132003A9AC3 /* LoginDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5650AD3423D1F132003A9AC3 /* LoginDAO.swift */; };
 		5650AD3723D219F4003A9AC3 /* NavigationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5650AD3623D219F4003A9AC3 /* NavigationUtilities.swift */; };
 		5650AD3B23D222B4003A9AC3 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5650AD3A23D222B4003A9AC3 /* UserError.swift */; };
-		565D1FC4238479DD0046B4AB /* DictionaryInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D1FC3238479DD0046B4AB /* DictionaryInterpreter.swift */; };
 		567284CD2380DBDD00DF4EA5 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567284CC2380DBDD00DF4EA5 /* String+extensions.swift */; };
 		567284CF2380DFF000DF4EA5 /* ViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567284CE2380DFF000DF4EA5 /* ViewUtilities.swift */; };
-		567284D12382EAAD00DF4EA5 /* GenericFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567284D02382EAAD00DF4EA5 /* GenericFirebase.swift */; };
 		56801EDB2317F1F80097C0B2 /* DetailPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56801EDA2317F1F80097C0B2 /* DetailPinViewController.swift */; };
 		56801EE0231813B60097C0B2 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56801EDF231813B60097C0B2 /* RadioButton.swift */; };
 		56A26C2D23CF3F9200347592 /* ColorConversionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A26C2C23CF3F9200347592 /* ColorConversionError.swift */; };
-		56A26C2F23CF584700347592 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A26C2E23CF584700347592 /* UserTests.swift */; };
-		56B18717230EBE6D00765C5A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B18716230EBE6D00765C5A /* User.swift */; };
 		56B1871C2310643800765C5A /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */; };
-		56B1871E2310C40B00765C5A /* EmotionPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1871D2310C40B00765C5A /* EmotionPin.swift */; };
 		56B187202312D51300765C5A /* EmotionTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B1871F2312D51300765C5A /* EmotionTag.swift */; };
-		56B7631223D1D2550083E465 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B7631123D1D2550083E465 /* NewUser.swift */; };
+		56B7631223D1D2550083E465 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B7631123D1D2550083E465 /* User.swift */; };
 		56B7631423D1D27D0083E465 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B7631323D1D27D0083E465 /* Login.swift */; };
 		56B915BC2313334400AE17B2 /* AddFeelingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B915BB2313334400AE17B2 /* AddFeelingViewController.swift */; };
-		56CAFD9A23D1E550002FA57B /* NewUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CAFD9923D1E550002FA57B /* NewUserTests.swift */; };
+		56C9216123D5C0960068D374 /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9216023D5C0960068D374 /* Local.swift */; };
+		56C9216323D5D65E0068D374 /* GenericDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9216223D5D65E0068D374 /* GenericDAO.swift */; };
+		56C9216523D60CC90068D374 /* FileDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9216423D60CC90068D374 /* FileDAO.swift */; };
+		56C9216723D610880068D374 /* EmotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9216623D610880068D374 /* EmotionService.swift */; };
+		56C9216923D610D50068D374 /* EmotionPinDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9216823D610D50068D374 /* EmotionPinDAO.swift */; };
+		56CAFD9A23D1E550002FA57B /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CAFD9923D1E550002FA57B /* UserTests.swift */; };
 		56E6F5522317082900B3ABB2 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F5512317082900B3ABB2 /* ColorCollectionViewCell.swift */; };
 		56E6F5542317284B00B3ABB2 /* AddFeelingRootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F5532317284B00B3ABB2 /* AddFeelingRootNavigationController.swift */; };
 		56EE0A0F23D22902009D0A50 /* apiURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EE0A0E23D22902009D0A50 /* apiURL.swift */; };
+		56EE0A1123D3A233009D0A50 /* EmotionPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EE0A1023D3A233009D0A50 /* EmotionPin.swift */; };
 		80A8E99EA9C4F9319279F6D1 /* Pods_Sens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63DB076306E37F76FD95B0 /* Pods_Sens.framework */; };
 		DD99713A5208A04D3BCCDAC2 /* Pods_SensTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6A15BA51DD1D1DECA9A061 /* Pods_SensTests.framework */; };
 		E28156E923156F9A00D5CD17 /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28156E823156F9A00D5CD17 /* EmojiPickerViewController.swift */; };
@@ -87,8 +87,11 @@
 		54BC9A722314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		561589F123CF3864000B0A8E /* UtilitiyColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiyColorTests.swift; sourceTree = "<group>"; };
 		561C6DE0232BAAC10069637B /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
-		561C6DE3232BABCF0069637B /* UserDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDAO.swift; sourceTree = "<group>"; };
 		562BADAB2322A5F000E48842 /* EmotionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionAnnotation.swift; sourceTree = "<group>"; };
+		562BBAA123D7464E00E9A15B /* UserDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDAO.swift; sourceTree = "<group>"; };
+		562BBAA323D7496000E9A15B /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
+		562BBAA523D74A1700E9A15B /* PinError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinError.swift; sourceTree = "<group>"; };
+		562BBAA723D794BD00E9A15B /* EmotionPinTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionPinTests.swift; sourceTree = "<group>"; };
 		56322DAE230D7DA400C728A8 /* Sens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56322DB1230D7DA400C728A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56322DB3230D7DA400C728A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,9 +99,6 @@
 		56322DB8230D7DA600C728A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56322DBB230D7DA600C728A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56322DBD230D7DA600C728A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5633E5BB237E37F700E46EE3 /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
-		5633E5BF237F271600E46EE3 /* CLLocationCoordinate2D+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+extensions.swift"; sourceTree = "<group>"; };
-		5633E5C1237F333400E46EE3 /* EmotionPinDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionPinDAO.swift; sourceTree = "<group>"; };
 		5633E5C3237F8B6300E46EE3 /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		5633E5C5237F8F8F00E46EE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		5633E5C6237F8F9300E46EE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -109,30 +109,30 @@
 		56388EC723CDDBA30076BEBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56388ECD23CDE1DC0076BEBB /* UtilitiyPasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiyPasswordTests.swift; sourceTree = "<group>"; };
 		56435C3823227FE80004E0F7 /* EmotiPinAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotiPinAnnotationView.swift; sourceTree = "<group>"; };
-		5650AD2F23D1F014003A9AC3 /* NewUserDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserDAO.swift; sourceTree = "<group>"; };
 		5650AD3223D1F06F003A9AC3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		5650AD3423D1F132003A9AC3 /* LoginDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDAO.swift; sourceTree = "<group>"; };
 		5650AD3623D219F4003A9AC3 /* NavigationUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtilities.swift; sourceTree = "<group>"; };
 		5650AD3A23D222B4003A9AC3 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
-		565D1FC3238479DD0046B4AB /* DictionaryInterpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryInterpreter.swift; sourceTree = "<group>"; };
 		567284CC2380DBDD00DF4EA5 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		567284CE2380DFF000DF4EA5 /* ViewUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtilities.swift; sourceTree = "<group>"; };
-		567284D02382EAAD00DF4EA5 /* GenericFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericFirebase.swift; sourceTree = "<group>"; };
 		56801EDA2317F1F80097C0B2 /* DetailPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPinViewController.swift; sourceTree = "<group>"; };
 		56801EDF231813B60097C0B2 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		56A26C2C23CF3F9200347592 /* ColorConversionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConversionError.swift; sourceTree = "<group>"; };
-		56A26C2E23CF584700347592 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
-		56B18716230EBE6D00765C5A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56B1871B2310643800765C5A /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
-		56B1871D2310C40B00765C5A /* EmotionPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionPin.swift; sourceTree = "<group>"; };
 		56B1871F2312D51300765C5A /* EmotionTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionTag.swift; sourceTree = "<group>"; };
-		56B7631123D1D2550083E465 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
+		56B7631123D1D2550083E465 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56B7631323D1D27D0083E465 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		56B915BB2313334400AE17B2 /* AddFeelingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeelingViewController.swift; sourceTree = "<group>"; };
-		56CAFD9923D1E550002FA57B /* NewUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserTests.swift; sourceTree = "<group>"; };
+		56C9216023D5C0960068D374 /* Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
+		56C9216223D5D65E0068D374 /* GenericDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDAO.swift; sourceTree = "<group>"; };
+		56C9216423D60CC90068D374 /* FileDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDAO.swift; sourceTree = "<group>"; };
+		56C9216623D610880068D374 /* EmotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionService.swift; sourceTree = "<group>"; };
+		56C9216823D610D50068D374 /* EmotionPinDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionPinDAO.swift; sourceTree = "<group>"; };
+		56CAFD9923D1E550002FA57B /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		56E6F5512317082900B3ABB2 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		56E6F5532317284B00B3ABB2 /* AddFeelingRootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeelingRootNavigationController.swift; sourceTree = "<group>"; };
 		56EE0A0E23D22902009D0A50 /* apiURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiURL.swift; sourceTree = "<group>"; };
+		56EE0A1023D3A233009D0A50 /* EmotionPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionPin.swift; sourceTree = "<group>"; };
 		5E6A15BA51DD1D1DECA9A061 /* Pods_SensTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SensTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685BA67E85297197CCD025D6 /* Pods-SensTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SensTests.release.xcconfig"; path = "Target Support Files/Pods-SensTests/Pods-SensTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA63DB076306E37F76FD95B0 /* Pods_Sens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,13 +194,21 @@
 		561C6DE2232BAB800069637B /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				561C6DE3232BABCF0069637B /* UserDAO.swift */,
-				5633E5C1237F333400E46EE3 /* EmotionPinDAO.swift */,
-				567284D02382EAAD00DF4EA5 /* GenericFirebase.swift */,
-				5650AD2F23D1F014003A9AC3 /* NewUserDAO.swift */,
+				562BBAA123D7464E00E9A15B /* UserDAO.swift */,
 				5650AD3423D1F132003A9AC3 /* LoginDAO.swift */,
+				56C9216223D5D65E0068D374 /* GenericDAO.swift */,
+				56C9216423D60CC90068D374 /* FileDAO.swift */,
+				56C9216823D610D50068D374 /* EmotionPinDAO.swift */,
 			);
 			path = DAO;
+			sourceTree = "<group>";
+		};
+		562BBAA923D7954B00E9A15B /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				562BBAA523D74A1700E9A15B /* PinError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		56322DA5230D7DA400C728A8 = {
@@ -238,7 +246,6 @@
 				56322DB1230D7DA400C728A8 /* AppDelegate.swift */,
 				54ACFBFD230D9387009108BD /* GoogleService-Info.plist */,
 				56322DBD230D7DA600C728A8 /* Info.plist */,
-				56B1871F2312D51300765C5A /* EmotionTag.swift */,
 				5633E5CB237F8FD400E46EE3 /* Localizable.strings */,
 			);
 			path = Sens;
@@ -247,7 +254,6 @@
 		5633E5BE237F26D100E46EE3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5633E5BF237F271600E46EE3 /* CLLocationCoordinate2D+extensions.swift */,
 				5633E5C3237F8B6300E46EE3 /* Date+extensions.swift */,
 				567284CC2380DBDD00DF4EA5 /* String+extensions.swift */,
 			);
@@ -257,11 +263,11 @@
 		56388EC423CDDBA30076BEBB /* SensTests */ = {
 			isa = PBXGroup;
 			children = (
+				562BBAA723D794BD00E9A15B /* EmotionPinTests.swift */,
 				56388EC723CDDBA30076BEBB /* Info.plist */,
 				56388ECD23CDE1DC0076BEBB /* UtilitiyPasswordTests.swift */,
 				561589F123CF3864000B0A8E /* UtilitiyColorTests.swift */,
-				56A26C2E23CF584700347592 /* UserTests.swift */,
-				56CAFD9923D1E550002FA57B /* NewUserTests.swift */,
+				56CAFD9923D1E550002FA57B /* UserTests.swift */,
 			);
 			path = SensTests;
 			sourceTree = "<group>";
@@ -270,17 +276,10 @@
 			isa = PBXGroup;
 			children = (
 				5650AD3223D1F06F003A9AC3 /* UserService.swift */,
+				56C9216623D610880068D374 /* EmotionService.swift */,
+				562BBAA323D7496000E9A15B /* GenericService.swift */,
 			);
 			path = Service;
-			sourceTree = "<group>";
-		};
-		565D1FC523847A6E0046B4AB /* protocol */ = {
-			isa = PBXGroup;
-			children = (
-				5633E5BB237E37F700E46EE3 /* DatabaseRepresentation.swift */,
-				565D1FC3238479DD0046B4AB /* DictionaryInterpreter.swift */,
-			);
-			path = protocol;
 			sourceTree = "<group>";
 		};
 		56801EDE2318139A0097C0B2 /* CustomComponents */ = {
@@ -303,13 +302,14 @@
 			isa = PBXGroup;
 			children = (
 				5650AD3A23D222B4003A9AC3 /* UserError.swift */,
+				562BBAA923D7954B00E9A15B /* Error */,
 				5650AD3123D1F05D003A9AC3 /* Service */,
-				565D1FC523847A6E0046B4AB /* protocol */,
 				561C6DE2232BAB800069637B /* DAO */,
-				56B18716230EBE6D00765C5A /* User.swift */,
-				56B1871D2310C40B00765C5A /* EmotionPin.swift */,
 				56B7631323D1D27D0083E465 /* Login.swift */,
-				56B7631123D1D2550083E465 /* NewUser.swift */,
+				56B7631123D1D2550083E465 /* User.swift */,
+				56EE0A1023D3A233009D0A50 /* EmotionPin.swift */,
+				56B1871F2312D51300765C5A /* EmotionTag.swift */,
+				56C9216023D5C0960068D374 /* Local.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -575,44 +575,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				565D1FC4238479DD0046B4AB /* DictionaryInterpreter.swift in Sources */,
 				561C6DE1232BAAC10069637B /* RootTabBarController.swift in Sources */,
 				56801EDB2317F1F80097C0B2 /* DetailPinViewController.swift in Sources */,
 				56B1871C2310643800765C5A /* LocationSearchTableViewController.swift in Sources */,
+				56EE0A1123D3A233009D0A50 /* EmotionPin.swift in Sources */,
+				562BBAA423D7496000E9A15B /* GenericService.swift in Sources */,
 				562BADAC2322A5F000E48842 /* EmotionAnnotation.swift in Sources */,
 				54B47E32230E623900BE9050 /* Utilities.swift in Sources */,
+				56C9216923D610D50068D374 /* EmotionPinDAO.swift in Sources */,
 				56A26C2D23CF3F9200347592 /* ColorConversionError.swift in Sources */,
 				56E6F5542317284B00B3ABB2 /* AddFeelingRootNavigationController.swift in Sources */,
-				5650AD3023D1F014003A9AC3 /* NewUserDAO.swift in Sources */,
 				56B915BC2313334400AE17B2 /* AddFeelingViewController.swift in Sources */,
 				E28156EB231574F200D5CD17 /* EmojiCollectionViewCell.swift in Sources */,
 				E28156E923156F9A00D5CD17 /* EmojiPickerViewController.swift in Sources */,
+				562BBAA623D74A1700E9A15B /* PinError.swift in Sources */,
 				54B47E30230E605100BE9050 /* HomeViewController.swift in Sources */,
 				54B47E2C230E601600BE9050 /* LoginViewController.swift in Sources */,
 				5650AD3323D1F06F003A9AC3 /* UserService.swift in Sources */,
 				567284CF2380DFF000DF4EA5 /* ViewUtilities.swift in Sources */,
+				562BBAA223D7464E00E9A15B /* UserDAO.swift in Sources */,
 				56322DB4230D7DA400C728A8 /* ViewController.swift in Sources */,
-				56B1871E2310C40B00765C5A /* EmotionPin.swift in Sources */,
 				54B47E2E230E603300BE9050 /* SignUpViewController.swift in Sources */,
 				56EE0A0F23D22902009D0A50 /* apiURL.swift in Sources */,
+				56C9216723D610880068D374 /* EmotionService.swift in Sources */,
 				56322DB2230D7DA400C728A8 /* AppDelegate.swift in Sources */,
 				5650AD3B23D222B4003A9AC3 /* UserError.swift in Sources */,
 				56435C3923227FE80004E0F7 /* EmotiPinAnnotationView.swift in Sources */,
 				56801EE0231813B60097C0B2 /* RadioButton.swift in Sources */,
 				54BC9A732314CB8200BD3C89 /* EmotionTagCollectionViewCell.swift in Sources */,
 				56B7631423D1D27D0083E465 /* Login.swift in Sources */,
-				56B7631223D1D2550083E465 /* NewUser.swift in Sources */,
-				5633E5BC237E37F700E46EE3 /* DatabaseRepresentation.swift in Sources */,
+				56B7631223D1D2550083E465 /* User.swift in Sources */,
+				56C9216123D5C0960068D374 /* Local.swift in Sources */,
+				56C9216523D60CC90068D374 /* FileDAO.swift in Sources */,
 				5650AD3523D1F132003A9AC3 /* LoginDAO.swift in Sources */,
 				56B187202312D51300765C5A /* EmotionTag.swift in Sources */,
-				567284D12382EAAD00DF4EA5 /* GenericFirebase.swift in Sources */,
-				5633E5C2237F333400E46EE3 /* EmotionPinDAO.swift in Sources */,
-				561C6DE4232BABCF0069637B /* UserDAO.swift in Sources */,
-				56B18717230EBE6D00765C5A /* User.swift in Sources */,
 				567284CD2380DBDD00DF4EA5 /* String+extensions.swift in Sources */,
 				16AD087B23180B1200ADE0D7 /* ProfileViewController.swift in Sources */,
-				5633E5C0237F271600E46EE3 /* CLLocationCoordinate2D+extensions.swift in Sources */,
 				5633E5C4237F8B6300E46EE3 /* Date+extensions.swift in Sources */,
+				56C9216323D5D65E0068D374 /* GenericDAO.swift in Sources */,
 				56E6F5522317082900B3ABB2 /* ColorCollectionViewCell.swift in Sources */,
 				5650AD3723D219F4003A9AC3 /* NavigationUtilities.swift in Sources */,
 				54BC9A6D2314C14600BD3C89 /* ViewController + HideKeyboard.swift in Sources */,
@@ -624,8 +624,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				56388ECE23CDE1DC0076BEBB /* UtilitiyPasswordTests.swift in Sources */,
-				56CAFD9A23D1E550002FA57B /* NewUserTests.swift in Sources */,
-				56A26C2F23CF584700347592 /* UserTests.swift in Sources */,
+				56CAFD9A23D1E550002FA57B /* UserTests.swift in Sources */,
+				562BBAA823D794BD00E9A15B /* EmotionPinTests.swift in Sources */,
 				561589F223CF3864000B0A8E /* UtilitiyColorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

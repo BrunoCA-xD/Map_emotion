@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
 import CoreLocation
 
 class AddFeelingViewController: UIViewController, UITextFieldDelegate{
@@ -18,13 +16,13 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate{
     var visualEffectView: UIVisualEffectView!
     var cardHeight: CGFloat = 0
     let cardHandleAreaHeight: CGFloat = 60
-    var pin: EmotionPin = EmotionPin()
     var cellTagIds: [String] = []
     var touchedLocation: CLLocationCoordinate2D! = nil
     var userLocation: CLLocationCoordinate2D! = nil
+    var pin: EmotionPin = EmotionPin()
     var user: User! = nil
     let colors = ["#000000","#FFFFFF","#FF0000","0085FF","FFE600","21E510","FF8A00","DB00FF","AE6027"]
-    let emotionPinDAO = EmotionPinDAO()
+    let emotionService = EmotionService()
     
     var selectCompletion: (() -> Void)? = nil
     
@@ -50,7 +48,7 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate{
     @IBAction func addEmotionTagPressed(_ sender: Any) {
         if let tagText = tagTextField.text{
             if tagText.trimmingCharacters(in: .whitespacesAndNewlines) != ""{
-                pin.tags.append(tagText)
+                pin.tags.append(EmotionTag(id: nil, tag: tagText))
                 tagCollectionView.reloadData()
                 tagTextField.text = ""
             }
@@ -79,19 +77,29 @@ class AddFeelingViewController: UIViewController, UITextFieldDelegate{
         if let testimonialText = testimonialTextView.text {
             pin.testimonial = testimonialText
         }
-        pin.user = user.id!
-        
-        pin.userName = anonSwitch.isOn ? "Anonimo" : user.name
+        pin.user = user
+        pin.anonymous = anonSwitch.isOn
         
         if tappedLocationRadioButton.isOn{
             pin.location = touchedLocation
         }else if userLocationRadioButton.isOn{
             pin.location = userLocation
         }
-        
-        emotionPinDAO.save(emotionPin: pin)
-        
-        self.dismiss(animated: true, completion: selectCompletion)
+        emotionService.save(pin: pin) { (pin, error) in
+            if error == nil {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: self.selectCompletion)
+                }
+                
+            }else {
+                switch error {
+                case .missingTags:
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
     }
     
     
@@ -248,7 +256,7 @@ extension AddFeelingViewController: UICollectionViewDataSource {
                 cellTag.removeDelegate = self
                 cellTag.index = indexPath.item
                 cellTag.labelEmotionCell.textColor = try? Utilities.hexStringToUIColor(hex: "8247FF")
-                cellTag.labelEmotionCell.text = pin.tags[indexPath.item].capitalized
+                cellTag.labelEmotionCell.text = pin.tags[indexPath.item].tag.capitalized
                 cellTag.layer.borderColor = try? Utilities.hexStringToUIColor(hex: "8247FF").cgColor
                 cellTag.layer.cornerRadius = 4
                 cellTag.layer.borderWidth = 1

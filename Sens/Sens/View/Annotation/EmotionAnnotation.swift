@@ -15,13 +15,16 @@ class EmotionAnnotation: MKPointAnnotation {
     
     override init() {
         super.init()
-    }
-    
+    } 
     init(pin: EmotionPin){
         super.init()
         self.pin = pin
-        self.title = pin.userName.capitalized
-        self.subtitle = pin.tags[0].capitalized
+        if pin.anonymous {
+            self.title = "Anônimo"
+        }else {
+            self.title = pin.user.name.capitalized
+        }
+        self.subtitle = pin.tags[0].tag.capitalized
         self.coordinate = pin.location
     }
 }

@@ -7,15 +7,12 @@
 //
 
 import UIKit
-import FirebaseFirestore
-import FirebaseAuth
 import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     //MARK: Atributtes
-    var user: User! = nil
-    let userDataAccess = UserDAO()
-    var i = 0
+    let fileDM = FileDAO()
+    let userService = UserService()
     
     //MARK: Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -43,20 +40,21 @@ class ProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.activityIndicator.startAnimating()
-        self.userDataAccess.retriveCurrUser(completion: { (user, error) in
+        
+        
+        self.userService.retriveUser(withId: nil) { (user, error) in
             if error != nil {
                 //Tratar error
-            } else {
-                self.user = user
+            }else {
+                guard let user = user else {return}
                 OperationQueue.main.addOperation {
-                    self.nameLabel.text = "\(self.user.fullName)"
-                    self.emailLabel.text = self.user.email
-                    self.birthDateLabel.text =   self.user.birthDate?.toString()
+                    self.nameLabel.text = "\(user.fullName)"
+                    self.emailLabel.text = user.login.email
+                    self.birthDateLabel.text = user.birthDate?.toString()
                     self.activityIndicator.stopAnimating()
                 }
-                
-                if let profilePic = self.user.profilePic{
-                    self.userDataAccess.recoverUserProfileImage(profilePic: profilePic) { (image, error) in
+                if let profilePic = user.profilePic{
+                    self.fileDM.recoverProfileImage(profilePic: profilePic) { (image, error) in
                         if let error = error {
                             print(error.localizedDescription)
                         }else if let image = image{
@@ -64,10 +62,10 @@ class ProfileViewController: UIViewController {
                                 self.profilePicImageView.image = image
                             }
                         }
+                        
                     }
                 }
-            }
-        })
+            }            
+        }
     }
 }
-

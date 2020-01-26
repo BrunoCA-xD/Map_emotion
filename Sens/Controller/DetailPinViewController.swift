@@ -36,8 +36,8 @@ class DetailPinViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        titlePin.text = (detailPin?.userName.capitalized)!
-        emojiPin.image = detailPin?.icon.image(sizeSquare: 50)
+        titlePin.text = (detailPin?.user.name.capitalized)!
+        emojiPin.image = detailPin?.icon?.image(sizeSquare: 50)
         colorPin.backgroundColor = try? Utilities.hexStringToUIColor(hex: (detailPin?.color) ?? "ffffff")
         colorHexPin.text = detailPin?.color != nil ? "HEX: " + (detailPin?.color)! : NSLocalizedString("emotionColorNotSelected", comment: "")
         observacoesPin.text = detailPin?.testimonial
@@ -63,7 +63,7 @@ extension DetailPinViewController: UICollectionViewDataSource {
             let cellTag = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionTagCollectionViewCell
             cellTag.index = indexPath.item
             cellTag.labelEmotionCell.textColor = try? Utilities.hexStringToUIColor(hex: "8247FF")
-            cellTag.labelEmotionCell.text = detailPin?.tags[indexPath.item].capitalized
+        cellTag.labelEmotionCell.text = detailPin?.tags[indexPath.item].tag.capitalized
             cellTag.layer.borderColor = try? Utilities.hexStringToUIColor(hex: "8247FF").cgColor
             cellTag.layer.cornerRadius = 4
             cellTag.layer.borderWidth = 1

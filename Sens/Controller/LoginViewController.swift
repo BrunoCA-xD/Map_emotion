@@ -7,18 +7,15 @@
 //
 
 import UIKit
-import FirebaseAuth
-import Firebase
 
 class LoginViewController: UIViewController {
-
+    
     //MARK: IBOutlet
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var senhaTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
     //MARK: Variable
-    let userDAO = UserDAO()
     let loginService = UserService()
     let navUtil = NavigationUtilities()
     
@@ -30,12 +27,14 @@ class LoginViewController: UIViewController {
         
         // Signing in the user
         
-        loginService.signIn(email: email, password: password) {
-            data, response, error in
-            if response?.statusCode == 404 {
-                    //Show message "user not exist/found or invalid credentials"
+        
+        loginService.signIn(email: email, password: password) { (resultUser, error) in
+            if error != nil {
+                //Show message "user not exist/found or invalid credentials"
             }else {
                 DispatchQueue.main.async {
+                    Local.userID = resultUser?.id
+                    Local.userMail = resultUser?.login.email
                     self.navUtil.navigateToStoryBoard(storyboardName: "Main", storyboardID: "mainTabBar", window: self.view.window)
                 }
             }
@@ -53,23 +52,6 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    //MARK: Transition
-//    func transitionToHome() -> (() -> ()) {
-//        return{
-//            let homeViewController = self.storyboard?.instantiateViewController(withIdentifier:
-//                "mainTabBar") as? UITabBarController
-//
-//            self.view.window?.rootViewController = homeViewController
-//            self.view.window?.makeKeyAndVisible()
-//        }
-//    }
-    func transitionToHome() {
-            let homeViewController = self.storyboard?.instantiateViewController(withIdentifier:
-                "mainTabBar") as? UITabBarController
-            
-            self.view.window?.rootViewController = homeViewController
-            self.view.window?.makeKeyAndVisible()
-    }
     //MARK: Keyboard
     @objc func keyboardWillShow(notification:NSNotification){
         view.frame.origin.y = -50

@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        if Local.userMail == nil {  // no logged account
+            NavigationUtilities().navigateToStoryBoard(storyboardName: "Main", storyboardID: "LoginOptionSBID", window: window)
+        } else {
+            NavigationUtilities().navigateToStoryBoard(storyboardName: "Main", storyboardID: "mainTabBar", window: window)
+        }
+        
+        
         return true
     }
 

@@ -6,12 +6,8 @@ target 'Sens' do
   use_frameworks!
 
   # Pods for Sens
-
   pod 'Firebase/Analytics'
   pod 'Firebase/Storage'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
 
 end
 
@@ -20,11 +16,7 @@ target 'SensTests' do
   use_frameworks!
 
   # Pods for Sens
-
   pod 'Firebase/Analytics'
   pod 'Firebase/Storage'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
 
 end

@@ -1,109 +1,66 @@
 //
-//  Date+ExtensionsTest.swift
+//  NewUserTests.swift
 //  SensTests
 //
-//  Created by Bruno Cardoso Ambrosio on 15/01/20.
+//  Created by Bruno Cardoso Ambrosio on 17/01/20.
 //  Copyright © 2020 Bruno Cardoso Ambrosio. All rights reserved.
 //
 
 import XCTest
 @testable import Sens
-@testable import FirebaseFirestore
 
 class UserTests: XCTestCase {
     
-    
-    func dicfix(_ rep: [UserFields: Any]) -> [String: Any] {
-        return Dictionary(uniqueKeysWithValues: rep.map{ (key,value) in
-            (key.rawValue,value)
-        })
-    }
-    
-    
-    var dictionary: [UserFields: Any]!
+    var jsonUser: String!
     
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        dictionary = [:]
-        dictionary[.id] = nil
-        dictionary[.name] = nil
-        dictionary[.lastname] = nil
-        dictionary[.email] = nil
-        dictionary[.birthDate] = nil
-        dictionary[.profilePic] = nil
         
+        jsonUser = "{\"id\":1,\"lastName\":\"Ambrosio\",\"login\":{\"id\":1,\"email\":\"bruno@gmail.com\",\"password\":\"qwerty\"},\"name\":\"Bruno\",\"birthDate\":\"1998-12-11\",\"profilePic\":\"profile1.jpg\"}"
+        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        dictionary = nil
-        // Put teardowncode here. This method is called after the invocation of each test method in the class.
+        jsonUser = nil
     }
     
-    func testUserMandatoryFieldsWithNonNilValuesOnInit() {
-
-        XCTAssert(User(snapshot: dicfix(dictionary) as! NSDictionary) == nil)//ID nil
-        dictionary[.id] = "as12"
-        XCTAssert(User(snapshot: dicfix(dictionary) as! NSDictionary) == nil)//name nil
-        dictionary[.name] = "John"
-        XCTAssert(User(snapshot: dicfix(dictionary) as! NSDictionary) == nil)//lastName nil
-        dictionary[.lastname] = "Doe"
-        XCTAssert(User(snapshot: dicfix(dictionary) as! NSDictionary) == nil)//email nil
-        dictionary[.email] = "johndoe@gmail.com"
+    func testEncode() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let login = Login(id: nil, email: "bruno@gmail.com", password: "qwerty")
+        let user = User(id: nil, name: "Bruno", lastName: "Ambrosio", birthDate: dateFormatter.date(from: "1998-12-11"), profilePic: nil, login: login)
+        
+        do {
+            let encoder = JSONEncoder()
+            let jsonData = try encoder.encode(user)
+            let s = String(data: jsonData, encoding: .utf8)
+            print(s!)
+        } catch  {
+            XCTFail()
+        }
         
     }
-    
-    func testUserInitializingWithDictionary() {
-        //Não consegui 'mockar' corretamente a data que viria do firebase
-//        guard let date:Date = Date.fromString(dateString: "2001-01-01 10:00:00" ) else {
-//            XCTFail()
-//            return
-//        }
-//        let timestamp = Timestamp.init(date: date)
-//        if date != timestamp.dateValue() {
-//            XCTFail()
-//        }
-        dictionary[.id] = "as12"
-        dictionary[.name] = "Bruno"
-        dictionary[.lastname] = "Ambrosio"
-        dictionary[.email] = "bruno@gmail.com"
-        dictionary[.profilePic] = "profile1"
-//        dictionary[.birthDate] = timestamp.seconds
+    func testDecode() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        let user = User(snapshot: dicfix(dictionary) as! NSDictionary)
+        do {
+            let dec = JSONDecoder()
+            guard let data = jsonUser.data(using: .utf8) else { XCTFail();return }
+            let user = try dec.decode(User.self, from: data)
+            XCTAssert(user.id == 1)
+            XCTAssert(user.name == "Bruno" )
+            XCTAssert(user.lastName == "Ambrosio" )
+            XCTAssert(user.birthDate == dateFormatter.date(from: "1998-12-11") )
+            XCTAssert(user.profilePic == "profile1.jpg")
+            XCTAssert(user.login.id == 1 )
+            XCTAssert(user.login.email == "bruno@gmail.com")
+            XCTAssert(user.login.password == "qwerty")
+            
+        } catch  {
+            XCTFail()
+        }
         
-        guard let id = user?.representation["uid"] as? String,
-            id == "as12" else {
-                XCTFail()
-                return
-        }
-        guard let name = user?.representation["firstname"] as? String,
-            name == "Bruno" else {
-                XCTFail()
-                return
-        }
-        guard let lastname = user?.representation["lastname"] as? String,
-            lastname == "Ambrosio" else {
-                XCTFail()
-                return
-        }
-        guard let email = user?.representation["email"] as? String,
-            email == "bruno@gmail.com" else {
-                XCTFail()
-                return
-        }
-        guard let profPic = user?.representation["profilePic"] as? String,
-            profPic == "profile1" else {
-                XCTFail()
-                return
-        }
-        //Não consegui 'mockar' corretamente a data que viria do firebase
-//        guard let birthDate = user?.representation["birthDate"] as? Timestamp,
-//        birthDate.dateValue() == date else {
-//                XCTFail()
-//                return
-//        }
     }
-    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

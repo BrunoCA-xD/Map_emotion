@@ -21,6 +21,7 @@ public class UserError: Codable {
         case missingLoginEmail
         case missingLoginPassword
         case emailIsAlreadyInUse
+        case notFound
     }
 }
 

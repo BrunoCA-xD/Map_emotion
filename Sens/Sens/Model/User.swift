@@ -1,119 +1,92 @@
 //
-//  File.swift
+//  NewUser.swift
 //  Sens
 //
-//  Created by Bruno Cardoso Ambrosio on 21/08/19.
-//  Copyright © 2019 Bruno Cardoso Ambrosio. All rights reserved.
+//  Created by Bruno Cardoso Ambrosio on 17/01/20.
+//  Copyright © 2020 Bruno Cardoso Ambrosio. All rights reserved.
 //
 
 import Foundation
-import FirebaseFirestore
 
-class User{
+class User: Codable {
     
-    var id: String?
-    var name: String
+    //MARK: - Attributes
+    var id: Int64?
+    var name: String!
     var lastName: String?
-    var email: String
     var birthDate: Date?
     var profilePic: String?
     
-    
+    var login: Login!
+    //MARK: - Calculated Attributes
     var fullName: String {
-        if let lastName = lastName{
+        if let name = name,
+            let lastName = lastName{
             return "\(name) \(lastName)"
-        }else {
+        }else if let name = name {
             return "\(name)"
+        }else {
+            return ""
         }
     }
     
-    init(){
-        self.name = ""
-        self.email = ""
-    }
-    init(id: String?, name: String, lastName: String?, email: String, birthDate: Date?, profilePic: String?){
+    //MARK: - Init's
+    init(){}
+    
+    init(id: Int64?, name: String, lastName: String?, birthDate:Date?, profilePic: String?, login: Login) {
         self.id = id
         self.name = name
         self.lastName = lastName
         self.birthDate = birthDate
-        self.email = email
         self.profilePic = profilePic
+        self.login = login
     }
     
-    //Copy initializer
-    convenience init(user: User){
-        self.init()
-        self.id = user.id
-        self.name = user.name
-        self.lastName = user.lastName
-        self.birthDate = user.birthDate
-        self.email = user.email
-        self.profilePic = user.profilePic
-    }
-    
-    init?(snapshot: NSDictionary){
-        guard
-            let id: String = Self.snapshotReader(snapshot, .id),
-            let name: String = Self.snapshotReader(snapshot, .name),
-            let lastName: String = Self.snapshotReader(snapshot, .lastname),
-            let email: String = Self.snapshotReader(snapshot, .email)
-            else{ return nil}
+    required init(from decoder: Decoder) throws {
+        let dateWithoutTimeDateFormatter = DateFormatter()
+        dateWithoutTimeDateFormatter.dateFormat = "yyyy-MM-dd"
         
-        self.id = id
-        self.name = name
-        self.lastName = lastName
-        self.email = email
-        
-        if let timestamp:Timestamp = Self.snapshotReader(snapshot, .birthDate){
-            self.birthDate = timestamp.dateValue()
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try? values.decode(Int64.self, forKey: .id)
+        name = try values.decode(String.self, forKey: .name)
+        lastName = try? values.decode(String.self, forKey: .lastName)
+        if let strDate = try? values.decode(String.self, forKey: .birthDate) {
+            birthDate = dateWithoutTimeDateFormatter.date(from: strDate)
         }
+        profilePic = try? values.decode(String.self, forKey: .profilePic)
+        login = try values.decode(Login.self, forKey: .login)
         
-        self.profilePic = Self.snapshotReader(snapshot, .profilePic)
         
     }
-}
-
-extension User: DictionaryInterpreter{
-    static func interpret(data: NSDictionary) -> Self? {
-        return User(snapshot: data) as? Self
-    }
-}
-
-extension User: DatabaseRepresentation{
-    typealias fieldsEnum = UserFields
-    
-    static func snapshotReader<T>(_ snapshot: NSDictionary,_ field: UserFields) -> T? {
-        return snapshot[field.rawValue] as? T
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case lastName
+        case birthDate
+        case profilePic
+        case login
     }
     
-    var representation: [String : Any] {
-        var rep: [UserFields : Any] = [
-            .id: id!,
-            .name: name,
-            .email: email
-        ]
+    func encode (to encoder: Encoder) throws {
+        let dateWithoutTimeDateFormatter = DateFormatter()
+        dateWithoutTimeDateFormatter.dateFormat = "yyyy-MM-dd"
         
-        if let lastName = lastName{
-            rep[.lastname] = lastName
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        if let id = id {
+            try container.encode(id, forKey: .id)
+        }
+        try container.encode(name, forKey: .name)
+        if let lastName = lastName {
+            try container.encode(lastName, forKey: .lastName)
         }
         if let birthDate = birthDate {
-            rep[.birthDate] = birthDate
+            try container.encode(dateWithoutTimeDateFormatter.string(from: birthDate), forKey: .birthDate)
         }
         if let profilePic = profilePic {
-            rep[.profilePic] = profilePic
+            try container.encode(profilePic, forKey: .profilePic)
         }
+        try container.encode(login, forKey: .login)
         
-        return Dictionary(uniqueKeysWithValues: rep.map{ (key,value) in
-            (key.rawValue,value)
-        })
     }
-}
-
-enum UserFields: String,Hashable {
-    case id = "uid"
-    case name = "firstname"
-    case lastname = "lastname"
-    case email = "email"
-    case birthDate = "birthDate"
-    case profilePic = "profilePic"
+    
 }
